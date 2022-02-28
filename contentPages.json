@@ -1,0 +1,12 @@
+[
+	{
+        "identifier": "frontend-content",
+		"caption": "Page.StartPageCaption",
+		"dropzones": [
+			{
+				"container": "Frontend::Homepage",
+				"type": "content"
+			}
+		]
+	}
+]
