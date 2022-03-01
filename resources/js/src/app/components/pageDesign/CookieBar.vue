@@ -31,13 +31,13 @@
                                         {{ consentGroup.label }}
                                     </template>
                                     <template v-else>
-                                        {{ $translate("Ceres::Template.privacySettingsDefaultGroup") }}
+                                        {{ $translate("Frontend::Template.privacySettingsDefaultGroup") }}
                                     </template>
                                 </label>
                             </span>
                         </template>
                         
-                        <a href="#" class="text-primary text-appearance d-block d-md-inline-block" data-testing="cookie-bar-show-more-information" @click.prevent.stop="isExpanded=true">{{ $translate("Ceres::Template.cookieBarMoreSettings") }}</a>
+                        <a href="#" class="text-primary text-appearance d-block d-md-inline-block" data-testing="cookie-bar-show-more-information" @click.prevent.stop="isExpanded=true">{{ $translate("Frontend::Template.cookieBarMoreSettings") }}</a>
                     </div>
 
                 </div>
@@ -46,20 +46,20 @@
                         class="btn btn-block btn-default btn-appearance button-order-1 mb-2 mt-0"
                         @click="acceptAll(); close()"
                         data-testing="cookie-bar-accept-all">
-                        {{ $translate("Ceres::Template.cookieBarAcceptAll") }}
+                        {{ $translate("Frontend::Template.cookieBarAcceptAll") }}
                     </button>
                     <button
                         v-if="showRejectAll"
                         class="btn btn-block btn-default btn-appearance button-order-2 mb-2 mt-0"
                         @click="denyAll(); close()"
                         data-testing="cookie-bar-deny-all">
-                        {{ $translate("Ceres::Template.cookieBarDenyAll") }}
+                        {{ $translate("Frontend::Template.cookieBarDenyAll") }}
                     </button>
                     <button
                         class="btn btn-block btn-default button-order-3 mb-2 mt-0"
                         @click="storeConsents(); close()"
                         data-testing="cookie-bar-save">
-                        {{ $translate("Ceres::Template.cookieBarSave") }}
+                        {{ $translate("Frontend::Template.cookieBarSave") }}
                     </button>
                 </div>
 
@@ -74,7 +74,7 @@
                         class="text-primary text-appearance d-inline-block mb-3"
                         data-testing="cookie-bar-hide-more-information"
                         @click.prevent.stop="isExpanded = false">
-                        {{ $translate("Ceres::Template.cookieBarBack") }}
+                        {{ $translate("Frontend::Template.cookieBarBack") }}
                     </a>
                 </div>
                 <div class="col-12 col-md-9">
@@ -84,7 +84,7 @@
                                 class="btn btn-block btn-default btn-appearance"
                                 @click="acceptAll(); close()"
                                 data-testing="cookie-bar-expanded-accept-all">
-                                {{ $translate("Ceres::Template.cookieBarAcceptAll") }}
+                                {{ $translate("Frontend::Template.cookieBarAcceptAll") }}
                             </button>
                         </div>
                         <div v-if="showRejectAll" class="col-12 col-md-4 mt-2 mt-md-0">
@@ -92,7 +92,7 @@
                                 class="btn btn-block btn-default btn-appearance"
                                 @click="denyAll(); close()"
                                 data-testing="cookie-bar-expanded-deny-all">
-                                {{ $translate("Ceres::Template.cookieBarDenyAll") }}
+                                {{ $translate("Frontend::Template.cookieBarDenyAll") }}
                             </button>
                         </div>
                         <div class="col-12 col-md-4">
@@ -100,7 +100,7 @@
                                 class="btn btn-block btn-default"
                                 @click="storeConsents(); close()"
                                 data-testing="cookie-bar-expanded-save">
-                                {{ $translate("Ceres::Template.cookieBarSave") }}
+                                {{ $translate("Frontend::Template.cookieBarSave") }}
                             </button>
                         </div>
                     </div>
@@ -109,9 +109,9 @@
         </div>
 
         <div v-else>
-            <button class="btn btn-primary btn-appearance" @click.prevent.stop="isCollapsed = false" :aria-label="$translate('Ceres::Template.cookieBarPrivacySettings')">
+            <button class="btn btn-primary btn-appearance" @click.prevent.stop="isCollapsed = false" :aria-label="$translate('Frontend::Template.cookieBarPrivacySettings')">
                 <i class="fa fa-shield float-none"></i>
-                <span class="d-none d-sm-inline-block">{{ $translate("Ceres::Template.cookieBarPrivacySettings") }}</span>
+                <span class="d-none d-sm-inline-block">{{ $translate("Frontend::Template.cookieBarPrivacySettings") }}</span>
             </button>
         </div>
     </div>
@@ -158,13 +158,13 @@ export default {
         text()
         {
             const links = {
-                gtc: "<a class=\"text-appearance\" href=\"" + App.urls.gtc + "\" target=\"_blank\">" + this.$translate("Ceres::Template.checkoutGtc") + "</a>",
-                cancellation: "<a class=\"text-appearance\" href=\"" + App.urls.cancellationRights + "\" target=\"_blank\">" + this.$translate("Ceres::Template.checkoutCancellationRight", {"hyphen": "&shy;"}) + "</a>",
-                policy: "<a class=\"text-appearance\" href=\"" + App.urls.privacyPolicy + "\" target=\"_blank\">" + this.$translate("Ceres::Template.checkoutPrivacyPolicy", {"hyphen": "&shy;"}) + "</a>",
-                legal: "<a class=\"text-appearance\" href=\"" + App.urls.legalDisclosure + "\" target=\"_blank\">" + this.$translate('Ceres::Template.footerLegalDisclosure') + "</a>"
+                gtc: "<a class=\"text-appearance\" href=\"" + App.urls.gtc + "\" target=\"_blank\">" + this.$translate("Frontend::Template.checkoutGtc") + "</a>",
+                cancellation: "<a class=\"text-appearance\" href=\"" + App.urls.cancellationRights + "\" target=\"_blank\">" + this.$translate("Frontend::Template.checkoutCancellationRight", {"hyphen": "&shy;"}) + "</a>",
+                policy: "<a class=\"text-appearance\" href=\"" + App.urls.privacyPolicy + "\" target=\"_blank\">" + this.$translate("Frontend::Template.checkoutPrivacyPolicy", {"hyphen": "&shy;"}) + "</a>",
+                legal: "<a class=\"text-appearance\" href=\"" + App.urls.legalDisclosure + "\" target=\"_blank\">" + this.$translate('Frontend::Template.footerLegalDisclosure') + "</a>"
             };
 
-            return this.$translate("Ceres::Template.cookieBarHintText", links);
+            return this.$translate("Frontend::Template.cookieBarHintText", links);
         }
     },
 

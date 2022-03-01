@@ -1,5 +1,5 @@
-{% import "Ceres::Widgets.Helper.TwigBuilder" as Twig %}
-{% import "Ceres::Widgets.Helper.WidgetHelper" as WidgetHelper %}
+{% import "Frontend::Widgets.Helper.TwigBuilder" as Twig %}
+{% import "Frontend::Widgets.Helper.WidgetHelper" as WidgetHelper %}
 
 {% set customClass = widget.settings.customClass.mobile %}
 {% set appearance  = widget.settings.appearance.mobile %}
@@ -13,7 +13,7 @@
 {% set preloadImage    = widget.settings.preloadImage.mobile %}
 
 
-{{ Twig.import("ItemName", "Ceres::PageDesign.Macros.ItemName") }}
+{{ Twig.import("ItemName", "Frontend::PageDesign.Macros.ItemName") }}
 
 {{ Twig.set("slides", "[]") }}
 {% set variationIds = [] %}
@@ -124,7 +124,7 @@
 <div class="widget widget-image-carousel widget-{{ appearance | default('primary') }} widget-proportional{% if aspectRatio != 'auto' %} widget-prop-{{ aspectRatio }}{% endif %}{% if customClass | length > 0 %} {{ customClass }}{% endif %}{% if margin | length > 0 %} {{ margin }}{% endif %}"
     {% if inlineMargin | length > 0 %} style="{{ inlineMargin }}"{% endif %}>
     <div id="image-carousel_{{ carouselId }}" class="widget-inner carousel slide{% if animationStyle == 'fade' %} carousel-fade{% endif %}" data-ride="carousel">
-        <div class="carousel-inner" role="listbox" aria-label="{{ trans("Ceres::Template.itemImageCarousel") }}">
+        <div class="carousel-inner" role="listbox" aria-label="{{ trans("Frontend::Template.itemImageCarousel") }}">
             {{ Twig.for("slide", "slides") }}
 
             <div class="carousel-item{{ Twig.if("loop.first") }} active{{ Twig.endif() }}">
@@ -202,12 +202,12 @@
 
             <a class="left carousel-control carousel-control-prev" href="#image-carousel_{{ carouselId }}" role="button" data-slide="prev">
                 <span class="fa fa-chevron-left" aria-hidden="true"></span>
-                <span class="sr-only">{{ trans("Ceres::Template.homepageBack") }}</span>
+                <span class="sr-only">{{ trans("Frontend::Template.homepageBack") }}</span>
             </a>
 
             <a class="right carousel-control carousel-control-next" href="#image-carousel_{{ carouselId }}" role="button" data-slide="next">
                 <span class="fa fa-chevron-right" aria-hidden="true"></span>
-                <span class="sr-only">{{ trans("Ceres::Template.homepageNext") }}</span>
+                <span class="sr-only">{{ trans("Frontend::Template.homepageNext") }}</span>
             </a>
         {{ Twig.endif() }}
     </div>

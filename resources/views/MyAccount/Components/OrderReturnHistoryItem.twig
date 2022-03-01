@@ -1,4 +1,4 @@
-{% import "Ceres::PageDesign.Macros.LayoutContainer" as LayoutContainer %}
+{% import "Frontend::PageDesign.Macros.LayoutContainer" as LayoutContainer %}
 
 <script type="x/template" id="vue-order-return-history-item">
     <article class="cmp cmp-order-item">
@@ -7,7 +7,7 @@
                 <h5
                     v-if="returnOrder.status && returnOrder.status.length > 0"
                     class="h4">
-                    {{ trans("Ceres::Template.returnHistoryStatus") }}: ${ returnOrder.status }
+                    {{ trans("Frontend::Template.returnHistoryStatus") }}: ${ returnOrder.status }
                 </h5>
             </div>
 
@@ -15,19 +15,19 @@
                 <div class="col-12 col-md-12">
                     <div class="row">
                         <div class="col-md-2">
-                            <strong>{{ trans("Ceres::Template.returnHistoryReturnId") }}: </strong>
+                            <strong>{{ trans("Frontend::Template.returnHistoryReturnId") }}: </strong>
                             <span>${ returnOrder.order.id }</span>
                         </div>
                         <div class="col-md-2">
-                            <strong>{{ trans("Ceres::Template.returnHistoryOrderId") }}: </strong>
+                            <strong>{{ trans("Frontend::Template.returnHistoryOrderId") }}: </strong>
                             <span>${ getOriginOrderId(returnOrder.order) }</span>
                         </div>
                         <div class="col-md-3">
-                            <strong>{{ trans("Ceres::Template.returnHistoryDate") }}: </strong>
-                            <span>${ returnOrder.order.createdAt | moment("{{ trans("Ceres::Template.devDateTimeFormatMoment") }}") } {{ trans("Ceres::Template.returnHistoryTime") }}</span>
+                            <strong>{{ trans("Frontend::Template.returnHistoryDate") }}: </strong>
+                            <span>${ returnOrder.order.createdAt | moment("{{ trans("Frontend::Template.devDateTimeFormatMoment") }}") } {{ trans("Frontend::Template.returnHistoryTime") }}</span>
                         </div>
                         <div class="col-md-3">
-                            <strong>{{ trans("Ceres::Template.returnHistoryPaymentMethod") }}: </strong>
+                            <strong>{{ trans("Frontend::Template.returnHistoryPaymentMethod") }}: </strong>
                             <span>${ returnOrder.paymentMethodName }</span>
                         </div>
                     </div>
@@ -35,7 +35,7 @@
                 </div>
             </div>
 
-            {{ LayoutContainer.show("Ceres::MyAccount.OrderReturnHistoryItem") }}
+            {{ LayoutContainer.show("Frontend::MyAccount.OrderReturnHistoryItem") }}
 
             {# show initial #}
             <div class="row">
@@ -53,7 +53,7 @@
                             <a :href="returnOrder.itemURLs[orderItem.itemVariationId]">
                                 <h2 class="h5 order-return-history-name">${ orderItem | itemBundleName }</h2>
                             </a>
-                            <h2 class="h5 order-return-history-count">{{ trans("Ceres::Template.returnHistoryReturnCount") }}: ${ orderItem.quantity}</h2>
+                            <h2 class="h5 order-return-history-count">{{ trans("Frontend::Template.returnHistoryReturnCount") }}: ${ orderItem.quantity}</h2>
                         </div>
                     </div>
                 </div>
@@ -61,7 +61,7 @@
             {# /show initial #}
             <hr class="gradient-hr" v-if="returnOrder.order.orderItems.length > 4">
             <a v-if="returnOrder.order.orderItems.length > 4" @click="toggleNaming('more-return-text-' + _uid)" :id="'more-return-text-' + _uid" class="show-more-returns" data-toggle="collapse" :href="'#more-return-items-' + _uid" aria-expanded="false" aria-controls="collapseExample">
-                {{ trans("Ceres::Template.returnHistoryReturnShowMore") }}
+                {{ trans("Frontend::Template.returnHistoryReturnShowMore") }}
             </a>
         </div>
     </article>

@@ -1,7 +1,7 @@
-{% import "Ceres::Widgets.Helper.TwigBuilder" as Twig %}
-{% import "Ceres::Widgets.Helper.WidgetHelper" as WidgetHelper %}
+{% import "Frontend::Widgets.Helper.TwigBuilder" as Twig %}
+{% import "Frontend::Widgets.Helper.WidgetHelper" as WidgetHelper %}
 
-{{ Twig.import("LayoutContainer", "Ceres::PageDesign.Macros.LayoutContainer") }}
+{{ Twig.import("LayoutContainer", "Frontend::PageDesign.Macros.LayoutContainer") }}
 
 {% set customClass = widget.settings.customClass.mobile %}
 {% set spacingSettings = widget.settings.spacing %}
@@ -31,8 +31,8 @@
                                            item-data-ref="{{ Twig.print("item.data | json_data") }}"{% endif %}
                                            :decimal-count="{{ Twig.print("ceresConfig.item.storeSpecial | default(0) | json_encode") }}">
 
-                                <template #before-prices>  {{ Twig.print(Twig.call("LayoutContainer.show", ["Ceres::CategoryItem.BeforePrices", Twig.var("item.data")])) }}</template>
-                                <template #after-prices> {{ Twig.print(Twig.call("LayoutContainer.show", ["Ceres::CategoryItem.AfterPrices", Twig.var("item.data")])) }}</template>
+                                <template #before-prices>  {{ Twig.print(Twig.call("LayoutContainer.show", ["Frontend::CategoryItem.BeforePrices", Twig.var("item.data")])) }}</template>
+                                <template #after-prices> {{ Twig.print(Twig.call("LayoutContainer.show", ["Frontend::CategoryItem.AfterPrices", Twig.var("item.data")])) }}</template>
                                 <template #item-data>{{ Twig.print("item.data | json_encode | e") }}</template>
 
                                 <a href="{{ Twig.print("item.data | itemURL(buildUrlWithVariationId | json_encode)") }}" class="small">

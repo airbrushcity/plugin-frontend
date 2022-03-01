@@ -1,7 +1,7 @@
-{% import "Ceres::Widgets.Helper.TwigBuilder" as Twig %}
-{% import "Ceres::Widgets.Helper.WidgetHelper" as WidgetHelper %}
+{% import "Frontend::Widgets.Helper.TwigBuilder" as Twig %}
+{% import "Frontend::Widgets.Helper.WidgetHelper" as WidgetHelper %}
 
-{{ Twig.component("Ceres::Checkout.Components.ContactWishInput") }}
+{{ Twig.component("Frontend::Checkout.Components.ContactWishInput") }}
 {% set hintText = widget.settings.hintText.mobile %}
 
 {% set customClass = widget.settings.customClass.mobile %}
@@ -13,7 +13,7 @@
     {% if inlineSpacings | length > 0 %} style="{{ inlineSpacings }}"{% endif %}>
     <div {{ WidgetHelper.makeEditable("hintText", TOOLBAR_LAYOUT.ALL, isPreview) }}>
         {% if hintText is empty %}
-            <h3>{{ WidgetHelper.editableTwig(isPreview, Twig.trans("Ceres::Template.checkoutContactWish")) }}</h3>
+            <h3>{{ WidgetHelper.editableTwig(isPreview, Twig.trans("Frontend::Template.checkoutContactWish")) }}</h3>
         {% else %}
             {{ WidgetHelper.editableTwig(isPreview, hintText) }}
         {% endif %}

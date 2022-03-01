@@ -218,7 +218,7 @@ export default {
             {
                 lightbox.option({
                     wrapAround: true,
-                    albumLabel: this.$translate("Ceres::Template.singleItemLightboxImageShown")
+                    albumLabel: this.$translate("Frontend::Template.singleItemLightboxImageShown")
                 });
             }
 

@@ -7,30 +7,30 @@
                         <input type="password" name="password" autocomplete="new-password" :id="_uid + 'password_first'" v-model="passwordFirst">
                     </template>
                     <template #title>
-                        {{ $translate("Ceres::Template.resetPwPasswordHintTitle") }}
+                        {{ $translate("Frontend::Template.resetPwPasswordHintTitle") }}
                     </template>
                     <template #content>
                         <ul class="pl-3">
-                            <li>{{ $translate("Ceres::Template.resetPwPasswordHintLength") }}</li>
-                            <li>{{ $translate("Ceres::Template.resetPwPasswordHintDigit") }}</li>
-                            <li>{{ $translate("Ceres::Template.resetPwPasswordHintChar") }}</li>
+                            <li>{{ $translate("Frontend::Template.resetPwPasswordHintLength") }}</li>
+                            <li>{{ $translate("Frontend::Template.resetPwPasswordHintDigit") }}</li>
+                            <li>{{ $translate("Frontend::Template.resetPwPasswordHintChar") }}</li>
                         </ul>
                     </template>
                 </popper>
 
-                <label :for="_uid + 'password_first'">{{ $translate("Ceres::Template.resetPwNewPassword") }}*</label>
+                <label :for="_uid + 'password_first'">{{ $translate("Frontend::Template.resetPwNewPassword") }}*</label>
             </div>
         </div>
 
         <div class="input-feedback-container" data-validate="ref">
             <div class="input-unit">
                 <input type="password" name="password" autocomplete="new-password" :id="_uid + 'password_second'" v-model="passwordSecond" :data-validate-ref="'#' + _uid + 'password_first'">
-                <label :for="_uid + 'password_second'">{{ $translate("Ceres::Template.resetPwRepeatPassword") }}*</label>
+                <label :for="_uid + 'password_second'">{{ $translate("Frontend::Template.resetPwRepeatPassword") }}*</label>
             </div>
         </div>
 
         <button @click.prevent="validatePassword" class="btn btn-primary btn-appearance btn-large float-right" :disabled="isDisabled">
-            <span>{{ $translate("Ceres::Template.resetPwSave") }}</span>
+            <span>{{ $translate("Frontend::Template.resetPwSave") }}</span>
             <i class="fa fa-floppy-o" aria-hidden="true"></i>
         </button>
     </form>
@@ -87,13 +87,13 @@ export default {
                     if (validation === "password")
                     {
                         NotificationService.error(
-                            this.$translate("Ceres::Template.resetPwInvalidPassword")
+                            this.$translate("Frontend::Template.resetPwInvalidPassword")
                         );
                     }
                     else if (validation === "ref")
                     {
                         NotificationService.error(
-                            this.$translate("Ceres::Template.resetPwRepeatNewPassword")
+                            this.$translate("Frontend::Template.resetPwRepeatNewPassword")
                         );
                     }
                 });
@@ -110,7 +110,7 @@ export default {
                     navigateTo(window.location.origin);
 
                     NotificationService.success(
-                        this.$translate("Ceres::Template.resetPwChangePasswordSuccessful")
+                        this.$translate("Frontend::Template.resetPwChangePasswordSuccessful")
                     ).closeAfter(3000);
 
                 })
@@ -119,7 +119,7 @@ export default {
                     this.isDisabled = false;
 
                     NotificationService.error(
-                        this.$translate("Ceres::Template.resetPwChangePasswordFailed")
+                        this.$translate("Frontend::Template.resetPwChangePasswordFailed")
                     ).closeAfter(5000);
                 });
         }

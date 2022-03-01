@@ -1,8 +1,8 @@
-{% import "Ceres::PageDesign.Macros.LayoutContainer" as LayoutContainer %}
+{% import "Frontend::PageDesign.Macros.LayoutContainer" as LayoutContainer %}
 
 <script type="x/template" id="vue-place-order">
     <div>
-        {% set buttonReplacement = LayoutContainer.show("Ceres::Checkout.PlaceOrder") %}
+        {% set buttonReplacement = LayoutContainer.show("Frontend::Checkout.PlaceOrder") %}
         {% if buttonReplacement|trim is not empty %}
             {{ buttonReplacement }}
         {% else %}
@@ -14,7 +14,7 @@
                 :disabled="waiting || isBasketLoading || !isBasketInitiallyLoaded"
                 {{ set_testing_attr("data-testing", "place-order") }}>
                 <icon icon="arrow-right" :loading="waiting"></icon>
-                {{ trans("Ceres::Template.checkoutBuyNow") }}
+                {{ trans("Frontend::Template.checkoutBuyNow") }}
             </button>
         {% endif %}
     </div>

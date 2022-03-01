@@ -9,7 +9,7 @@ Vue.filter("itemBundleName", item =>
     {
         prefixName = item.orderItemName.replace(App.bundlePrefix, "").trim();
 
-        prefixName = TranslationService.translate("Ceres::Template.itemBundleName", { itemName: prefixName });
+        prefixName = TranslationService.translate("Frontend::Template.itemBundleName", { itemName: prefixName });
     }
     else if (item.bundleType == "bundle_item")
     {

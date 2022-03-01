@@ -1,9 +1,9 @@
 {% extends getPartial('page-design') %}
-{% import "Ceres::PageDesign.Macros.LayoutContainer" as LayoutContainer %}
+{% import "Frontend::PageDesign.Macros.LayoutContainer" as LayoutContainer %}
 
 {% block PageBody %}
-    {{ component( "Ceres::Checkout.Components.Checkout" ) }}
-    {% set overrideCheckout = LayoutContainer.show("Ceres::Checkout") %}
+    {{ component( "Frontend::Checkout.Components.Checkout" ) }}
+    {% set overrideCheckout = LayoutContainer.show("Frontend::Checkout") %}
     {% set shopBuilderTemplate = shop_builder_category_template(category.id, "checkout") %}
 
     {% if isShopBuilder == false and overrideCheckout | trim is not empty %}

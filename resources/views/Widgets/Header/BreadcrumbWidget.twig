@@ -1,4 +1,4 @@
-{% import "Ceres::Widgets.Helper.TwigBuilder" as Twig %}
+{% import "Frontend::Widgets.Helper.TwigBuilder" as Twig %}
 
 {% set customClass           = widget.settings.customClass.mobile %}
 {% set isFixed               = widget.settings.isFixed.mobile %}
@@ -39,7 +39,7 @@
             <li class="breadcrumb-item">
                 <a href="{{ Twig.print('urls.home') }}">
                     <i class="fa fa-home" aria-hidden="true"></i>
-                    {{ Twig.set("breadcrumbHome", "trans('Ceres::Template.headerBreadcrumbHome')") }}
+                    {{ Twig.set("breadcrumbHome", "trans('Frontend::Template.headerBreadcrumbHome')") }}
                     <span class="breadcrumb-home">{{ Twig.print("breadcrumbHome") }}</span>
                     {{ Twig.set('crumb', '
                         [

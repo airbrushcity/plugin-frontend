@@ -1,5 +1,5 @@
-{% import "Ceres::Widgets.Helper.TwigBuilder" as Twig %}
-{% import "Ceres::Widgets.Helper.WidgetHelper" as WidgetHelper %}
+{% import "Frontend::Widgets.Helper.TwigBuilder" as Twig %}
+{% import "Frontend::Widgets.Helper.WidgetHelper" as WidgetHelper %}
 
 {% set opacity = (widget.settings.opacity.mobile | default(100)) / 100 %}
 {% set fullWidth = widget.settings.fullWidth.mobile is same as (true) %}
@@ -99,8 +99,8 @@
         {% if showPlaceholder %}
             <div class="widget-placeholder p-0">
                 <div>
-                    <p class="title mb-0">{{ trans("Ceres::Widget.backgroundPlaceholderTitle") }}</p>
-                    <p class="description mt-3">{{ trans("Ceres::Widget.backgroundPlaceholderDescription") }}</p>
+                    <p class="title mb-0">{{ trans("Frontend::Widget.backgroundPlaceholderTitle") }}</p>
+                    <p class="description mt-3">{{ trans("Frontend::Widget.backgroundPlaceholderDescription") }}</p>
                 </div>
             </div>
         {% endif %}

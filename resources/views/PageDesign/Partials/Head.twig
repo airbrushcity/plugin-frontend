@@ -1,4 +1,4 @@
-{% import "Ceres::PageDesign.Macros.LayoutContainer" as LayoutContainer %}
+{% import "Frontend::PageDesign.Macros.LayoutContainer" as LayoutContainer %}
 
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -83,7 +83,7 @@
 {% set defaultSCSS = plugin_path("Ceres") ~ "/css/" ~ assetName ~ ".scss?v=" ~ buildHash %}
 
 <link rel="preload" as="style" href="{{ defaultCSS }}">
-{% if LayoutContainer.show("Ceres::Template.StyleOverwrite") | trim is empty %}
+{% if LayoutContainer.show("Frontend::Template.StyleOverwrite") | trim is empty %}
     <link rel="stylesheet" href="{{ defaultCSS }}"{% if isShopBuilder %} data-sass-root="{{ plugin_path('Ceres') }}" data-sass-original="{{ defaultSCSS }}"{% endif %}>
 {% endif %}
 
@@ -220,9 +220,9 @@
     })();
 </script>
 
-{{ LayoutContainer.show("Ceres::Template.StyleOverwrite") }}
+{{ LayoutContainer.show("Frontend::Template.StyleOverwrite") }}
 
 <!-- Extend the existing style with a template -->
-{{ LayoutContainer.show("Ceres::Template.Style") }}
+{{ LayoutContainer.show("Frontend::Template.Style") }}
 
 {{ get_shop_builder_styles() }}

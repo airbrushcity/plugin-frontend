@@ -1,4 +1,4 @@
-{{ component("Ceres::MyAccount.Components.OrderDocuments") }}
+{{ component("Frontend::MyAccount.Components.OrderDocuments") }}
 
 <script type="x/template" id="vue-order-return-history-list-item">
     <div :id="'accordion_' + _uid" class="accordion col-sm-12">
@@ -7,19 +7,19 @@
                 <div class="row">
                     <i class="fa fa-chevron-up" aria-hidden="true"></i>
                     <div class="col-md-2" {{ set_testing_attr("data-testing", "return-history-id1") }}>
-                        <span>{{ trans("Ceres::Template.returnHistoryReturnId") }}: </span>
+                        <span>{{ trans("Frontend::Template.returnHistoryReturnId") }}: </span>
                         <span>${ returnOrder.order.id }</span>
                     </div>
                     <div class="col-md-2" {{ set_testing_attr("data-testing", "return-history-id2") }}>
-                        <span>{{ trans("Ceres::Template.returnHistoryOrderId") }}: </span>
+                        <span>{{ trans("Frontend::Template.returnHistoryOrderId") }}: </span>
                         <span>${ getOriginOrderId(returnOrder.order) }</span>
                     </div>
                     <div class="col-md-4" {{ set_testing_attr("data-testing", "return-history-date") }}>
-                        <span>{{ trans("Ceres::Template.returnHistoryDate") }}: </span>
-                        <span>${ returnOrder.order.createdAt | moment("{{ trans("Ceres::Template.devDateFormatMoment") }}") }</span>
+                        <span>{{ trans("Frontend::Template.returnHistoryDate") }}: </span>
+                        <span>${ returnOrder.order.createdAt | moment("{{ trans("Frontend::Template.devDateFormatMoment") }}") }</span>
                     </div>
                     <div class="col-md-4" {{ set_testing_attr("data-testing", "return-history-payment") }}>
-                        <span>{{ trans("Ceres::Template.returnHistoryPaymentMethod") }}: </span>
+                        <span>{{ trans("Frontend::Template.returnHistoryPaymentMethod") }}: </span>
                         <span>${ returnOrder.paymentMethodName }</span>
                     </div>
                 </div>
@@ -35,7 +35,7 @@
                         </a>
                         <div class="d-inline-block item-description pl-3">
                             <div><a class="text-primary text-appearance" :href="returnOrder.itemURLs[orderItem.itemVariationId]" {{ set_testing_attr("data-testing", "return-history-link") }}>${ orderItem | itemBundleName }</a></div>
-                            <div {{ set_testing_attr("data-testing", "return-history-quantity") }}>{{ trans("Ceres::Template.returnHistoryQuantity") }}: ${ orderItem.quantity}</div>
+                            <div {{ set_testing_attr("data-testing", "return-history-quantity") }}>{{ trans("Frontend::Template.returnHistoryQuantity") }}: ${ orderItem.quantity}</div>
 
                             <div v-for="attribute in orderItem.attributes" {{ set_testing_attr("data-testing", "return-history-attribute") }}>
                                 <strong>${ attribute.name }: </strong>
@@ -64,10 +64,10 @@
             <div class="col-sm-12 text-center mb-2">
                 <a class="text-primary text-appearance" v-if="returnOrder.order.orderItems.length > 5" @click="toggleShowAllOrderItems()" :id="'more-return-text-' + _uid" data-toggle="collapse" :href="'#more-return-items-' + _uid" aria-expanded="false" aria-controls="collapseExample">
                     <template v-if="showAllOrderItems">
-                        {{ trans("Ceres::Template.returnHistoryReturnShowLess") }}
+                        {{ trans("Frontend::Template.returnHistoryReturnShowLess") }}
                     </template>
                     <template v-else>
-                        {{ trans("Ceres::Template.returnHistoryReturnShowMore") }}
+                        {{ trans("Frontend::Template.returnHistoryReturnShowMore") }}
                     </template>
                 </a>
             </div>

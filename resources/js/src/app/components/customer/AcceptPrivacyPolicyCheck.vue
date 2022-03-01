@@ -21,14 +21,14 @@ export default {
     computed: {
         labelHtml()
         {
-            const contactPrivacyPolicy = this.$translate("Ceres::Template.contactPrivacyPolicy", {"hyphen": "&shy;"});
+            const contactPrivacyPolicy = this.$translate("Frontend::Template.contactPrivacyPolicy", {"hyphen": "&shy;"});
             const html = `
                 <!----><a href="${ App.urls.privacyPolicy }" target="_blank" class="text-appearance">
                     <span>${ contactPrivacyPolicy }</span>
                 </a><!---->
             `;
 
-            return this.$translate("Ceres::Template.contactAcceptPrivacyPolicy", {policy: html});
+            return this.$translate("Frontend::Template.contactAcceptPrivacyPolicy", {policy: html});
         }
     },
 

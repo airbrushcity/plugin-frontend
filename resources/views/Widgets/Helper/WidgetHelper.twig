@@ -100,7 +100,7 @@
 
 {% macro setUrlVariable(variableName, urlValue, urlType) %}
 
-    {% import "Ceres::Widgets.Helper.TwigBuilder" as Twig %}
+    {% import "Frontend::Widgets.Helper.TwigBuilder" as Twig %}
     {{ Twig.set(variableName, "" | json_encode) }}
 
     {% if urlType == 'category' %}
@@ -131,7 +131,7 @@
 {% endmacro %}
 
 {% macro editableTwig(isPreview, template) %}
-    {% import "Ceres::Widgets.Helper.TwigBuilder" as Twig %}
+    {% import "Frontend::Widgets.Helper.TwigBuilder" as Twig %}
     {% if isPreview %}{{ Twig.do("verbatim") }}{% endif %}
         {{ template | raw }}
     {% if isPreview %}{{ Twig.do("endverbatim") }}{% endif %}

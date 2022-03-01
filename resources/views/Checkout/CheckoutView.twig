@@ -1,22 +1,22 @@
 {% extends getPartial('page-design') %}
-{% import "Ceres::PageDesign.Macros.LayoutContainer" as LayoutContainer %}
+{% import "Frontend::PageDesign.Macros.LayoutContainer" as LayoutContainer %}
 
 {% block PartialHead %}
     {% embed getPartial('page-metadata') %}
-        {% block title trans("Ceres::Template.checkout") %}
+        {% block title trans("Frontend::Template.checkout") %}
     {% endembed %}
 {% endblock %}
 
 {% block PageBody %}
 
-    {{ component( "Ceres::Customer.Components.AddressSelect.AddressSelect" ) }}
-    {{ component( "Ceres::Checkout.Components.AcceptGtcCheck" ) }}
-    {{ component( "Ceres::Checkout.Components.PaymentProviderSelect" ) }}
-    {{ component( "Ceres::Checkout.Components.ShippingPrivacyHintCheck" ) }}
-    {{ component( "Ceres::Checkout.Components.ShippingProfileSelect" ) }}
-    {{ component( "Ceres::Checkout.Components.PlaceOrder" ) }}
-    {{ component( "Ceres::Checkout.Components.ContactWishInput" ) }}
-    {{ component( "Ceres::Checkout.Components.Checkout" ) }}
+    {{ component( "Frontend::Customer.Components.AddressSelect.AddressSelect" ) }}
+    {{ component( "Frontend::Checkout.Components.AcceptGtcCheck" ) }}
+    {{ component( "Frontend::Checkout.Components.PaymentProviderSelect" ) }}
+    {{ component( "Frontend::Checkout.Components.ShippingPrivacyHintCheck" ) }}
+    {{ component( "Frontend::Checkout.Components.ShippingProfileSelect" ) }}
+    {{ component( "Frontend::Checkout.Components.PlaceOrder" ) }}
+    {{ component( "Frontend::Checkout.Components.ContactWishInput" ) }}
+    {{ component( "Frontend::Checkout.Components.Checkout" ) }}
 
     {% set optionalInvoiceAddressFields = {
         "de": ceresConfig.addresses.billingAddressShow,
@@ -41,17 +41,17 @@
     %}
 
     <div class="page-content checkout container-max pt-3">
-        {% set overrideCheckout = LayoutContainer.show("Ceres::Checkout") %}
+        {% set overrideCheckout = LayoutContainer.show("Frontend::Checkout") %}
         {% if overrideCheckout | trim is empty %}
             <div class="row mt-3">
                 <div class="col-12">
-                    {% set overrideCheckoutHeadline = LayoutContainer.show("Ceres::Checkout.Headline") %}
+                    {% set overrideCheckoutHeadline = LayoutContainer.show("Frontend::Checkout.Headline") %}
                     {% if overrideCheckoutHeadline | trim is empty %}
                         <h1 class="h2">
                             {% if not checkout.readOnly %}
-                                {{ trans("Ceres::Template.checkout") }}
+                                {{ trans("Frontend::Template.checkout") }}
                             {% else %}
-                                {{ trans("Ceres::Template.checkoutCheckOrder") }}
+                                {{ trans("Frontend::Template.checkoutCheckOrder") }}
                             {% endif %}
                         </h1>
                     {% else %}
@@ -73,15 +73,15 @@
                     <div class="col-md-7">
                         <div class="col-12 pt-4 pb-3 bg-white">
                             <div id="registry-form-container" class="registry-form-container main-col" data-id="0" data-status="2">
-                                {% set overrideAddressLists = LayoutContainer.show("Ceres::Checkout.AddressLists") %}
+                                {% set overrideAddressLists = LayoutContainer.show("Frontend::Checkout.AddressLists") %}
                                 {% if overrideAddressLists|trim is empty %}
-                                    {% set overrideBillingAddress = LayoutContainer.show("Ceres::Checkout.BillingAddress") %}
+                                    {% set overrideBillingAddress = LayoutContainer.show("Frontend::Checkout.BillingAddress") %}
                                     {% if overrideBillingAddress|trim is empty %}
                                         <header class="mb-3">
-                                            <h3>{{ trans("Ceres::Template.checkoutInvoiceAddress") }}</h3>
+                                            <h3>{{ trans("Frontend::Template.checkoutInvoiceAddress") }}</h3>
                                         </header>
 
-                                        {{ LayoutContainer.show("Ceres::Checkout.BeforeBillingAddress") }}
+                                        {{ LayoutContainer.show("Frontend::Checkout.BeforeBillingAddress") }}
                                         <div class="invoice-addresses-select">
                                             <invoice-address-select
                                                 :has-to-validate="true"
@@ -91,18 +91,18 @@
                                                 email="{{ services.customer.getEmail() }}">
                                             </invoice-address-select>
                                         </div>
-                                        {{ LayoutContainer.show("Ceres::Checkout.AfterBillingAddress") }}
+                                        {{ LayoutContainer.show("Frontend::Checkout.AfterBillingAddress") }}
                                     {% else %}
                                         {{ overrideBillingAddress }}
                                     {% endif %}
 
-                                    {% set overrideShippingAddress = LayoutContainer.show("Ceres::Checkout.ShippingAddress") %}
+                                    {% set overrideShippingAddress = LayoutContainer.show("Frontend::Checkout.ShippingAddress") %}
                                     {% if overrideShippingAddress|trim is empty %}
                                         <header class="mb-3">
-                                            <h3>{{ trans("Ceres::Template.checkoutShippingAddress") }}</h3>
+                                            <h3>{{ trans("Frontend::Template.checkoutShippingAddress") }}</h3>
                                         </header>
 
-                                        {{ LayoutContainer.show("Ceres::Checkout.BeforeShippingAddress") }}
+                                        {{ LayoutContainer.show("Frontend::Checkout.BeforeShippingAddress") }}
                                         <div class="shipping-addresses-select">
                                             <shipping-address-select
                                                 :optional-address-fields="{{ optionalShippingAddressFields | json_encode }}"
@@ -111,26 +111,26 @@
                                                 email="{{ services.customer.getEmail() }}">
                                             </shipping-address-select>
                                         </div>
-                                        {{ LayoutContainer.show("Ceres::Checkout.AfterShippingAddress") }}
+                                        {{ LayoutContainer.show("Frontend::Checkout.AfterShippingAddress") }}
                                     {% else %}
                                         {{ overrideShippingAddress }}
                                     {% endif %}
                                 {% else %}
                                     {{ overrideAddressLists }}
                                 {% endif %}
-                                {% set overrideShippingProfiles = LayoutContainer.show("Ceres::Checkout.ShippingProfileList") %}
+                                {% set overrideShippingProfiles = LayoutContainer.show("Frontend::Checkout.ShippingProfileList") %}
                                 <header class="mb-3">
-                                    <h3>{{ trans("Ceres::Template.checkoutShippingProfile") }}</h3>
+                                    <h3>{{ trans("Frontend::Template.checkoutShippingProfile") }}</h3>
                                 </header>
 
-                                {% set overridePaymentList = LayoutContainer.show("Ceres::Checkout.PaymentList") %}
+                                {% set overridePaymentList = LayoutContainer.show("Frontend::Checkout.PaymentList") %}
                                 {% if  overridePaymentList|trim  is empty %}
                                     {% set isOverwritten = false %}
                                 {% else %}
                                     {% set isOverwritten = true %}
                                 {% endif %}
 
-                                {{ LayoutContainer.show("Ceres::Checkout.BeforeShippingProfileList") }}
+                                {{ LayoutContainer.show("Frontend::Checkout.BeforeShippingProfileList") }}
                                 {% if overrideShippingProfiles|trim is empty %}
                                     <div class="shipping-method-select">
                                         <shipping-profile-select
@@ -140,13 +140,13 @@
                                 {% else %}
                                     {{ overrideShippingProfiles }}
                                 {% endif %}
-                                {{ LayoutContainer.show("Ceres::Checkout.AfterShippingProfileList") }}
+                                {{ LayoutContainer.show("Frontend::Checkout.AfterShippingProfileList") }}
 
                                 <header class="mb-3">
-                                    <h3>{{ trans("Ceres::Template.checkoutPaymentMethod") }}</h3>
+                                    <h3>{{ trans("Frontend::Template.checkoutPaymentMethod") }}</h3>
                                 </header>
 
-                                {{ LayoutContainer.show("Ceres::Checkout.BeforePaymentList") }}
+                                {{ LayoutContainer.show("Frontend::Checkout.BeforePaymentList") }}
                                 {% if not isOverwritten %}
                                     <div class="payment-method-select">
                                         <payment-provider-select></payment-provider-select>
@@ -154,10 +154,10 @@
                                 {% else %}
                                     {{ overridePaymentList }}
                                 {% endif %}
-                                {{ LayoutContainer.show("Ceres::Checkout.AfterPaymentList") }}
+                                {{ LayoutContainer.show("Frontend::Checkout.AfterPaymentList") }}
 
                                 <header>
-                                    <h3>{{ trans("Ceres::Template.checkoutContactWish") }}</h3>
+                                    <h3>{{ trans("Frontend::Template.checkoutContactWish") }}</h3>
                                 </header>
 
                                 <contact-wish-input class="pb-3"></contact-wish-input>
@@ -165,7 +165,7 @@
                                 <shipping-privacy-hint-check></shipping-privacy-hint-check>
 
                                 <accept-gtc-check></accept-gtc-check>
-                                {{ LayoutContainer.show("Ceres::Checkout.OptIns") }}
+                                {{ LayoutContainer.show("Frontend::Checkout.OptIns") }}
                             </div>
                         </div>
                     </div>
@@ -173,7 +173,7 @@
 
                     <div class="col-md-5 checkout-rightside">
                         <div class="col-12 bg-white pt-4">
-                            <h3>{{ trans("Ceres::Template.checkoutBasket") }}</h3>
+                            <h3>{{ trans("Frontend::Template.checkoutBasket") }}</h3>
                             <hr class="mb-0">
                         </div>
                         <div class="col-12 pt-4 pb-3 bg-white">
@@ -182,10 +182,10 @@
                                     <div class="cmp cmp-basket-preview-list">
                                         <basket-list>
                                             <template #before-basket-item>
-                                                {{ LayoutContainer.show("Ceres::BasketList.BeforeItem") }}
+                                                {{ LayoutContainer.show("Frontend::BasketList.BeforeItem") }}
                                             </template>
                                             <template #after-basket-item>
-                                                {{ LayoutContainer.show("Ceres::BasketList.AfterItem") }}
+                                                {{ LayoutContainer.show("Frontend::BasketList.AfterItem") }}
                                             </template>
                                         </basket-list>
                                         <mail-changed-info user-mail="{{ services.customer.getEmail() }}"></mail-changed-info>
@@ -200,44 +200,44 @@
                         <div class="col-12 py-3 bg-white" v-stick-in-parent="$store.state.basket.isBasketInitiallyLoaded">
                             <aside class="sidebar">
                                 <div class="cmp cmp-checkout-sidebar">
-                                    {{ LayoutContainer.show("Ceres::Checkout.BeforeBasketTotals") }}
+                                    {{ LayoutContainer.show("Frontend::Checkout.BeforeBasketTotals") }}
                                     <basket-totals>
                                         <template #before-item-sum>
-                                            {{ LayoutContainer.show("Ceres::BasketTotals.BeforeItemSum") }}
+                                            {{ LayoutContainer.show("Frontend::BasketTotals.BeforeItemSum") }}
                                         </template>
                                         <template #after-item-sum>
-                                            {{ LayoutContainer.show("Ceres::BasketTotals.AfterItemSum") }}
+                                            {{ LayoutContainer.show("Frontend::BasketTotals.AfterItemSum") }}
                                         </template>
                                         <template #before-shipping-costs>
-                                            {{ LayoutContainer.show("Ceres::BasketTotals.BeforeShippingCosts") }}
+                                            {{ LayoutContainer.show("Frontend::BasketTotals.BeforeShippingCosts") }}
                                         </template>
                                         <template #after-shipping-costs>
-                                            {{ LayoutContainer.show("Ceres::BasketTotals.AfterShippingCosts") }}
+                                            {{ LayoutContainer.show("Frontend::BasketTotals.AfterShippingCosts") }}
                                         </template>
                                         <template #before-total-sum>
-                                            {{ LayoutContainer.show("Ceres::BasketTotals.BeforeTotalSum") }}
+                                            {{ LayoutContainer.show("Frontend::BasketTotals.BeforeTotalSum") }}
                                         </template>
                                         <template #before-vat>
-                                            {{ LayoutContainer.show("Ceres::BasketTotals.BeforeVat") }}
+                                            {{ LayoutContainer.show("Frontend::BasketTotals.BeforeVat") }}
                                         </template>
                                         <template #after-vat>
-                                            {{ LayoutContainer.show("Ceres::BasketTotals.AfterVat") }}
+                                            {{ LayoutContainer.show("Frontend::BasketTotals.AfterVat") }}
                                         </template>
                                         <template #after-total-sum>
-                                            {{ LayoutContainer.show("Ceres::BasketTotals.AfterTotalSum") }}
+                                            {{ LayoutContainer.show("Frontend::BasketTotals.AfterTotalSum") }}
                                         </template>
                                     </basket-totals>
-                                    {{ LayoutContainer.show("Ceres::Checkout.AfterBasketTotals") }}
+                                    {{ LayoutContainer.show("Frontend::Checkout.AfterBasketTotals") }}
                                 </div>
                             </aside>
 
-                            {{ LayoutContainer.show("Ceres::Checkout.BeforePlaceOrder") }}
+                            {{ LayoutContainer.show("Frontend::Checkout.BeforePlaceOrder") }}
                             <place-order target-continue="{{ homepageURL }}{% if homepageURL | last != '/'%}/{% endif %}place-order{% if urls.appendTrailingSlash %}/{% endif %}{% if services.checkout.getReadOnlyCheckout() == 1 %}?readonlyCheckout=1{% endif %}" @payment-response="checkoutComp.showModal($event)"></place-order>
-                            {{ LayoutContainer.show("Ceres::Checkout.AfterPlaceOrder") }}
+                            {{ LayoutContainer.show("Frontend::Checkout.AfterPlaceOrder") }}
 
                             {% if checkout.readOnly %}
                                 <a class="btn btn-block btn-outline-primary mt-3" href="{{ urls.checkout }}?readonlyCheckout=0">
-                                    <i class="fa fa-times" aria-hidden="true"></i> {{ trans("Ceres::Template.checkoutCancelCheckout") }}
+                                    <i class="fa fa-times" aria-hidden="true"></i> {{ trans("Frontend::Template.checkoutCancelCheckout") }}
                                 </a>
                             {% endif %}
                         </div>

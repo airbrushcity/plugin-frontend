@@ -1,6 +1,6 @@
 {% extends getPartial('page-design') %}
 
-{% import "Ceres::PageDesign.Macros.LayoutContainer" as LayoutContainer %}
+{% import "Frontend::PageDesign.Macros.LayoutContainer" as LayoutContainer %}
 
 {% block PartialHead %}
     {% embed getPartial('page-metadata') %}
@@ -10,7 +10,7 @@
             {% set metaDescription = category.details[0].metaDescription | default('') %}
             {% set metaRobots = metaRobots %}
         {% else %}
-            {% set metaDescription = trans('Ceres::Template.homepageMetaDescription') %}
+            {% set metaDescription = trans('Frontend::Template.homepageMetaDescription') %}
             {% set metaRobots = ceresConfig.meta.robotsHome %}
         {% endif %}
 
@@ -37,13 +37,13 @@
             </div>
         </div>
     {% else %}
-        {% set overrideHomepage = LayoutContainer.show("Ceres::Homepage") %}
+        {% set overrideHomepage = LayoutContainer.show("Frontend::Homepage") %}
         {% if overrideHomepage | trim is not empty %}
-            {# Show contents for container Ceres::Homepage #}
+            {# Show contents for container Frontend::Homepage #}
             {{ overrideHomepage }}
         {% else %}
             {# Show default homepage #}
-            {% include "Ceres::Homepage.MarketingHomepage.twig" %}
+            {% include "Frontend::Homepage.MarketingHomepage.twig" %}
         {% endif %}
     {% endif %}
 

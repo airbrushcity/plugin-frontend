@@ -1,5 +1,5 @@
-{% import "Ceres::Widgets.Helper.TwigBuilder" as Twig %}
-{% import "Ceres::Widgets.Helper.WidgetHelper" as WidgetHelper %}
+{% import "Frontend::Widgets.Helper.TwigBuilder" as Twig %}
+{% import "Frontend::Widgets.Helper.WidgetHelper" as WidgetHelper %}
 
 {% set uid = uid() %}
 
@@ -15,13 +15,13 @@
 {% set enableBasketPreview          = widget.settings.enableBasketPreview.mobile %}
 {% set basketValues                 = widget.settings.basketValues.mobile %}
 
-{{ Twig.import("LayoutContainer", "Ceres::PageDesign.Macros.LayoutContainer") }}
+{{ Twig.import("LayoutContainer", "Frontend::PageDesign.Macros.LayoutContainer") }}
 {{ Twig.set("currencyFormat", Twig.call("config", ["Ceres.currency.format"])) }}
 {{ Twig.set("currencyFormatSelect", Twig.call("config", ["Ceres.currency.format_selection"])) }}
 {{ Twig.set("currencyData", Twig.call("services.checkout.getCurrencyData") ~ "[currencyFormat]") }}
 {{ Twig.set("activeCurrencies", Twig.call("config", ["Ceres.currency.available_currencies"]) ~ " | split(\", \")") }}
 {{ Twig.set("defaultLanguage", "webstoreConfig.defaultLanguage" ) }}
-{{ Twig.set("overrideSearchBar", Twig.call("LayoutContainer.show", ["Ceres::Search.SearchBar"])) }}
+{{ Twig.set("overrideSearchBar", Twig.call("LayoutContainer.show", ["Frontend::Search.SearchBar"])) }}
 {{ Twig.set("visibleFields", "ceresConfig.basket.previewData") }}
 
 <div class="top-bar header-fw{% if customClass | length > 0 %} {{ customClass }}{% endif %}{% if not isFixed %} unfixed{% endif %}">
@@ -39,12 +39,12 @@
             %}
                 <div class="widget-placeholder p-0 w-100 text-dark">
                     <div>
-                        <p class="title">{{ Twig.trans("Ceres::Widget.topBarPlaceholderTitle") }}</p>
-                        <p class="description">{{ Twig.trans("Ceres::Widget.topBarPlaceholderDescription") }}</p>
+                        <p class="title">{{ Twig.trans("Frontend::Widget.topBarPlaceholderTitle") }}</p>
+                        <p class="description">{{ Twig.trans("Frontend::Widget.topBarPlaceholderDescription") }}</p>
                     </div>
                 </div>
             {% endif %}
-            {{ Twig.print(Twig.call("LayoutContainer.show", ["Ceres::Header.LeftSide"])) }}
+            {{ Twig.print(Twig.call("LayoutContainer.show", ["Frontend::Header.LeftSide"])) }}
             <div class="top-bar-items {% if searchStyle == "permanent" %}search-permanent d-flex flex-grow-1 flex-column-reverse flex-md-row{% endif %}">
                 {% if searchStyle == "permanent" %}
                     {{ Twig.if("overrideSearchBar | trim is empty") }}
@@ -52,8 +52,8 @@
                             {% if not isPreview %}<lazy-hydrate when-idle>{% endif %}
                                 <item-search>
                                     <div class="position-relative d-flex flex-grow-1">
-                                        <input type="search" class="search-input px-3 py-2 flex-grow-1" aria-label="{{ Twig.print('trans("Ceres::Template.headerSearchTerm")') }}">
-                                        <button class="search-submit px-3" type="submit" aria-label="{{ Twig.print('trans("Ceres::Template.headerSearch")') }}">
+                                        <input type="search" class="search-input px-3 py-2 flex-grow-1" aria-label="{{ Twig.print('trans("Frontend::Template.headerSearchTerm")') }}">
+                                        <button class="search-submit px-3" type="submit" aria-label="{{ Twig.print('trans("Frontend::Template.headerSearch")') }}">
                                             <i class="fa fa-search"></i>
                                         </button>
                                     </div>
@@ -90,15 +90,15 @@
                                         :show-login="{{ enableLogin | json_encode }}"
                                         :show-registration="{{ enableRegistration | json_encode }}">
                                         {% if enableLogin %}
-                                        <a class="nav-link" data-toggle="modal" aria-label="{{ Twig.print('trans("Ceres::Template.login")') }}">
+                                        <a class="nav-link" data-toggle="modal" aria-label="{{ Twig.print('trans("Frontend::Template.login")') }}">
                                             <i class="fa fa-user mr-0 mr-sm-1" aria-hidden="true"></i>
-                                            <span class="d-none d-sm-inline">{{ Twig.print('trans("Ceres::Template.login")') }}</span>
+                                            <span class="d-none d-sm-inline">{{ Twig.print('trans("Frontend::Template.login")') }}</span>
                                         </a>
                                         {% endif %}
                                         {% if enableRegistration %}
-                                        <a class="nav-link" data-toggle="modal" aria-label="{{ Twig.print('trans("Ceres::Template.loginRegister")') }}">
+                                        <a class="nav-link" data-toggle="modal" aria-label="{{ Twig.print('trans("Frontend::Template.loginRegister")') }}">
                                             <i class="fa fa-user-plus mr-0 mr-sm-1" aria-hidden="true"></i>
-                                            <span class="d-none d-sm-inline">{{ Twig.print('trans("Ceres::Template.loginRegister")') }}</span>
+                                            <span class="d-none d-sm-inline">{{ Twig.print('trans("Frontend::Template.loginRegister")') }}</span>
                                         </a>
                                         {% endif %}
                                     </user-login-handler>
@@ -115,7 +115,7 @@
                                    aria-expanded="false"
                                    aria-controls="countrySettings"
                                    data-parent="#controlsList"
-                                   aria-label="{{ Twig.print('trans("Ceres::Template.headerCountry")') }}">
+                                   aria-label="{{ Twig.print('trans("Frontend::Template.headerCountry")') }}">
                                     <i class="flag-icon flag-icon-{{ Twig.print('lang') }}"></i>
                                 </a>
                             </li>
@@ -130,7 +130,7 @@
                                    aria-controls="currencySelect"
                                    data-parent="#controlsList"
                                    data-testing="currency-select"
-                                   aria-label="{{ Twig.print('trans("Ceres::Template.headerCurrency")') }}">
+                                   aria-label="{{ Twig.print('trans("Frontend::Template.headerCurrency")') }}">
                                     <span>{{ Twig.print("currencyData") }}</span>
                                 </a>
                             </li>
@@ -146,7 +146,7 @@
                                     aria-controls="searchBox"
                                     data-testing="searchbox-select"
                                     data-parent="#controlsList"
-                                    aria-label="{{ Twig.print('trans("Ceres::Template.headerSearch")') }}"
+                                    aria-label="{{ Twig.print('trans("Frontend::Template.headerSearch")') }}"
                                     @mouseover.once="$store.dispatch('loadComponent', 'item-search')">
                                     <span class="anicon-search-item" aria-hidden="true"></span>
                                 </a>
@@ -158,7 +158,7 @@
                             <li class="list-inline-item control-wish-list">
                                 <lazy-hydrate when-idle>
                                     <wish-list-count>
-                                        <a class="nav-link" aria-label="{{ Twig.print('trans("Ceres::Template.wishList")') }}">
+                                        <a class="nav-link" aria-label="{{ Twig.print('trans("Frontend::Template.wishList")') }}">
                                             <span class="badge-right mr-1 d-none d-sm-inline">0</span>
                                             <i class="fa fa-heart-o" aria-hidden="true"></i>
                                         </a>
@@ -184,46 +184,46 @@
 
                                 <basket-preview v-if="$store.state.lazyComponent.components['basket-preview']" :show-net-prices="{{ Twig.print("showNetPrices | json_encode") }}" :visible-fields="{{ Twig.print("visibleFields | json_encode") }}">
                                     <template #before-basket-item>
-                                        {{ Twig.print(Twig.call("LayoutContainer.show", ["Ceres::BasketList.BeforeItem"])) }}
+                                        {{ Twig.print(Twig.call("LayoutContainer.show", ["Frontend::BasketList.BeforeItem"])) }}
                                     </template>
                                     <template #after-basket-item>
-                                        {{ Twig.print(Twig.call("LayoutContainer.show", ["Ceres::BasketList.AfterItem"])) }}
+                                        {{ Twig.print(Twig.call("LayoutContainer.show", ["Frontend::BasketList.AfterItem"])) }}
                                     </template>
                                     <template #before-basket-totals>
-                                        {{ Twig.print(Twig.call("LayoutContainer.show", ["Ceres::BasketPreview.BeforeBasketTotals"])) }}
+                                        {{ Twig.print(Twig.call("LayoutContainer.show", ["Frontend::BasketPreview.BeforeBasketTotals"])) }}
                                     </template>
                                     <template #before-item-sum>
-                                        {{ Twig.print(Twig.call("LayoutContainer.show", ["Ceres::BasketTotals.BeforeItemSum"])) }}
+                                        {{ Twig.print(Twig.call("LayoutContainer.show", ["Frontend::BasketTotals.BeforeItemSum"])) }}
                                     </template>
                                     <template #after-item-sum>
-                                        {{ Twig.print(Twig.call("LayoutContainer.show", ["Ceres::BasketTotals.AfterItemSum"])) }}
+                                        {{ Twig.print(Twig.call("LayoutContainer.show", ["Frontend::BasketTotals.AfterItemSum"])) }}
                                     </template>
                                     <template #before-shipping-costs>
-                                        {{ Twig.print(Twig.call("LayoutContainer.show", ["Ceres::BasketTotals.BeforeShippingCosts"])) }}
+                                        {{ Twig.print(Twig.call("LayoutContainer.show", ["Frontend::BasketTotals.BeforeShippingCosts"])) }}
                                     </template>
                                     <template #after-shipping-costs>
-                                        {{ Twig.print(Twig.call("LayoutContainer.show", ["Ceres::BasketTotals.AfterShippingCosts"])) }}
+                                        {{ Twig.print(Twig.call("LayoutContainer.show", ["Frontend::BasketTotals.AfterShippingCosts"])) }}
                                     </template>
                                     <template #before-total-sum>
-                                        {{ Twig.print(Twig.call("LayoutContainer.show", ["Ceres::BasketTotals.BeforeTotalSum"])) }}
+                                        {{ Twig.print(Twig.call("LayoutContainer.show", ["Frontend::BasketTotals.BeforeTotalSum"])) }}
                                     </template>
                                     <template #before-vat>
-                                        {{ Twig.print(Twig.call("LayoutContainer.show", ["Ceres::BasketTotals.BeforeVat"])) }}
+                                        {{ Twig.print(Twig.call("LayoutContainer.show", ["Frontend::BasketTotals.BeforeVat"])) }}
                                     </template>
                                     <template #after-vat>
-                                        {{ Twig.print(Twig.call("LayoutContainer.show", ["Ceres::BasketTotals.AfterVat"])) }}
+                                        {{ Twig.print(Twig.call("LayoutContainer.show", ["Frontend::BasketTotals.AfterVat"])) }}
                                     </template>
                                     <template #after-total-sum>
-                                        {{ Twig.print(Twig.call("LayoutContainer.show", ["Ceres::BasketTotals.AfterTotalSum"])) }}
+                                        {{ Twig.print(Twig.call("LayoutContainer.show", ["Frontend::BasketTotals.AfterTotalSum"])) }}
                                     </template>
                                     <template #after-basket-totals>
-                                        {{ Twig.print(Twig.call("LayoutContainer.show", ["Ceres::BasketPreview.AfterBasketTotals"])) }}
+                                        {{ Twig.print(Twig.call("LayoutContainer.show", ["Frontend::BasketPreview.AfterBasketTotals"])) }}
                                     </template>
                                     <template #before-checkout-button>
-                                        {{ Twig.print(Twig.call("LayoutContainer.show", ["Ceres::BasketPreview.BeforeCheckoutButton"])) }}
+                                        {{ Twig.print(Twig.call("LayoutContainer.show", ["Frontend::BasketPreview.BeforeCheckoutButton"])) }}
                                     </template>
                                     <template #after-checkout-button>
-                                        {{ Twig.print(Twig.call("LayoutContainer.show", ["Ceres::BasketPreview.AfterCheckoutButton"])) }}
+                                        {{ Twig.print(Twig.call("LayoutContainer.show", ["Frontend::BasketPreview.AfterCheckoutButton"])) }}
                                     </template>
                                 </basket-preview>
                             </li>
@@ -263,7 +263,7 @@
                         <div class="row py-3">
                             <div class="currency-list col-12">
                                 <div class="list-title">
-                                    <strong>{{ Twig.print('trans("Ceres::Template.headerCurrency")') }}</strong>
+                                    <strong>{{ Twig.print('trans("Frontend::Template.headerCurrency")') }}</strong>
                                     <hr>
                                 </div>
                                 <ul class="row text-center text-sm-left">
@@ -296,7 +296,7 @@
                                 <div class="col-12 {% if enableShippingCountrySelect %}col-lg-6{% else %}col-lg-12{% endif %}">
                                     <div class="language-settings">
                                         <div class="list-title">
-                                            <strong>{{ Twig.print('trans("Ceres::Template.headerSelectLanguage")') }}</strong>
+                                            <strong>{{ Twig.print('trans("Frontend::Template.headerSelectLanguage")') }}</strong>
                                             <hr>
                                         </div>
                                         {{ Twig.set("languageList", Twig.call("services.webstoreConfigurationRepository.getActiveLanguageList")) }}
@@ -314,7 +314,7 @@
                                                     <a class="nav-link" href="{{ Twig.print("url") }}"
                                                         data-testing="lang-select-{{ Twig.print("language") }}" data-update-url>
                                                         <i class="flag-icon flag-icon-{{ Twig.print("language") }}"></i>
-                                                        {{ Twig.print('trans("Ceres::Template.header" ~ language | capitalize)') }}
+                                                        {{ Twig.print('trans("Frontend::Template.header" ~ language | capitalize)') }}
                                                     </a>
                                                 </li>
                                             {{ Twig.endfor() }}
@@ -326,7 +326,7 @@
                                 <div class="col-12 {% if enableLanguageSelect %}col-lg-6{% else %}col-lg-12{% endif %}">
                                     <div class="shipping-settings">
                                         <div class="list-title">
-                                            <strong>{{ Twig.print('trans("Ceres::Template.headerSelectShippingCountry")') }}</strong>
+                                            <strong>{{ Twig.print('trans("Frontend::Template.headerSelectShippingCountry")') }}</strong>
                                             <hr>
                                         </div>
                                         <intersect>

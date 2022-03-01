@@ -1,14 +1,14 @@
-{{ component( "Ceres::MyAccount.Components.OrderHistory" ) }}
-{{ component( "Ceres::MyAccount.Components.OrderReturnHistory" ) }}
+{{ component( "Frontend::MyAccount.Components.OrderHistory" ) }}
+{{ component( "Frontend::MyAccount.Components.OrderReturnHistory" ) }}
 
 <script type="x/template" id="vue-history">
 	<div class="page-content basket history container-max mb-5">
 		<ul class="nav nav-tabs" role="tablist">
 			<li class="nav-item">
-				<a class="nav-link active" data-toggle="tab" href="#order-history-tab" role="tab" aria-expanded="true">{{ trans("Ceres::Template.orderHistory") }}</a>
+				<a class="nav-link active" data-toggle="tab" href="#order-history-tab" role="tab" aria-expanded="true">{{ trans("Frontend::Template.orderHistory") }}</a>
 			</li>
 			<li class="nav-item" v-if="isReturnActive && contactHasReturns">
-				<a @click="returnsTabsOpened()" class="nav-link" data-toggle="tab" href="#order-return-tab" role="tab" aria-expanded="false">{{ trans("Ceres::Template.returnHistory") }}</a>
+				<a @click="returnsTabsOpened()" class="nav-link" data-toggle="tab" href="#order-return-tab" role="tab" aria-expanded="false">{{ trans("Frontend::Template.returnHistory") }}</a>
 			</li>
 		</ul>	
 

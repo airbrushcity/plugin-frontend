@@ -30,7 +30,7 @@
 
         <template v-else>
             <p class="text-muted" :class="paddingClasses" :style="paddingInlineStyles">
-                {{ $translate("Ceres::Template.itemSearchSuggestionNoResults") }}
+                {{ $translate("Frontend::Template.itemSearchSuggestionNoResults") }}
             </p>
         </template>
     </div>

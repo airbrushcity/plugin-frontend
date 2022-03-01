@@ -2,16 +2,16 @@
 
 {% block PartialHead %}
     {% embed getPartial('page-metadata') %}
-        {% block title trans("Ceres::Template.myAccount") %}
+        {% block title trans("Frontend::Template.myAccount") %}
     {% endembed %}
 {% endblock %}
 
 {% block PageBody %}
 
-    {{ component( "Ceres::Customer.Components.AddressSelect.AddressSelect" ) }}
-    {{ component( "Ceres::MyAccount.Components.AccountSettings" ) }}
-    {{ component( "Ceres::MyAccount.Components.History" ) }}
-    {{ component( "Ceres::MyAccount.Components.BankDataSelect" ) }}
+    {{ component( "Frontend::Customer.Components.AddressSelect.AddressSelect" ) }}
+    {{ component( "Frontend::MyAccount.Components.AccountSettings" ) }}
+    {{ component( "Frontend::MyAccount.Components.History" ) }}
+    {{ component( "Frontend::MyAccount.Components.BankDataSelect" ) }}
 
     {% set userObject = services.customer.getContact() %}
     {% set userBankData = services.contactBank.getBanksOfContact(frontend.Account.AccountContactId) %}
@@ -50,18 +50,18 @@
                 <!-- HEADER -->
                 <div class="row mb-5">
                     <div class="col-sm-9">
-                        <h1 class="h2">{{ trans("Ceres::Template.myAccount") }}</h1>
+                        <h1 class="h2">{{ trans("Frontend::Template.myAccount") }}</h1>
                         {% if frontend.Account.getIsAccountLoggedIn %}
                             {% if userObject.firstName|length > 0 and userObject.lastName|length > 0 %}
-                                <span class="text-muted">{{ trans("Ceres::Template.myAccountHello", {"username": userObject.firstName ~ " " ~ userObject.lastName}) }}</span>
+                                <span class="text-muted">{{ trans("Frontend::Template.myAccountHello", {"username": userObject.firstName ~ " " ~ userObject.lastName}) }}</span>
                             {% else %}
-                                <span class="text-muted">{{ trans("Ceres::Template.myAccountHello", {"username": userObject.email}) }}</span>
+                                <span class="text-muted">{{ trans("Frontend::Template.myAccountHello", {"username": userObject.email}) }}</span>
                             {% endif %}
                         {% endif %}
                     </div>
                     <div class="col-sm-3">
                         <a href="#" class="btn btn-danger float-right btn-medium" v-logout>
-                            <span>{{ trans("Ceres::Template.myAccountLogout") }}</span>
+                            <span>{{ trans("Frontend::Template.myAccountLogout") }}</span>
                             <i class="fa fa-sign-out"></i>
                         </a>
                     </div>
@@ -75,9 +75,9 @@
                 <div class="row">
                     <div class="col-md-6">
                         <h4>
-                            {{ trans("Ceres::Template.myAccountInvoiceAddresses") }}
+                            {{ trans("Frontend::Template.myAccountInvoiceAddresses") }}
                         </h4>
-                        <p class="text-muted small font-italic">{{ trans("Ceres::Template.myAccountAll") }} {{ trans("Ceres::Template.myAccountInvoiceAddresses") }}</p>
+                        <p class="text-muted small font-italic">{{ trans("Frontend::Template.myAccountAll") }} {{ trans("Frontend::Template.myAccountInvoiceAddresses") }}</p>
                         <div class="invoice-addresses-select">
                             <invoice-address-select
                                 :optional-address-fields="{{ optionalInvoiceAddressFields | json_encode }}"
@@ -89,9 +89,9 @@
                     </div>
                     <div class="col-md-6">
                         <h4>
-                            {{ trans("Ceres::Template.myAccountShippingAddresses") }}
+                            {{ trans("Frontend::Template.myAccountShippingAddresses") }}
                         </h4>
-                        <p class="text-muted small font-italic">{{ trans("Ceres::Template.myAccountAll") }} {{ trans("Ceres::Template.myAccountShippingAddresses") }}</p>
+                        <p class="text-muted small font-italic">{{ trans("Frontend::Template.myAccountAll") }} {{ trans("Frontend::Template.myAccountShippingAddresses") }}</p>
                         <div class="shipping-addresses-select">
                             <shipping-address-select
                                 :optional-address-fields="{{ optionalShippingAddressFields | json_encode }}"
@@ -110,9 +110,9 @@
                 <div class="row">
                     <div class="col-md-6">
                         <h4>
-                            {{ trans("Ceres::Template.myAccountSettings") }}
+                            {{ trans("Frontend::Template.myAccountSettings") }}
                         </h4>
-                        <p class="text-muted small font-italic">{{ trans("Ceres::Template.myAccountChangeLoginData") }}</p>
+                        <p class="text-muted small font-italic">{{ trans("Frontend::Template.myAccountChangeLoginData") }}</p>
 
                         <div class="card mb-5">
                             <account-settings :user-data="{{ userObject | json_encode }}"></account-settings>
@@ -121,11 +121,11 @@
 
                     <div class="col-md-6">
                         <h4>
-                            {{ trans("Ceres::Template.myAccountBankDetails") }}
+                            {{ trans("Frontend::Template.myAccountBankDetails") }}
                         </h4>
 
 
-                        <p class="text-muted small font-italic">{{ trans("Ceres::Template.myAccountChangePaymentInformation") }}</p>
+                        <p class="text-muted small font-italic">{{ trans("Frontend::Template.myAccountChangePaymentInformation") }}</p>
                         <bank-data-select template="#vue-bank-data-select" :user-bank-data="{{ userBankData }}"
                                         contact-id="{{ frontend.Account.AccountContactId }}"></bank-data-select>
 

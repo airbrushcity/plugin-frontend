@@ -1,6 +1,6 @@
-{% import "Ceres::Widgets.Helper.TwigBuilder" as Twig %}
-{% import "Ceres::Widgets.Helper.WidgetHelper" as WidgetHelper %}
-{{ Twig.import("LayoutContainer", "Ceres::PageDesign.Macros.LayoutContainer") }}
+{% import "Frontend::Widgets.Helper.TwigBuilder" as Twig %}
+{% import "Frontend::Widgets.Helper.WidgetHelper" as WidgetHelper %}
+{{ Twig.import("LayoutContainer", "Frontend::PageDesign.Macros.LayoutContainer") }}
 
 {% set customClass = widget.settings.customClass.mobile %}
 {% set spacingSettings = widget.settings.spacing %}
@@ -20,7 +20,7 @@
                     :has-to-forward="true"
                     :button-size="{{ buttonSize | json_encode }}">
                         <template #extend-overlay-buttons>
-                            {{ Twig.print(Twig.call("LayoutContainer.show", ["Ceres::LoginOverlay.ExtendOverlayButtons"])) }}
+                            {{ Twig.print(Twig.call("LayoutContainer.show", ["Frontend::LoginOverlay.ExtendOverlayButtons"])) }}
                         </template>
                 </login>
             </div>

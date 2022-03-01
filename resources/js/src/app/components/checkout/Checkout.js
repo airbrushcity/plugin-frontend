@@ -99,7 +99,7 @@ export default Vue.component("checkout", {
             if (!this.isEquals(this.checkout.payment.methodOfPaymentList, checkout.paymentDataList, "id"))
             {
                 NotificationService.info(
-                    TranslationService.translate("Ceres::Template.checkoutMethodOfPaymentListChanged")
+                    TranslationService.translate("Frontend::Template.checkoutMethodOfPaymentListChanged")
                 );
                 this.$store.commit("setMethodOfPaymentList", checkout.paymentDataList);
             }
@@ -112,7 +112,7 @@ export default Vue.component("checkout", {
             if (this.checkout.payment.methodOfPaymentId !== checkout.methodOfPaymentId)
             {
                 NotificationService.warn(
-                    TranslationService.translate("Ceres::Template.checkoutMethodOfPaymentChanged")
+                    TranslationService.translate("Frontend::Template.checkoutMethodOfPaymentChanged")
                 );
                 this.$store.commit("setMethodOfPayment", checkout.methodOfPaymentId);
             }
@@ -120,7 +120,7 @@ export default Vue.component("checkout", {
             if (this.checkout.shipping.shippingProfileId !== checkout.shippingProfileId)
             {
                 NotificationService.warn(
-                    TranslationService.translate("Ceres::Template.checkoutShippingProfileChanged")
+                    TranslationService.translate("Frontend::Template.checkoutShippingProfileChanged")
                 );
                 this.$store.commit("setShippingProfile", checkout.shippingProfileId);
             }
@@ -135,7 +135,7 @@ export default Vue.component("checkout", {
             if (this.deliveryAddressId !== responseDeliveryAddressId)
             {
                 NotificationService.warn(
-                    TranslationService.translate("Ceres::Template.addressChangedWarning")
+                    TranslationService.translate("Frontend::Template.addressChangedWarning")
                 );
                 this.$store.commit("selectDeliveryAddressById", responseDeliveryAddressId);
             }
@@ -158,7 +158,7 @@ export default Vue.component("checkout", {
             if (oldList.length !== newList.length)
             {
                 NotificationService.info(
-                    TranslationService.translate("Ceres::Template.checkoutShippingProfileListChanged")
+                    TranslationService.translate("Frontend::Template.checkoutShippingProfileListChanged")
                 );
                 return true;
             }
@@ -171,14 +171,14 @@ export default Vue.component("checkout", {
                 if (oldList[index].parcelServicePresetId !== newList[index].parcelServicePresetId)
                 {
                     NotificationService.info(
-                        TranslationService.translate("Ceres::Template.checkoutShippingProfileListChanged")
+                        TranslationService.translate("Frontend::Template.checkoutShippingProfileListChanged")
                     );
                     return true;
                 }
                 else if (oldList[index].shippingAmount !== newList[index].shippingAmount)
                 {
                     NotificationService.info(
-                        TranslationService.translate("Ceres::Template.checkoutShippingProfilePriceChanged")
+                        TranslationService.translate("Frontend::Template.checkoutShippingProfilePriceChanged")
                     );
                     return true;
                 }

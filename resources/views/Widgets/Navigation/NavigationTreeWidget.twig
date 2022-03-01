@@ -1,7 +1,7 @@
-{% import "Ceres::Widgets.Helper.TwigBuilder" as Twig %}
-{% import "Ceres::Widgets.Helper.WidgetHelper" as WidgetHelper %}
+{% import "Frontend::Widgets.Helper.TwigBuilder" as Twig %}
+{% import "Frontend::Widgets.Helper.WidgetHelper" as WidgetHelper %}
 
-{{ Twig.import("LayoutContainer", "Ceres::PageDesign.Macros.LayoutContainer") }}
+{{ Twig.import("LayoutContainer", "Frontend::PageDesign.Macros.LayoutContainer") }}
 
 {% set customClass     = widget.settings.customClass.mobile %}
 {% set appearance      = widget.settings.appearance.mobile | default("none") %}
@@ -22,13 +22,13 @@
     <div class="widget-inner d-none d-lg-block">
         <div class="category-title" {{ WidgetHelper.makeEditable("headline", TOOLBAR_LAYOUT.INLINE, isPreview) }}>
             {% if headline | trim is empty %}
-                {{ WidgetHelper.editableTwig(isPreview, Twig.trans("Ceres::Template.itemCategories")) }}
+                {{ WidgetHelper.editableTwig(isPreview, Twig.trans("Frontend::Template.itemCategories")) }}
             {% else %}
                 {{ WidgetHelper.editableTwig(isPreview, headline) }}
             {% endif %}
         </div>
 
-        {{ Twig.include("Ceres::PageDesign.Partials.Header.SideNavigation", {
+        {{ Twig.include("Frontend::PageDesign.Partials.Header.SideNavigation", {
             spacingPadding: spacingPadding | json_encode,
             inlinePadding : inlinePadding | json_encode,
             expandableChildren: expandableChildren | json_encode,
@@ -36,13 +36,13 @@
             customEntries : customEntries | json_encode(constant('JSON_UNESCAPED_UNICODE'))})
         }}
 
-        {{ Twig.print(Twig.call("LayoutContainer.show", ["Ceres::CategoryItem.SideNavBarBottom"])) }}
+        {{ Twig.print(Twig.call("LayoutContainer.show", ["Frontend::CategoryItem.SideNavBarBottom"])) }}
     </div>
     {% if isPreview %}
         <div class="widget-placeholder d-block d-lg-none prop-1-1 py-3">
             <div>
-                <p class="title">{{ Twig.trans("Ceres::Widget.navigationTreePlaceholderTitle") }}</p>
-                <p class="description">{{ Twig.trans("Ceres::Widget.navigationTreePlaceholderDescription") }}</p>
+                <p class="title">{{ Twig.trans("Frontend::Widget.navigationTreePlaceholderTitle") }}</p>
+                <p class="description">{{ Twig.trans("Frontend::Widget.navigationTreePlaceholderDescription") }}</p>
             </div>
         </div>
     {% endif %}

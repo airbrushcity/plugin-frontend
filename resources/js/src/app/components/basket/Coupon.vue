@@ -1,6 +1,6 @@
 <template>
     <div class="cmp">
-        <p v-if="isCheckoutReadonly && !!$translate('Ceres::Template.couponReadonlyInfoText')">
+        <p v-if="isCheckoutReadonly && !!$translate('Frontend::Template.couponReadonlyInfoText')">
             {{ couponReadonlyInfoText }}
         </p>
         <div :class="{'input-group':true, 'component-loading':isCheckoutReadonly, 'is-loading':isCheckoutReadonly}">
@@ -8,7 +8,7 @@
                 type="text"
                 class="form-control"
                 v-model="couponCode"
-                :placeholder="$translate('Ceres::Template.couponEnterCoupon')"
+                :placeholder="$translate('Frontend::Template.couponEnterCoupon')"
                 @keyup.enter="redeemCode()"
                 :disabled="disabled || isCheckoutReadonly"
                 data-testing="coupon-input"
@@ -22,7 +22,7 @@
                     data-testing="coupon-redeem"
                 >
                     <icon icon="gift" :loading="waiting"></icon>
-                    {{ $translate("Ceres::Template.couponRedeem") }}
+                    {{ $translate("Frontend::Template.couponRedeem") }}
                 </button>
                 <button
                     class="btn btn-medium btn-danger"
@@ -33,7 +33,7 @@
                     data-testing="coupon-remove"
                 >
                     <icon icon="trash" :loading="waiting"></icon>
-                    {{ $translate("Ceres::Template.couponRemove") }}
+                    {{ $translate("Frontend::Template.couponRemove") }}
                 </button>
             </span>
         </div>
@@ -121,7 +121,7 @@ export default {
                     {
                         this.waiting = false;
                         NotificationService.success(
-                            TranslationService.translate("Ceres::Template.couponRedeemSuccess")
+                            TranslationService.translate("Frontend::Template.couponRedeemSuccess")
                         ).closeAfter(10000);
                     },
                     error =>
@@ -133,7 +133,7 @@ export default {
             else
             {
                 NotificationService.error(
-                    TranslationService.translate("Ceres::Template.couponIsEmpty")
+                    TranslationService.translate("Frontend::Template.couponIsEmpty")
                 ).closeAfter(10000);
             }
         },
@@ -147,14 +147,14 @@ export default {
                 {
                     this.waiting = false;
                     NotificationService.success(
-                        TranslationService.translate("Ceres::Template.couponRemoveSuccess")
+                        TranslationService.translate("Frontend::Template.couponRemoveSuccess")
                     ).closeAfter(10000);
                 },
                 error =>
                 {
                     this.waiting = false;
                     NotificationService.error(
-                        TranslationService.translate("Ceres::Template.couponRemoveFailure")
+                        TranslationService.translate("Frontend::Template.couponRemoveFailure")
                     ).closeAfter(10000);
                 });
         },
@@ -164,10 +164,10 @@ export default {
             const errorCode = error && error.warn && error.warn.code || 0;
             if (errorCode > 0 && ExceptionMap.has(errorCode.toString()))
             {
-                return TranslationService.translate("Ceres::Template." + ExceptionMap.get(errorCode.toString()));
+                return TranslationService.translate("Frontend::Template." + ExceptionMap.get(errorCode.toString()));
             }
 
-            return TranslationService.translate("Ceres::Template.couponRedeemFailure");
+            return TranslationService.translate("Frontend::Template.couponRedeemFailure");
         }
     }
 }

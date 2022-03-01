@@ -1,5 +1,5 @@
-{{ component( "Ceres::Customer.Components.AddressSelect.CreateUpdateAddress") }}
-{{ component( "Ceres::Customer.Components.AddressSelect.AddressHeader") }}
+{{ component( "Frontend::Customer.Components.AddressSelect.CreateUpdateAddress") }}
+{{ component( "Frontend::Customer.Components.AddressSelect.AddressHeader") }}
 
 
 <script type="x/template" id="vue-address-select">
@@ -20,14 +20,14 @@
 
                     <div class="item-inner" :class="{'error': showError}">
                         <div v-if="selectedAddress && selectedAddress.id == -99">
-                            <p class="text-muted small font-italic pt-3 m-0" :class="paddingClasses" :style="paddingInlineStyles">{{ trans("Ceres::Template.addressSameAsInvoice") }}</p>
+                            <p class="text-muted small font-italic pt-3 m-0" :class="paddingClasses" :style="paddingInlineStyles">{{ trans("Frontend::Template.addressSameAsInvoice") }}</p>
                         </div>
                         <div v-else class="item-content">
                             <div v-if="!isAddressListEmpty && selectedAddress">
                                 <address-header :address="selectedAddress" :class="paddingClasses" :style="paddingInlineStyles"></address-header>
                             </div>
-                            <p v-if="!isAddressListEmpty && !selectedAddress" class="text-muted small font-italic pt-3">{{ trans("Ceres::Template.addressPleaseSelect") }}</p>
-                            <p v-if="isAddressListEmpty" class="text-muted small font-italic pt-3">{{ trans("Ceres::Template.addressNoAddress") }}</p>
+                            <p v-if="!isAddressListEmpty && !selectedAddress" class="text-muted small font-italic pt-3">{{ trans("Frontend::Template.addressPleaseSelect") }}</p>
+                            <p v-if="isAddressListEmpty" class="text-muted small font-italic pt-3">{{ trans("Frontend::Template.addressNoAddress") }}</p>
                         </div>
                     </div>
                 </div>
@@ -37,12 +37,12 @@
                         v-tooltip
                         data-toggle="tooltip"
                         data-placement="top"
-                        title="{{ trans("Ceres::Template.addressAddAddressTooltip") }}"
+                        title="{{ trans("Frontend::Template.addressAddAddressTooltip") }}"
                         class="btn btn-primary btn-appearance btn-large btn-only-icon-xs-down d-block"
                         v-if="isAddAddressEnabled" @click.prevent="showAddModal()" :disabled="isBasketLoading || isCheckoutReadonly"
                         {{ set_testing_attr(":data-testing", "\"addressTypePrefix + 'address-select-add'\"") | raw }}
                     >
-                        <span>{{ trans("Ceres::Template.addressAddAddress") }}</span>
+                        <span>{{ trans("Frontend::Template.addressAddAddress") }}</span>
                         <i class="fa fa-plus-square" aria-hidden="true"></i>
                     </button>
 
@@ -51,12 +51,12 @@
                         data-toggle="tooltip"
                         data-placement="bottom"
                         @click="toggleDropdown($event)"
-                        title="{{ trans("Ceres::Template.addressChangeTooltip") }}"
+                        title="{{ trans("Frontend::Template.addressChangeTooltip") }}"
                         class="btn btn-primary btn-appearance btn-large btn-only-icon-xs-down mt-2 d-block"
                         v-if="shouldShowEditAddressButton" :disabled="isBasketLoading || isCheckoutReadonly"
                         {{ set_testing_attr(":data-testing", "\"addressTypePrefix + 'address-select-open'\"") | raw }}
                     >
-                        <span>{{ trans("Ceres::Template.addressChange") }}</span>
+                        <span>{{ trans("Frontend::Template.addressChange") }}</span>
                         <i class="fa fa-pencil" aria-hidden="true"></i>
                     </button>
                 </div>
@@ -77,7 +77,7 @@
                                 @change="onAddressChanged(address)">
                             <label :for="'addressSelectItem' + _uid + address.id" class="item-inner">
                             <div v-if="address.id == -99">
-                                <p class="text-muted small font-italic pt-3">{{ trans("Ceres::Template.addressSameAsInvoice") }}</p>
+                                <p class="text-muted small font-italic pt-3">{{ trans("Frontend::Template.addressSameAsInvoice") }}</p>
                             </div>
                             <div v-else class="item-content small">
                                 <address-header :address="address" :class="paddingClasses" :style="paddingInlineStyles"></address-header>
@@ -89,12 +89,12 @@
                                             v-tooltip
                                             data-toggle="tooltip"
                                             data-placement="top"
-                                            title="{{ trans("Ceres::Template.addressEditTooltip") }}"
+                                            title="{{ trans("Frontend::Template.addressEditTooltip") }}"
                                             class="btn btn-primary btn-medium btn-appearance mr-1"
                                             @click.prevent="showEditModal(address)"
                                             {{ set_testing_attr(":data-testing", "\"addressTypePrefix + 'address-select-edit'\"") | raw }}
                                         >
-                                            <span>{{ trans("Ceres::Template.addressEdit") }}</span>
+                                            <span>{{ trans("Frontend::Template.addressEdit") }}</span>
                                             <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
                                         </button>
                                     </span>
@@ -103,7 +103,7 @@
                                             v-tooltip
                                             data-toggle="tooltip"
                                             data-placement="top"
-                                            title="{{ trans("Ceres::Template.addressDelete") }}"
+                                            title="{{ trans("Frontend::Template.addressDelete") }}"
                                             class="btn btn-danger"
                                             @click.prevent="showDeleteModal(address)"
                                             {{ set_testing_attr(":data-testing", "\"addressTypePrefix + 'address-select-remove'\"") | raw }}
@@ -125,7 +125,7 @@
                     <div class="modal-content">
                         <div class="modal-header">
                             <h4 class="modal-title">${headline}</h4>
-                            <button type="button" class="close" @click="closeAddressModal" aria-label="{{ trans("Ceres::Template.closeIcon") }}">
+                            <button type="button" class="close" @click="closeAddressModal" aria-label="{{ trans("Frontend::Template.closeIcon") }}">
                                 <span aria-hidden="true">&times;</span>
                             </button>
                         </div>
@@ -156,7 +156,7 @@
                     <div class="modal-content">
                         <div class="modal-header">
                             <h4 class="modal-title">${headline}</h4>
-                            <button type="button" class="close" @click="closeDeleteModal" aria-label="{{ trans("Ceres::Template.closeIcon") }}">
+                            <button type="button" class="close" @click="closeDeleteModal" aria-label="{{ trans("Frontend::Template.closeIcon") }}">
                                 <span aria-hidden="true">&times;</span>
                             </button>
                         </div>
@@ -173,7 +173,7 @@
                                             <span>${addressToDelete.address1} ${addressToDelete.address2}</span>
                                             <span>
                                                 <template v-if="addressToDelete.address1 === 'PACKSTATION' || addressToDelete.address1 === 'POSTFILIALE'">
-                                                    {{ trans("Ceres::Template.addressPostNummer") }}
+                                                    {{ trans("Frontend::Template.addressPostNummer") }}
                                                     ${addressToDelete | optionType(6)}
                                                 </template> 
                                                 ${ addressToDelete.address3 }
@@ -192,7 +192,7 @@
                                 class="btn btn-medium mr-2 btn-outline-primary"
                                 @click="closeDeleteModal"
                                 {{ set_testing_attr(":data-testing", "\"addressTypePrefix + 'address-select-remove-modal-cancel'\"") | raw }}>
-                                <span>{{ trans("Ceres::Template.addressCancel") }}</span>
+                                <span>{{ trans("Frontend::Template.addressCancel") }}</span>
                                 <i class="fa fa-times" aria-hidden="true"></i>
                             </button>
                             <button
@@ -200,7 +200,7 @@
                                 class="btn btn-danger btn-appearance btn-medium"
                                 :disabled="deleteModalWaiting" @click="deleteAddress"
                                 {{ set_testing_attr(":data-testing", "\"addressTypePrefix + 'address-select-remove-modal-remove'\"") | raw }}>
-                                <span>{{ trans("Ceres::Template.addressDelete") }}</span>
+                                <span>{{ trans("Frontend::Template.addressDelete") }}</span>
                                 <icon icon="trash" :loading="deleteModalWaiting"></icon>
                             </button>
                         </div>

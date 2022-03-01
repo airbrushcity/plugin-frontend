@@ -1,5 +1,5 @@
-{% import "Ceres::Widgets.Helper.TwigBuilder" as Twig %}
-{% import "Ceres::Widgets.Helper.WidgetHelper" as WidgetHelper %}
+{% import "Frontend::Widgets.Helper.TwigBuilder" as Twig %}
+{% import "Frontend::Widgets.Helper.WidgetHelper" as WidgetHelper %}
 
 {% set formFieldId     = widget.settings.key.mobile | default(uid()) %}
 {% set customClass     = widget.settings.customClass.mobile %}
@@ -26,10 +26,10 @@
                 {{ Twig.do("autoescape false") }}
                     {{ Twig.do("set policyContent") }}<!--
                     --><a href="{{ Twig.print("urls.privacyPolicy") }}" target="_blank">
-                        <span>{{ Twig.trans("Ceres::Template.contactPrivacyPolicy", {"hyphen": "&shy;"}) }}</span>
+                        <span>{{ Twig.trans("Frontend::Template.contactPrivacyPolicy", {"hyphen": "&shy;"}) }}</span>
                     </a><!--
                 -->{{ Twig.do("endset") }}
-                    {{ Twig.trans('Ceres::Template.contactAcceptPrivacyPolicy', { 'policy': Twig.var("policyContent") }) }}<!--
+                    {{ Twig.trans('Frontend::Template.contactAcceptPrivacyPolicy', { 'policy': Twig.var("policyContent") }) }}<!--
                 --><sup>*</sup>
                 {{ Twig.do("endautoescape") }}
             </label>

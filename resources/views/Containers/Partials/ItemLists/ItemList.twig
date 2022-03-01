@@ -1,4 +1,4 @@
-{% import "Ceres::PageDesign.Macros.LayoutContainer" as LayoutContainer %}
+{% import "Frontend::PageDesign.Macros.LayoutContainer" as LayoutContainer %}
 
 {% set listType = config("Ceres.item.lists." ~ itemListNo ~ ".list_type") %}
 {% set tagIds = config("Ceres.item.lists." ~ itemListNo ~ ".tag_ids") | split(",") %}
@@ -22,7 +22,7 @@
                             <hr>
                         {% endif %}
 
-                        {% include 'Ceres::Containers.Partials.ItemLists.ItemListHeader' with { itemListNo: itemListNo, listType: listType, isHome: isHome } %}
+                        {% include 'Frontend::Containers.Partials.ItemLists.ItemListHeader' with { itemListNo: itemListNo, listType: listType, isHome: isHome } %}
                     </div>
                 </template>
             </last-seen-item-list>
@@ -33,7 +33,7 @@
                 <hr>
             {% endif %}
 
-            {% include 'Ceres::Containers.Partials.ItemLists.ItemListHeader' with { itemListNo: itemListNo, listType: listType, isHome: isHome } %}
+            {% include 'Frontend::Containers.Partials.ItemLists.ItemListHeader' with { itemListNo: itemListNo, listType: listType, isHome: isHome } %}
         </div>
         <div class="col-12">
             <carousel>
@@ -43,8 +43,8 @@
                             :item-data="{{ item.data | json_encode }}"
                             :decimal-count="{{ ceresConfig.item.storeSpecial }}"
                             :disable-carousel-on-mobile="true">
-                            <template #before-prices>{{ LayoutContainer.show("Ceres::CategoryItem.BeforePrices", item.data) }}</template>
-                            <template #after-prices>{{ LayoutContainer.show("Ceres::CategoryItem.AfterPrices", item.data) }}</template>
+                            <template #before-prices>{{ LayoutContainer.show("Frontend::CategoryItem.BeforePrices", item.data) }}</template>
+                            <template #after-prices>{{ LayoutContainer.show("Frontend::CategoryItem.AfterPrices", item.data) }}</template>
                         </category-item>
                     </template>
                 {% endfor %}

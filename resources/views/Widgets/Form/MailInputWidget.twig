@@ -1,4 +1,4 @@
-{% import "Ceres::Widgets.Helper.WidgetHelper" as WidgetHelper %}
+{% import "Frontend::Widgets.Helper.WidgetHelper" as WidgetHelper %}
 
 {% set formFieldId     = widget.settings.key.mobile | default(uid()) %}
 {% set isRequired      = widget.settings.isRequired.mobile %}
@@ -37,7 +37,7 @@
                    id="{{ uid_check }}">
             <label class="form-check-label"
                    for="{{ uid_check }}">
-                {{ trans("Ceres::Template.contactSendMeACopy") }}
+                {{ trans("Frontend::Template.contactSendMeACopy") }}
             </label>
         </div>
     {% endif %}

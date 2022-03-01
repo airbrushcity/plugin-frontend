@@ -1,6 +1,6 @@
-{% import "Ceres::Widgets.Helper.TwigBuilder" as Twig %}
+{% import "Frontend::Widgets.Helper.TwigBuilder" as Twig %}
 
-{% import "Ceres::Widgets.Helper.WidgetHelper" as WidgetHelper %}
+{% import "Frontend::Widgets.Helper.WidgetHelper" as WidgetHelper %}
 
 {% set customClass = widget.settings.customClass.mobile %}
 {% set spacingSettings = widget.settings.spacing %}
@@ -13,10 +13,10 @@
     {{ Twig.set("userObject", Twig.call("services.customer.getContact" )) }}
 
     {{ Twig.set( "previewText", {
-        firstname_surname: trans('Ceres::Widget.greetingWidgetForenameSurname'),
-        firstname: trans('Ceres::Widget.greetingWidgetForename'),
-        title_surname: trans('Ceres::Widget.greetingWidgetTitleSurname'),
-        email: trans('Ceres::Widget.greetingWidgetEmail')
+        firstname_surname: trans('Frontend::Widget.greetingWidgetForenameSurname'),
+        firstname: trans('Frontend::Widget.greetingWidgetForename'),
+        title_surname: trans('Frontend::Widget.greetingWidgetTitleSurname'),
+        email: trans('Frontend::Widget.greetingWidgetEmail')
     } | json_encode ) }}
 
     {% set setting = widget.settings.salutation.mobile %}
@@ -37,13 +37,13 @@
         {% elseif setting == "title_surname" %}
             {{ Twig.if ("userObject.gender | length > 0 and userObject.lastName | length > 0") }}
                 {{ Twig.if("userObject.gender == 'male'")  }}
-                    {{ Twig.set("name", "trans('Ceres::Widget.greetingWidgetMale') ~ ' ' ~ userObject.lastName" ) }}
+                    {{ Twig.set("name", "trans('Frontend::Widget.greetingWidgetMale') ~ ' ' ~ userObject.lastName" ) }}
                 {{ Twig.endif() }}
                 {{ Twig.if("userObject.gender == 'female'")  }}
-                    {{ Twig.set("name", "trans('Ceres::Widget.greetingWidgetFemale') ~ ' ' ~ userObject.lastName" ) }}
+                    {{ Twig.set("name", "trans('Frontend::Widget.greetingWidgetFemale') ~ ' ' ~ userObject.lastName" ) }}
                 {{ Twig.endif() }}
                 {{ Twig.if("userObject.gender == 'diverse'")  }}
-                    {{ Twig.set("name", "trans('Ceres::Widget.greetingWidgetDiverse') ~ ' ' ~ userObject.lastName" ) }}
+                    {{ Twig.set("name", "trans('Frontend::Widget.greetingWidgetDiverse') ~ ' ' ~ userObject.lastName" ) }}
                 {{ Twig.endif() }}
             {{ Twig.endif() }}
 
@@ -58,7 +58,7 @@
             {{ Twig.set( "name", "previewText[pattern]" ) }}
         {% endif %}
 
-        <span class="text-muted widget-alignment">{{ Twig.trans("Ceres::Template.myAccountHello", {"username": Twig.var("name")}) }}</span>
+        <span class="text-muted widget-alignment">{{ Twig.trans("Frontend::Template.myAccountHello", {"username": Twig.var("name")}) }}</span>
 
     </div>
 {{ Twig.endif() }}

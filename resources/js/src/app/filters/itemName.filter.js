@@ -30,7 +30,7 @@ Vue.filter("itemName", ({ texts:{ name1, name2, name3 }, variation:{ name, bundl
 
     if (bundleType === "bundle")
     {
-        itemName = TranslationService.translate("Ceres::Template.itemBundleName", { itemName });
+        itemName = TranslationService.translate("Frontend::Template.itemBundleName", { itemName });
     }
 
     return itemName;

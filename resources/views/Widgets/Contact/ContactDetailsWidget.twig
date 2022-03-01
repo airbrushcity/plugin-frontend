@@ -1,5 +1,5 @@
-{% import "Ceres::Widgets.Helper.TwigBuilder" as Twig %}
-{% import "Ceres::Widgets.Helper.WidgetHelper" as WidgetHelper %}
+{% import "Frontend::Widgets.Helper.TwigBuilder" as Twig %}
+{% import "Frontend::Widgets.Helper.WidgetHelper" as WidgetHelper %}
 
 {% set emptyInlineEditingContent = "<p><br></p>" %}
 
@@ -63,7 +63,7 @@
                     <i class="fa fa-fw fa-clock-o mr-2" aria-hidden="true"></i>
                     <div class="d-inline-block align-top" {{ WidgetHelper.makeEditable("businessTimes", TOOLBAR_LAYOUT.ALL, isPreview) }}>
                         {% if businessTimes | trim is empty %}
-                            <p>{{ WidgetHelper.editableTwig(isPreview, trans("Ceres::Template.contactOpeningTimes")) }}</p>
+                            <p>{{ WidgetHelper.editableTwig(isPreview, trans("Frontend::Template.contactOpeningTimes")) }}</p>
                         {% else %}
                             {{ WidgetHelper.editableTwig(isPreview, businessTimes | raw) }}
                         {% endif %}

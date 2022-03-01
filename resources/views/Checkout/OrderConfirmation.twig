@@ -1,19 +1,19 @@
 {% extends getPartial('page-design') %}
-{% import "Ceres::Checkout.Macros.Address" as address %}
-{% import "Ceres::PageDesign.Macros.LayoutContainer" as LayoutContainer %}
+{% import "Frontend::Checkout.Macros.Address" as address %}
+{% import "Frontend::PageDesign.Macros.LayoutContainer" as LayoutContainer %}
 
 {% block PartialHead %}
     {% embed getPartial('page-metadata') %}
         {% if category is not defined %}
             {# Use page title from multiligualism if no category is linked to be used as order confirmation #}
-            {% block title trans("Ceres::Template.orderConfirmation") %}
+            {% block title trans("Frontend::Template.orderConfirmation") %}
         {% endif %}
     {% endembed %}
 {% endblock %}
 
 {% block PageBody %}
 
-    {{ component( "Ceres::MyAccount.Components.ChangePaymentMethod" ) }}
+    {{ component( "Frontend::MyAccount.Components.ChangePaymentMethod" ) }}
     {% set hasShopBuilderContent = false %}
 
     {% if category is defined %}
@@ -32,24 +32,24 @@
 
     {% if not hasShopBuilderContent %}
         {# No category defined to be used as order confirmation #}
-        {% set overrideConfirmation = LayoutContainer.show("Ceres::OrderConfirmation.Override") %}
-        {% set addContentAfterOrderDetailsRow = LayoutContainer.show("Ceres::OrderConfirmation.AddContentAfterOrderDetailsRow") %}
+        {% set overrideConfirmation = LayoutContainer.show("Frontend::OrderConfirmation.Override") %}
+        {% set addContentAfterOrderDetailsRow = LayoutContainer.show("Frontend::OrderConfirmation.AddContentAfterOrderDetailsRow") %}
         {% if overrideConfirmation|trim is empty %}
             <div class="page-content myaccount container-max mt-3">
                 <div class="row">
                     <div class="col-12">
-                        <h1 class="h2">{{ trans("Ceres::Template.orderConfirmationThanks") }}</h1>
-                        <p>{{ trans("Ceres::Template.orderConfirmationWillBeProcessed") }}</p>
+                        <h1 class="h2">{{ trans("Frontend::Template.orderConfirmationThanks") }}</h1>
+                        <p>{{ trans("Frontend::Template.orderConfirmationWillBeProcessed") }}</p>
 
-                        {{ LayoutContainer.show("Ceres::OrderConfirmation.AddContentAfterConfirmationThanks") }}
+                        {{ LayoutContainer.show("Frontend::OrderConfirmation.AddContentAfterConfirmationThanks") }}
 
                     </div>
                 </div>
 
-                {{ LayoutContainer.show("Ceres::OrderConfirmation.BeforeOrderDetails", data.order) }}
+                {{ LayoutContainer.show("Frontend::OrderConfirmation.BeforeOrderDetails", data.order) }}
 
 
-                {% include "Ceres::Checkout.OrderDetails" with { orderData: data } %}
+                {% include "Frontend::Checkout.OrderDetails" with { orderData: data } %}
 
                 <hr>
                 {% if addContentAfterOrderDetailsRow|trim is not empty %}
@@ -62,7 +62,7 @@
                     <div class="col-6 col-md-4 {% if loggedIn %}offset-md-2{% else %}offset-3 offset-md-4{% endif %}">
                         <a v-waiting-animation-infinite href="{{ homepageURL }}" type="" class="btn btn-primary btn-block bg-primary">
                             <i class="fa fa-home" aria-hidden="true"></i>
-                            {{ trans("Ceres::Template.orderConfirmationHomepage") }}
+                            {{ trans("Frontend::Template.orderConfirmationHomepage") }}
                         </a>
                     </div>
 
@@ -71,7 +71,7 @@
                         <div class="col-6 col-md-4">
                             <a v-waiting-animation-infinite href="{{ urls.myAccount }}" type="" class="btn btn-primary btn-block bg-primary">
                                 <i class="fa fa-user" aria-hidden="true"></i>
-                                {{ trans("Ceres::Template.orderConfirmationMyAccount") }}
+                                {{ trans("Frontend::Template.orderConfirmationMyAccount") }}
                             </a>
                         </div>
                     {% endif %}

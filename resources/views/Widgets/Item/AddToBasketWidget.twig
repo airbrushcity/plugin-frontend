@@ -1,10 +1,10 @@
-{% import "Ceres::Widgets.Helper.TwigBuilder" as Twig %}
-{% import "Ceres::Widgets.Helper.WidgetHelper" as WidgetHelper %}
+{% import "Frontend::Widgets.Helper.TwigBuilder" as Twig %}
+{% import "Frontend::Widgets.Helper.WidgetHelper" as WidgetHelper %}
 
-{% import "Ceres::Basket.Macros.AddToBasket" as AddToBasket %}
+{% import "Frontend::Basket.Macros.AddToBasket" as AddToBasket %}
 
-{{ Twig.import("LayoutContainer", "Ceres::PageDesign.Macros.LayoutContainer") }}
-{{ Twig.import("AddToBasket"    , "Ceres::Basket.Macros.AddToBasket") }}
+{{ Twig.import("LayoutContainer", "Frontend::PageDesign.Macros.LayoutContainer") }}
+{{ Twig.import("AddToBasket"    , "Frontend::Basket.Macros.AddToBasket") }}
 
 {% set customClass = widget.settings.customClass.mobile %}
 {% set spacingSettings = widget.settings.spacing %}
@@ -21,7 +21,7 @@
     {% if customClass | length > 0 %} {{ customClass }}{% endif %}"
     {% if inlineMargin | length > 0 %} style="{{ inlineMargin }}"{% endif %}>
 
-    {{ Twig.print(Twig.call("LayoutContainer.show", ["Ceres::SingleItem.BeforeAddToBasket", Twig.var("item.documents[0].data")])) }}
+    {{ Twig.print(Twig.call("LayoutContainer.show", ["Frontend::SingleItem.BeforeAddToBasket", Twig.var("item.documents[0].data")])) }}
 
     <intersect>
         <div class="w-100">
@@ -35,10 +35,10 @@
         <template #loading>
             <button class="btn btn-block btn-primary btn-appearance">
                 <i class="fa fa-shopping-cart" aria-hidden="true"></i>
-                {{ Twig.trans("Ceres::Template.singleItemAddToBasket") }}
+                {{ Twig.trans("Frontend::Template.singleItemAddToBasket") }}
             </button>
         </template>
     </intersect>
 
-    {{ Twig.print(Twig.call("LayoutContainer.show", ["Ceres::SingleItem.AfterAddToBasket", Twig.var("item.documents[0].data")])) }}
+    {{ Twig.print(Twig.call("LayoutContainer.show", ["Frontend::SingleItem.AfterAddToBasket", Twig.var("item.documents[0].data")])) }}
 </div>

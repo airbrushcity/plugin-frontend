@@ -3,13 +3,13 @@
         <div class="row">
             <div class="col-6" v-if="showNameInputs">
                 <div class="input-unit" data-validate="!regex">
-                    <label :for="'first-name-input_' + _uid">{{ $translate("Ceres::Template.newsletterFirstName") }}</label>
+                    <label :for="'first-name-input_' + _uid">{{ $translate("Frontend::Template.newsletterFirstName") }}</label>
                     <input type="text" data-validate-ref="/[.:\/\d]/g" :id="'first-name-input_' + _uid" v-model="firstName">
                 </div>
             </div>
             <div class="col-6 pl-0" v-if="showNameInputs">
                 <div class="input-unit" data-validate="!regex">
-                    <label :for="'last-name-input_' + _uid">{{ $translate("Ceres::Template.newsletterLastName") }}</label>
+                    <label :for="'last-name-input_' + _uid">{{ $translate("Frontend::Template.newsletterLastName") }}</label>
                     <input type="text" data-validate-ref="/[.:\/\d]/g" :id="'last-name-input_' + _uid" v-model="lastName">
                 </div>
             </div>
@@ -17,7 +17,7 @@
             <div class="col-12">
                 <div class="input-group">
                     <div class="input-unit" data-validate="mail">
-                        <label :for="'email-input-id_' + _uid">{{ $translate("Ceres::Template.newsletterEmail") }} *</label>
+                        <label :for="'email-input-id_' + _uid">{{ $translate("Frontend::Template.newsletterEmail") }} *</label>
                         <input @focus="loadRecaptcha = true" type="email" autocomplete="email" :id="'email-input-id_' + _uid" v-model="email">
                     </div>
                     <input autocomplete="none" class="honey" type="text" name="username" tabindex="-1" v-model="honeypot">
@@ -36,7 +36,7 @@
                 <div class="input-group-btn">
                     <button type="button" class="btn btn-block btn-primary btn-appearance" @click="validateData" :disabled="isDisabled" :class="buttonSizeClass">
                         <icon icon="paper-plane-o" :loading="isDisabled"></icon>
-                        {{ $translate("Ceres::Template.newsletterSubscribeButtonLabel") }}
+                        {{ $translate("Frontend::Template.newsletterSubscribeButtonLabel") }}
                     </button>
                 </div>
             </div>
@@ -91,10 +91,10 @@ export default {
         privacyPolicyText()
         {
             const link = "<a href=\"" + App.urls.privacyPolicy + "\" target=\"_blank\"><span class=\"text-primary text-appearance\">"
-                + this.$translate("Ceres::Template.checkoutPrivacyPolicy", {"hyphen": "&shy;"})
+                + this.$translate("Frontend::Template.checkoutPrivacyPolicy", {"hyphen": "&shy;"})
                 + "</span></a>";
 
-            return this.$translate("Ceres::Template.newsletterAcceptPrivacyPolicy", {"policy": link});
+            return this.$translate("Frontend::Template.newsletterAcceptPrivacyPolicy", {"policy": link});
         }
     },
 
@@ -122,7 +122,7 @@ export default {
                     }).forEach((field) => {
                         if(field.type === '!regex')
                         {
-                            NotificationService.error(this.$translate("Ceres::Template.newsletterNotAllowedCharacters", {name: field.name}));
+                            NotificationService.error(this.$translate("Frontend::Template.newsletterNotAllowedCharacters", {name: field.name}));
                         }
                     });
 
@@ -136,7 +136,7 @@ export default {
 
             if (App.config.global.googleRecaptchaApiKey && (!window.grecaptcha || !recaptchaEl))
             {
-                NotificationService.error(this.$translate("Ceres::Template.newsletterAcceptRecaptchaCookie"));
+                NotificationService.error(this.$translate("Frontend::Template.newsletterAcceptRecaptchaCookie"));
                 this.isDisabled = false;
                 return;
             }
@@ -150,13 +150,13 @@ export default {
                         if (!!data.containsHoneypot)
                         {
                             NotificationService.warn(
-                                this.$translate("Ceres::Template.newsletterHoneypotWarning")
+                                this.$translate("Frontend::Template.newsletterHoneypotWarning")
                             );
                         }
                         else
                         {
                             NotificationService.success(
-                                this.$translate("Ceres::Template.newsletterSuccessMessage")
+                                this.$translate("Frontend::Template.newsletterSuccessMessage")
                             ).closeAfter(3000);
                         }
                         this.resetInputs();
@@ -164,7 +164,7 @@ export default {
                     .fail(() =>
                     {
                         NotificationService.error(
-                            this.$translate("Ceres::Template.newsletterErrorMessage")
+                            this.$translate("Frontend::Template.newsletterErrorMessage")
                         ).closeAfter(5000);
                     })
                     .always(() =>

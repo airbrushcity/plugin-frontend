@@ -1,16 +1,16 @@
-{% import "Ceres::PageDesign.Macros.IncludeComponents" as Loader %}
-{% import "Ceres::PageDesign.Macros.LayoutContainer" as LayoutContainer %}
-{% import "Ceres::PageDesign.Macros.Translations" as Translations %}
-{{ component( "Ceres::PageDesign.Components.Notifications" ) }}
-{{ component( "Ceres::PageDesign.Components.Popper" ) }}
-{{ component( "Ceres::Customer.Components.ForgotPassword" ) }}
+{% import "Frontend::PageDesign.Macros.IncludeComponents" as Loader %}
+{% import "Frontend::PageDesign.Macros.LayoutContainer" as LayoutContainer %}
+{% import "Frontend::PageDesign.Macros.Translations" as Translations %}
+{{ component( "Frontend::PageDesign.Components.Notifications" ) }}
+{{ component( "Frontend::PageDesign.Components.Popper" ) }}
+{{ component( "Frontend::Customer.Components.ForgotPassword" ) }}
 
 {% if isShopBuilder %}
-    {% include "Ceres::Widgets.WidgetComponents" %}
+    {% include "Frontend::Widgets.WidgetComponents" %}
 {% endif %}
 
 {% set isItem = services.template.isItem() == "1" %}
-{% set currencyFormat = config("Ceres.currency.format") %}
+{% set currencyFormat = config("Deres.currency.format") %}
 {% set defaultLanguage = webstoreConfig.defaultLanguage %}
 
 <!DOCTYPE html>
@@ -18,7 +18,7 @@
 <html lang="{{ lang }}" data-framework="vue" prefix="og: http://ogp.me/ns#" class="icons-loading">
 
 <head>
-    {{ LayoutContainer.show("Ceres::PageDesign.AfterOpeningHeadTag") }}
+    {{ LayoutContainer.show("Frontend::PageDesign.AfterOpeningHeadTag") }}
 
     {{ get_consent_scripts(ceresConfig.global.blockCookies) }}
 
@@ -32,17 +32,17 @@
         {% include styleTemplate.path ignore missing with styleTemplate.params %}
     {% endfor %}
 
-    {% if assetName == 'ceres-checkout' %}
-        {{ LayoutContainer.show("Ceres::Checkout.Styles") }}
+    {% if assetName == 'frontend-checkout' %}
+        {{ LayoutContainer.show("Frontend::Checkout.Styles") }}
     {% endif %}
     {% if isItem %}
-        {{ LayoutContainer.show("Ceres::SingleItem.Styles") }}
+        {{ LayoutContainer.show("Frontend::SingleItem.Styles") }}
     {% endif %}
 </head>
 
 <body class="{{ bodyClasses | join(' ') }} {% if request.get('openBasketPreview') == 1 %} basket-open{% endif %}">
 
-{{ LayoutContainer.show("Ceres::PageDesign.AfterOpeningBodyTag") }}
+{{ LayoutContainer.show("Frontend::PageDesign.AfterOpeningBodyTag") }}
 
 <script>
     if('ontouchstart' in document.documentElement)
@@ -79,13 +79,13 @@
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <div class="modal-title h3">{{ trans("Ceres::Template.login") }}</div>
-                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true" aria-label="{{ trans("Ceres::Template.closeIcon") }}">&times;</button>
+                        <div class="modal-title h3">{{ trans("Frontend::Template.login") }}</div>
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true" aria-label="{{ trans("Frontend::Template.closeIcon") }}">&times;</button>
                     </div>
                     <lazy-load component="login-modal">
                         <login modal-element="login-modal-wrapper">
                             <template #extend-overlay-buttons>
-                                {{ LayoutContainer.show("Ceres::LoginOverlay.ExtendOverlayButtons") }}
+                                {{ LayoutContainer.show("Frontend::LoginOverlay.ExtendOverlayButtons") }}
                             </template>
                         </login>
                     </lazy-load>
@@ -103,7 +103,7 @@
                     <div class="modal-content">
                         <div class="modal-header">
                             <div class="modal-title h3">
-                                {{ trans("Ceres::Template.regCreateAccount") }}
+                                {{ trans("Frontend::Template.regCreateAccount") }}
 
                             </div>
 
@@ -114,27 +114,27 @@
                                     </button>
                                 </template>
                                 <template #title>
-                                    {{ trans("Ceres::Template.regContactInformations") }}
+                                    {{ trans("Frontend::Template.regContactInformations") }}
                                 </template>
                                 <template #content>
                                     <ul class='pl-3'>
-                                        <li class='mb-3'>{{ trans('Ceres::Template.regContactInfoText1') }}</li>
-                                        <li class='mb-3'>{{ trans('Ceres::Template.regContactInfoText2') }}</li>
-                                        <li class='mb-3'>{{ trans('Ceres::Template.regContactInfoText3') }}</li>
-                                        <li>{{ trans('Ceres::Template.regContactInfoText4') }}</li>
+                                        <li class='mb-3'>{{ trans('Frontend::Template.regContactInfoText1') }}</li>
+                                        <li class='mb-3'>{{ trans('Frontend::Template.regContactInfoText2') }}</li>
+                                        <li class='mb-3'>{{ trans('Frontend::Template.regContactInfoText3') }}</li>
+                                        <li>{{ trans('Frontend::Template.regContactInfoText4') }}</li>
                                     </ul>
                                 </template>
                             </popper>
 
-                            <button type="button" class="close ml-0" data-dismiss="modal" aria-hidden="true" aria-label="{{ trans("Ceres::Template.closeIcon") }}">&times;</button>
+                            <button type="button" class="close ml-0" data-dismiss="modal" aria-hidden="true" aria-label="{{ trans("Frontend::Template.closeIcon") }}">&times;</button>
                         </div>
                         <div class="modal-body">
                             <registration :is-simple-registration="true" modal-element="simple-registration-modal-wrapper">
                                 <template #extend-overlay-buttons>
-                                    {{ LayoutContainer.show("Ceres::RegistrationOverlay.ExtendOverlayButtons") }}
+                                    {{ LayoutContainer.show("Frontend::RegistrationOverlay.ExtendOverlayButtons") }}
                                 </template>
                                 <template #custom-address-fields>
-                                    {{ LayoutContainer.show("Ceres::Checkout.CustomAddressField") }}
+                                    {{ LayoutContainer.show("Frontend::Checkout.CustomAddressField") }}
                                 </template>
                             </registration>
                         </div>
@@ -149,7 +149,7 @@
     <lazy-load component="add-item-to-basket-overlay">
         <add-item-to-basket-overlay>
             <template slot="extendOverlayButtons">
-                {{ LayoutContainer.show("Ceres::Basket.ExtendOverlayButtons") }}
+                {{ LayoutContainer.show("Frontend::Basket.ExtendOverlayButtons") }}
             </template>
         </add-item-to-basket-overlay>
     </lazy-load>
@@ -159,7 +159,7 @@
     <lazy-load component="forgot-password-modal">
         <forgot-password-modal :current-template="{{ services.template.getCurrentTemplate() | json_encode }}">
             <template slot="extendOverlayButtons">
-                {{ LayoutContainer.show("Ceres::LoginOverlay.ExtendOverlayButtons") }}
+                {{ LayoutContainer.show("Frontend::LoginOverlay.ExtendOverlayButtons") }}
             </template>
         </forgot-password-modal>
     </lazy-load>
@@ -172,8 +172,8 @@
                 <div class="modal-dialog">
                     <div class="modal-content">
                         <div class="modal-header">
-                            <div class="modal-title h3">{{ trans('Ceres::Template.shippingInfoCosts') }}</div>
-                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true" aria-label="{{ trans("Ceres::Template.closeIcon") }}">&times;</button>
+                            <div class="modal-title h3">{{ trans('Frontend::Template.shippingInfoCosts') }}</div>
+                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true" aria-label="{{ trans("Frontend::Template.closeIcon") }}">&times;</button>
                         </div>
                         <div class="modal-body">
                             {% set shopBuilderShippingTemplate = shop_builder_category_template(ceresConfig.global.shippingCostsCategoryId) %}
@@ -216,7 +216,7 @@
         "bundlePrefix": "{{ services.order.getOrderItemPrefix(2) }}",
         "bundleComponentPrefix": "{{ services.order.getOrderItemPrefix(3) }}",
         "initialPleaseSelect": {{ webstoreConfig.attributeSelectDefaultOption | default(0) }},
-        "publicPath": "{{ plugin_path('Ceres') ~ '/js/dist/' }}",
+        "publicPath": "{{ plugin_path('Frontend') ~ '/js/dist/' }}",
         "isCheapestSorting": "{{ services.template.isCheapestSorting() }}",
         "useVariationOrderProperties": {% if webstoreConfig.useVariationOrderProperties | default(0) %}true{% else %}false{% endif %},
         "initialData": {
@@ -238,9 +238,9 @@
 
 {{ Loader.include_components() }}
 
-{{ LayoutContainer.show("Ceres::Script.Loader") }}
+{{ LayoutContainer.show("Frontend::Script.Loader") }}
 
-{{ Translations.add( "Ceres", "Template" ) }}
+{{ Translations.add( "Frontend", "Template" ) }}
 
 {{ get_json_data() }}
 
@@ -249,26 +249,26 @@
     {% set minSuffix = '' %}
 {% endif %}
 
-<!-- SSR:entry({{ ssr_entry('Ceres', 'resources/js/dist/ceres-server' ~ minSuffix ~ '.js') }}) -->
+<!-- SSR:entry({{ ssr_entry('Frontend', 'resources/js/dist/frontend-server' ~ minSuffix ~ '.js') }}) -->
 <!-- SSR:on() -->
-<script src="{{ plugin_path('Ceres') }}/js/dist/ceres-client{{ minSuffix }}.js?v={{ buildHash }}"></script>
+<script src="{{ plugin_path('Frontend') }}/js/dist/frontend-client{{ minSuffix }}.js?v={{ buildHash }}"></script>
 <!-- /SSR -->
 <!-- SSR:off() -->
-<script src="{{ plugin_path('Ceres') }}/js/dist/{{ assetName }}{{ minSuffix }}.js?v={{ buildHash }}"></script>
+<script src="{{ plugin_path('Frontend') }}/js/dist/{{ assetName }}{{ minSuffix }}.js?v={{ buildHash }}"></script>
 <!-- /SSR -->
 
 {% for scriptTemplate in get_additional_scripts() %}
     {% include scriptTemplate.path ignore missing with scriptTemplate.params %}
 {% endfor %}
 
-{{ LayoutContainer.show("Ceres::Script.AfterScriptsLoaded") }}
+{{ LayoutContainer.show("Frontend::Script.AfterScriptsLoaded") }}
 
-{% if assetName == 'ceres-checkout' %}
-    {{ LayoutContainer.show("Ceres::Checkout.AfterScriptsLoaded") }}
+{% if assetName == 'frontend-checkout' %}
+    {{ LayoutContainer.show("Frontend::Checkout.AfterScriptsLoaded") }}
 {% endif %}
 
 {% if isItem %}
-    {{ LayoutContainer.show("Ceres::SingleItem.AfterScriptsLoaded") }}
+    {{ LayoutContainer.show("Frontend::SingleItem.AfterScriptsLoaded") }}
 {% endif %}
 
 <!-- SSR:on() -->
@@ -305,7 +305,7 @@
 <!-- /SSR -->
 
 {% if isShopBuilder %}
-    {% include "Ceres::Widgets.ShopBuilderDataStore" %}
+    {% include "Frontend::Widgets.ShopBuilderDataStore" %}
 {% endif %}
 
 <script>

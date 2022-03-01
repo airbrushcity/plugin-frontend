@@ -35,7 +35,7 @@ const dateFilter = function()
         return input;
     }
 
-    return date.format(args.shift() || TranslationService.translate("Ceres::Template.devDateFormatMoment"));
+    return date.format(args.shift() || TranslationService.translate("Frontend::Template.devDateFormatMoment"));
 };
 
 Vue.filter("moment", dateFilter);

@@ -1,5 +1,5 @@
-{% import "Ceres::Widgets.Helper.TwigBuilder" as Twig %}
-{% import "Ceres::Widgets.Helper.WidgetHelper" as WidgetHelper %}
+{% import "Frontend::Widgets.Helper.TwigBuilder" as Twig %}
+{% import "Frontend::Widgets.Helper.WidgetHelper" as WidgetHelper %}
 
 {% set customClass     = widget.settings.customClass.mobile %}
 {% set spacingSettings = widget.settings.spacing %}
@@ -17,7 +17,7 @@
                                 maptype="{{ widget.settings.maptype.mobile }}"
                                 aspect-ratio="{{ widget.settings.aspectRatio.mobile }}">
                 <div class="d-flex align-items-center justify-content-center h-100 position-absolute w-100 text-muted">
-                    <span>{{ Twig.trans("Ceres::Template.consentGoogleMapsBlockedHint") }}</span>
+                    <span>{{ Twig.trans("Frontend::Template.consentGoogleMapsBlockedHint") }}</span>
                 </div>
             </google-maps-widget>
         </div>
@@ -25,8 +25,8 @@
         {% elseif isPreview %}
             <div class="widget-placeholder prop-{{ widget.settings.aspectRatio.mobile }}">
                 <div>
-                    <p class="title">{{ Twig.trans("Ceres::Widget.googleMapsPlaceholderTitle") }}</p>
-                    <p class="description">{{ Twig.trans("Ceres::Widget.googleMapsPlaceholderDescription") }}</p>
+                    <p class="title">{{ Twig.trans("Frontend::Widget.googleMapsPlaceholderTitle") }}</p>
+                    <p class="description">{{ Twig.trans("Frontend::Widget.googleMapsPlaceholderDescription") }}</p>
                 </div>
             </div>
         {% endif %}

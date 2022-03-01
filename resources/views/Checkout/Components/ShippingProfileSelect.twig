@@ -30,7 +30,7 @@
                         <div>
                             <small>
                                 ${ shippingProfile.shippingAmount | currency }
-                                <template v-if="maxDeliveryDays && maxDeliveryDays[shippingProfile.parcelServicePresetId]"> - {{ trans("Ceres::Template.checkoutShippingProfileMaxDeliveryDays", {"days": "${ maxDeliveryDays[shippingProfile.parcelServicePresetId] }"}) }}</template>
+                                <template v-if="maxDeliveryDays && maxDeliveryDays[shippingProfile.parcelServicePresetId]"> - {{ trans("Frontend::Template.checkoutShippingProfileMaxDeliveryDays", {"days": "${ maxDeliveryDays[shippingProfile.parcelServicePresetId] }"}) }}</template>
                             </small>
                         </div>
                     </div>
@@ -39,7 +39,7 @@
             <li v-if="shippingProfileList.length <= 0" class="method-list-item has-error">
                 <div class="label">
                     <div class="content">
-                        {{ trans("Ceres::Template.notificationsCalculateShippingFailed") }}
+                        {{ trans("Frontend::Template.notificationsCalculateShippingFailed") }}
                     </div>
                 </div>
             </li><!-- -->

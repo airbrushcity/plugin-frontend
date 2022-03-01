@@ -3,7 +3,7 @@
         <div class="row">
             <div class="col-12">
                 <div class="input-unit mt-3" data-validate="mail">
-                    <label for="email-input-id">{{ $translate("Ceres::Template.newsletterEmail") }}</label>
+                    <label for="email-input-id">{{ $translate("Frontend::Template.newsletterEmail") }}</label>
                     <input type="email" name="email" autocomplete="email" class="form-control" id="email-input-id" v-model="email">
                 </div>
 
@@ -12,7 +12,7 @@
                 <span class="input-group-btn">
                     <button type="submit" class="btn btn-primary btn-appearance float-right btn-medium btn-xs-max-width" @click="validateData" :disabled="isDisabled" :class="buttonSizeClass">
                         <icon icon="paper-plane-o" :loading="isDisabled"></icon>
-                        <span>{{ $translate("Ceres::Template.newsletterUnsubscribeButtonLabel") }}</span>
+                        <span>{{ $translate("Frontend::Template.newsletterUnsubscribeButtonLabel") }}</span>
                     </button>
                 </span>
             </div>
@@ -73,14 +73,14 @@ export default {
                 .done(() =>
                 {
                     NotificationService.success(
-                        this.$translate("Ceres::Template.newsletterOptOutSuccessMessage")
+                        this.$translate("Frontend::Template.newsletterOptOutSuccessMessage")
                     ).closeAfter(3000);
                     this.resetInputs();
                 })
                 .fail(() =>
                 {
                     NotificationService.error(
-                        this.$translate("Ceres::Template.newsletterOptOutErrorMessage")
+                        this.$translate("Frontend::Template.newsletterOptOutErrorMessage")
                     ).closeAfter(5000);
                 })
                 .always(() =>

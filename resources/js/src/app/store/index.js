@@ -166,7 +166,7 @@ export function initClientStore(store)
                 if (status > 0)
                 {
                     NotificationService.error(
-                        TranslationService.translate("Ceres::Template.basketOops")
+                        TranslationService.translate("Frontend::Template.basketOops")
                     ).closeAfter(10000);
                 }
             });

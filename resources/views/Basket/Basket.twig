@@ -1,9 +1,9 @@
 {% extends getPartial('page-design') %}
-{% import "Ceres::PageDesign.Macros.LayoutContainer" as LayoutContainer %}
+{% import "Frontend::PageDesign.Macros.LayoutContainer" as LayoutContainer %}
 
 {% block PartialHead %}
     {% embed getPartial('page-metadata') %}
-        {% block title trans("Ceres::Template.basket") %}
+        {% block title trans("Frontend::Template.basket") %}
     {% endembed %}
 {% endblock %}
 
@@ -11,7 +11,7 @@
     <div v-cloak class="page-content basket container-max pt-3" itemtype="http://schema.org/Product http://schema.org/Thing http://schema.org/Offer http://schema.org/PriceSpecification">
         <div class="row mt-3">
             <div class="col-12">
-                <h1 class="h2">{{ trans("Ceres::Template.basket") }}</h1>
+                <h1 class="h2">{{ trans("Frontend::Template.basket") }}</h1>
             </div>
         </div>
 
@@ -20,12 +20,12 @@
         <div class="row">
             <div class="col-md-7">
                 <div class="py-4 px-3 bg-white">
-                    <basket-list :basket-details-data="{{ ceresConfig.basket.itemData | json_encode }}">
+                    <basket-list :basket-details-data="{{ FrontendConfig.basket.itemData | json_encode }}">
                         <template #before-basket-item>
-                            {{ LayoutContainer.show("Ceres::BasketList.BeforeItem") }}
+                            {{ LayoutContainer.show("Frontend::BasketList.BeforeItem") }}
                         </template>
                         <template #after-basket-item>
-                            {{ LayoutContainer.show("Ceres::BasketList.AfterItem") }}
+                            {{ LayoutContainer.show("Frontend::BasketList.AfterItem") }}
                         </template>
                     </basket-list>
                 </div>
@@ -34,52 +34,52 @@
             <div class="col-md-5">
                 <div class="py-4 px-3 bg-white" v-stick-in-parent="$store.state.basket.isBasketInitiallyLoaded">
 
-                    {% if ceresConfig.basket.showShippingCountrySelect %}
+                    {% if FrontendConfig.basket.showShippingCountrySelect %}
                         <shipping-country-select :basket-select="true" :open-basket-preview="false"></shipping-country-select>
                         <hr>
                     {% endif %}
 
                     <hr class="d-md-none">
-                    {{ LayoutContainer.show("Ceres::Basket.BeforeBasketTotals") }}
+                    {{ LayoutContainer.show("Frontend::Basket.BeforeBasketTotals") }}
                     <basket-totals class="mb-4">
                         <template #before-item-sum>
-                            {{ LayoutContainer.show("Ceres::BasketTotals.BeforeItemSum") }}
+                            {{ LayoutContainer.show("Frontend::BasketTotals.BeforeItemSum") }}
                         </template>
                         <template #after-item-sum>
-                            {{ LayoutContainer.show("Ceres::BasketTotals.AfterItemSum") }}
+                            {{ LayoutContainer.show("Frontend::BasketTotals.AfterItemSum") }}
                         </template>
                         <template #before-shipping-costs>
-                            {{ LayoutContainer.show("Ceres::BasketTotals.BeforeShippingCosts") }}
+                            {{ LayoutContainer.show("Frontend::BasketTotals.BeforeShippingCosts") }}
                         </template>
                         <template #after-shipping-costs>
-                            {{ LayoutContainer.show("Ceres::BasketTotals.AfterShippingCosts") }}
+                            {{ LayoutContainer.show("Frontend::BasketTotals.AfterShippingCosts") }}
                         </template>
                         <template #before-total-sum>
-                            {{ LayoutContainer.show("Ceres::BasketTotals.BeforeTotalSum") }}
+                            {{ LayoutContainer.show("Frontend::BasketTotals.BeforeTotalSum") }}
                         </template>
                         <template #before-vat>
-                            {{ LayoutContainer.show("Ceres::BasketTotals.BeforeVat") }}
+                            {{ LayoutContainer.show("Frontend::BasketTotals.BeforeVat") }}
                         </template>
                         <template #after-vat>
-                            {{ LayoutContainer.show("Ceres::BasketTotals.AfterVat") }}
+                            {{ LayoutContainer.show("Frontend::BasketTotals.AfterVat") }}
                         </template>
                         <template #after-total-sum>
-                            {{ LayoutContainer.show("Ceres::BasketTotals.AfterTotalSum") }}
+                            {{ LayoutContainer.show("Frontend::BasketTotals.AfterTotalSum") }}
                         </template>
                     </basket-totals>
-                    {{ LayoutContainer.show("Ceres::Basket.AfterBasketTotals") }}
+                    {{ LayoutContainer.show("Frontend::Basket.AfterBasketTotals") }}
 
                     <hr>
-                    {{ LayoutContainer.show("Ceres::Basket.BeforeCoupon") }}
+                    {{ LayoutContainer.show("Frontend::Basket.BeforeCoupon") }}
                     <coupon></coupon>
                     <hr>
 
-                    {{ LayoutContainer.show("Ceres::Basket.BeforeCheckoutButton") }}
+                    {{ LayoutContainer.show("Frontend::Basket.BeforeCheckoutButton") }}
                     <a v-waiting-animation-infinite class="btn btn-primary btn-block" href="{{ urls.checkout }}">
                         <i class="fa fa-arrow-right" aria-hidden="true"></i>
-                        {{ trans("Ceres::Template.basketCheckout") }}
+                        {{ trans("Frontend::Template.basketCheckout") }}
                     </a>
-                    {{ LayoutContainer.show("Ceres::Basket.AfterCheckoutButton") }}
+                    {{ LayoutContainer.show("Frontend::Basket.AfterCheckoutButton") }}
                 </div>
             </div>
         </div>

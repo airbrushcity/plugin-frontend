@@ -1,5 +1,5 @@
-{% import "Ceres::Widgets.Helper.TwigBuilder" as Twig %}
-{% import "Ceres::Widgets.Helper.WidgetHelper" as WidgetHelper %}
+{% import "Frontend::Widgets.Helper.TwigBuilder" as Twig %}
+{% import "Frontend::Widgets.Helper.WidgetHelper" as WidgetHelper %}
 
 {% set customClass = widget.settings.customClass.mobile %}
 {% set spacingSettings = widget.settings.spacing %}
@@ -22,7 +22,7 @@
             {{ WidgetHelper.makeEditable("text", TOOLBAR_LAYOUT.INLINE, isPreview, "widget-title-bar widget-" ~ appearance) }}>
 
             {% if text | trim is empty %}
-                <h1 class="align-center">{{ WidgetHelper.editableTwig(isPreview, Twig.trans("Ceres::Template.headerCompanyName")) }}</h1>
+                <h1 class="align-center">{{ WidgetHelper.editableTwig(isPreview, Twig.trans("Frontend::Template.headerCompanyName")) }}</h1>
             {% else %}
                 {{ WidgetHelper.editableTwig(isPreview, text) }}
             {% endif %}

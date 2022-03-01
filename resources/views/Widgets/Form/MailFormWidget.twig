@@ -1,5 +1,5 @@
-{% import "Ceres::Widgets.Helper.WidgetHelper" as WidgetHelper %}
-{% import "Ceres::Widgets.Helper.TwigBuilder" as Twig %}
+{% import "Frontend::Widgets.Helper.WidgetHelper" as WidgetHelper %}
+{% import "Frontend::Widgets.Helper.TwigBuilder" as Twig %}
 
 {% set appearance      = widget.settings.appearance.mobile %}
 {% set labelSubmit     = widget.settings.labelSubmit.mobile %}
@@ -25,7 +25,7 @@
             {{ Twig.if("#{ mailTarget | trim | json_encode } is empty and ceresConfig.contact.shopMail | trim is empty and #{ isPreview | json_encode }") }}
                 <div class="col-12">
                     <div class="alert alert-danger w-100">
-                        {{ trans("Ceres::Widget.mailFormNoRecipient") }}
+                        {{ trans("Frontend::Widget.mailFormNoRecipient") }}
                     </div>
                 </div>
             {{ Twig.endif() }}
@@ -56,7 +56,7 @@
 
             <div class="col-12 text-right">
                 <button type="submit" class="btn btn-{{ appearance }} {{ buttonSize }}" {{ Twig.print('set_testing_attr("data-testing", "send-contact-form")') }}>
-                    {{ labelSubmit | default(trans("Ceres::Template.contactSend")) }}
+                    {{ labelSubmit | default(trans("Frontend::Template.contactSend")) }}
                     <i class="fa fa-paper-plane-o ml-2" aria-hidden="true"></i>
                 </button>
             </div>

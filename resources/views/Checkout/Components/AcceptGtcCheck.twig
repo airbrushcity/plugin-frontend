@@ -6,22 +6,22 @@
             {% autoescape false %}
                 {% set gtcContent %}<!--
                 --><a class="text-appearance" href="{{ urls.gtc }}" target="_blank">
-                    <span>{{ trans("Ceres::Template.checkoutGtc") }}</span>
+                    <span>{{ trans("Frontend::Template.checkoutGtc") }}</span>
                 </a><!--
             -->{% endset %}
                 {% set cancellationContent %}<!--
                 --><a class="text-appearance" href="{{ urls.cancellationRights }}" target="_blank">
-                    <strong>{{ trans("Ceres::Template.checkoutCancellationRight", {"hyphen": "&shy;"}) }}</strong>
+                    <strong>{{ trans("Frontend::Template.checkoutCancellationRight", {"hyphen": "&shy;"}) }}</strong>
                 </a><!--
             -->{% endset %}
 
                 {% set policyContent %}<!--
                 --><a class="text-appearance" href="{{ urls.privacyPolicy }}" target="_blank">
-                    <span>{{ trans("Ceres::Template.checkoutPrivacyPolicy", {"hyphen": "&shy;"}) }}</span>
+                    <span>{{ trans("Frontend::Template.checkoutPrivacyPolicy", {"hyphen": "&shy;"}) }}</span>
                 </a><!--
             -->{% endset %}
 
-                {{ trans("Ceres::Template.checkoutChooseOur", {"gtc": gtcContent, "cancellation": cancellationContent, "policy": policyContent}) }}<!--
+                {{ trans("Frontend::Template.checkoutChooseOur", {"gtc": gtcContent, "cancellation": cancellationContent, "policy": policyContent}) }}<!--
                 --><template v-if="isRequired && !hideCheckbox">
                     <sup>*</sup>
                 </template>

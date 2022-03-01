@@ -1,5 +1,5 @@
-{% import "Ceres::Widgets.Helper.TwigBuilder" as Twig %}
-{% import "Ceres::Widgets.Helper.WidgetHelper" as WidgetHelper %}
+{% import "Frontend::Widgets.Helper.TwigBuilder" as Twig %}
+{% import "Frontend::Widgets.Helper.WidgetHelper" as WidgetHelper %}
 
 {% set appearance   = widget.settings.appearance.mobile | default("primary") %}
 {% set buttonSize   = widget.settings.buttonSize.mobile | default("md") %}
@@ -19,9 +19,9 @@
             <div class="col">
                 <div class="input-unit">
                     <select id="attribute-select" class="custom-select">
-                        <option>{{ trans("Ceres::Template.singleItemPleaseSelect") }}</option>
+                        <option>{{ trans("Frontend::Template.singleItemPleaseSelect") }}</option>
                     </select>
-                    <label for="attribute-select">{{ trans("Ceres::Widget.attributeLabel") }}</label>
+                    <label for="attribute-select">{{ trans("Frontend::Widget.attributeLabel") }}</label>
                 </div>
             </div>
         {% endif %}

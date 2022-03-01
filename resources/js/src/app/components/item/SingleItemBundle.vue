@@ -6,8 +6,8 @@
         :padding-inline-styles="paddingInlineStyles">
         <div class="widget-placeholder p-0" v-if="isPreview">
             <div>
-                <p class="title mb-0">{{ $translate("Ceres::Widget.itemBundlePlaceholderTitle") }}</p>
-                <p class="description mt-3">{{ $translate("Ceres::Widget.itemBundlePlaceholderDescription") }}</p>
+                <p class="title mb-0">{{ $translate("Frontend::Widget.itemBundlePlaceholderTitle") }}</p>
+                <p class="description mt-3">{{ $translate("Frontend::Widget.itemBundlePlaceholderDescription") }}</p>
             </div>
         </div>
     </item-bundle>

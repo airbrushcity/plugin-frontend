@@ -1,11 +1,11 @@
 {% extends getPartial('page-design') %}
 
-{% import "Ceres::PageDesign.Macros.LayoutContainer" as LayoutContainer %}
+{% import "Frontend::PageDesign.Macros.LayoutContainer" as LayoutContainer %}
 
 {% block PartialHead %}
     {% embed getPartial('page-metadata') %}
-        {% block title          trans("Ceres::Template.termsAndConditions") %}
-        {% block description    trans('Ceres::Template.termsAndConditionsMetaDescription') %}
+        {% block title          trans("Frontend::Template.termsAndConditions") %}
+        {% block description    trans('Frontend::Template.termsAndConditionsMetaDescription') %}
         {% block robots         ceresConfig.meta.robotsTermsAndConditions %}
     {% endembed %}
 {% endblock %}
@@ -18,7 +18,7 @@
         <div class="row">
             <div class="col-12">
                 {% autoescape false %}
-                    <h1 class="pt-3">{{ trans("Ceres::Template.termsAndConditions") }}</h1>
+                    <h1 class="pt-3">{{ trans("Frontend::Template.termsAndConditions") }}</h1>
                 {% endautoescape %}
 
                 <hr class="my-5">
@@ -29,7 +29,7 @@
                     <p>{{ termsAndConditions.plainText }}</p>
                 {% endif %}
 
-                {{ LayoutContainer.show("Ceres::StaticPages.TermsAndConditions") }}
+                {{ LayoutContainer.show("Frontend::StaticPages.TermsAndConditions") }}
             </div>
         </div>
     </div>

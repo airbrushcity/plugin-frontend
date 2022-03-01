@@ -1,4 +1,4 @@
-{% import "Ceres::PageDesign.Macros.LayoutContainer" as LayoutContainer %}
+{% import "Frontend::PageDesign.Macros.LayoutContainer" as LayoutContainer %}
 
 {% set numberOfCols         = config('Ceres.footer.number_of_cols') %}
 {% set colSize              = (12 / (numberOfCols + 1)) %}
@@ -6,7 +6,7 @@
 {% set numberOfFeatures     = config('Ceres.footer.number_of_features') %}
 {% set topButtonPosition    = config('Ceres.footer.to_top_button') %}
 
-{% set footerContainer = LayoutContainer.show("Ceres::Footer") | trim %}
+{% set footerContainer = LayoutContainer.show("Frontend::Footer") | trim %}
 {% if footerContainer is empty %}
 
 <div class="footer d-print-none">
@@ -25,7 +25,7 @@
                 {% for i in 1..numberOfFeatures %}
                     <div class="col-12 col-sm-4 text-center">
                         <i class="fa fa-check" aria-hidden="true"></i>
-                        {{ trans('Ceres::Template.footerStoreFeature' ~ i) }}
+                        {{ trans('Frontend::Template.footerStoreFeature' ~ i) }}
                     </div>
                 {% endfor %}
             </div>
@@ -36,24 +36,24 @@
         <div class="row">
             <div class="col-12">
                 <div class="footer-services d-flex mt-4">
-                    {% set paymentMethodContent = LayoutContainer.show("Ceres::Homepage.PaymentMethods") %}
+                    {% set paymentMethodContent = LayoutContainer.show("Frontend::Homepage.PaymentMethods") %}
                     {% if paymentMethodContent|trim is not empty %}
                         <div class="mb-3">
-                            <strong class="w-100">{{ trans("Ceres::Template.footerPaymentMethods") }}</strong>
+                            <strong class="w-100">{{ trans("Frontend::Template.footerPaymentMethods") }}</strong>
                             {{ paymentMethodContent }}
                         </div>
                     {% endif %}
-                    {% set shippingContent = LayoutContainer.show("Ceres::Homepage.Shipping") %}
+                    {% set shippingContent = LayoutContainer.show("Frontend::Homepage.Shipping") %}
                     {% if shippingContent|trim is not empty %}
                         <div class="mb-3">
-                            <strong class="w-100">{{ trans("Ceres::Template.footerOrderShippedBy") }}</strong>
+                            <strong class="w-100">{{ trans("Frontend::Template.footerOrderShippedBy") }}</strong>
                             {{ shippingContent }}
                         </div>
                     {% endif %}
-                    {% set certifiedContent = LayoutContainer.show("Ceres::Homepage.Certified") %}
+                    {% set certifiedContent = LayoutContainer.show("Frontend::Homepage.Certified") %}
                     {% if certifiedContent|trim is not empty %}
                         <div class="mb-3">
-                            <strong class="w-100">{{ trans("Ceres::Template.footerCertifiedBy") }}</strong>
+                            <strong class="w-100">{{ trans("Frontend::Template.footerCertifiedBy") }}</strong>
                             {{ certifiedContent }}
                         </div>
                     {% endif %}
@@ -66,7 +66,7 @@
             {% for i in 1..numberOfCols %}
                 <div class="col-6 col-sm-3 col-lg-2">
                     <nav class="mb-4">
-                        <h2 class="h5 font-weight-bold">{{ trans('Ceres::Template.footerColumnTitle' ~ i) }}</h2>
+                        <h2 class="h5 font-weight-bold">{{ trans('Frontend::Template.footerColumnTitle' ~ i) }}</h2>
                         <ul class="list-unstyled">
 
                             {% set footerCategories = config('Ceres.footer.col_' ~ i ~ '_categories') | find("[0-9]+") %}
@@ -90,16 +90,16 @@
             {% endfor %}
             <hr class="d-sm-none my-4">
             <div class="col-6 col-sm-3">
-                {{ LayoutContainer.show("Ceres::Footer.RowOne") }}
+                {{ LayoutContainer.show("Frontend::Footer.RowOne") }}
             </div>
             <div class="col-12 col-sm-3">
                 <div class="row">
-                    {% set rowTwo = LayoutContainer.show("Ceres::Footer.RowTwo") %}
+                    {% set rowTwo = LayoutContainer.show("Frontend::Footer.RowTwo") %}
                     
                     {{ rowTwo }}
 
                     <div class="col-12{% if rowTwo|trim is not empty %} col-sm-6 col-lg-12{% endif %}">
-                        {{ LayoutContainer.show("Ceres::Footer.RowThree") }}
+                        {{ LayoutContainer.show("Frontend::Footer.RowThree") }}
                     </div>
                 </div>
             </div>
@@ -109,17 +109,17 @@
         <div class="copyright text-center my-3">
             <div>
                 {% autoescape false %}
-                    <a class="py-4 px-2" href="{{ urls.cancellationRights }}">{{ trans("Ceres::Template.footerCancellationRight", {"hyphen": "&shy;"}) }}</a>
+                    <a class="py-4 px-2" href="{{ urls.cancellationRights }}">{{ trans("Frontend::Template.footerCancellationRight", {"hyphen": "&shy;"}) }}</a>
                     {% if config("Ceres.footer.cancellation_use_pdf") == "true" %}
-                        <a class="py-4 px-2" href="{{ config('Ceres.footer.cancellation_pdf_path') }}" target="_blank">{{ trans("Ceres::Template.footerCancellationForm", {"hyphen": "&shy;"}) }}</a>
+                        <a class="py-4 px-2" href="{{ config('Ceres.footer.cancellation_pdf_path') }}" target="_blank">{{ trans("Frontend::Template.footerCancellationForm", {"hyphen": "&shy;"}) }}</a>
                     {% else %}
-                        <a class="py-4 px-2" href="{{ urls.cancellationForm }}">{{ trans("Ceres::Template.footerCancellationForm", {"hyphen": "&shy;"}) }}</a>
+                        <a class="py-4 px-2" href="{{ urls.cancellationForm }}">{{ trans("Frontend::Template.footerCancellationForm", {"hyphen": "&shy;"}) }}</a>
                     {% endif %}
-                    <a class="py-4 px-2" href="{{ urls.legalDisclosure }}">{{ trans("Ceres::Template.footerLegalDisclosure") }}</a>
-                    <a class="py-4 px-2" href="{{ urls.privacyPolicy }}">{{ trans("Ceres::Template.footerPrivacyPolicy", {"hyphen": "&shy;"}) }}</a>
-                    <a class="py-4 px-2" href="{{ urls.gtc }}">{{ trans("Ceres::Template.footerGtc") }}</a>
+                    <a class="py-4 px-2" href="{{ urls.legalDisclosure }}">{{ trans("Frontend::Template.footerLegalDisclosure") }}</a>
+                    <a class="py-4 px-2" href="{{ urls.privacyPolicy }}">{{ trans("Frontend::Template.footerPrivacyPolicy", {"hyphen": "&shy;"}) }}</a>
+                    <a class="py-4 px-2" href="{{ urls.gtc }}">{{ trans("Frontend::Template.footerGtc") }}</a>
                     {% if (config("Ceres.contact.shop_mail") | length > 0 and config("Ceres.contact.shop_mail") != "your@email.com") or config('IO.routing.category_contact') > 0 %}
-                        <a class="py-4 px-2" href="{{ urls.contact }}">{{ trans("Ceres::Template.footerContact") }}</a>
+                        <a class="py-4 px-2" href="{{ urls.contact }}">{{ trans("Frontend::Template.footerContact") }}</a>
                     {% endif %}
                 {% endautoescape %}
             </div>
@@ -127,7 +127,7 @@
                 <img alt="Plentymarkets GmbH Logo" class="plenty-brand mt-4 mb-1" src="{{ plugin_path('Ceres') }}/images/plentymarkets-logo.svg" rel="nofollow">
             </a>
             <br>
-            <small>&copy; Copyright {{ "now" | date("Y") }} | {{ trans("Ceres::Template.footerAllRightsReserved") }}</small>
+            <small>&copy; Copyright {{ "now" | date("Y") }} | {{ trans("Frontend::Template.footerAllRightsReserved") }}</small>
         </div>
     </div>
 </div>

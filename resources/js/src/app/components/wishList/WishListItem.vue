@@ -24,7 +24,7 @@
                                     {{ basePrice }}
                                 </div>
                                 <div>
-                                    <strong>{{ $translate("Ceres::Template.wishListContent") }}: </strong>
+                                    <strong>{{ $translate("Frontend::Template.wishListContent") }}: </strong>
                                     {{ wishListItem.unit.content }} {{ wishListItem.unit.names.name }}
                                 </div>
                             </div>
@@ -69,7 +69,7 @@
                             </div>
 
                             <div class="btn btn-sm text-danger p-0" @click="removeItem()" data-testing="remove-wlist-item">
-                                {{ $translate("Ceres::Template.wishListDelete") }}
+                                {{ $translate("Frontend::Template.wishListDelete") }}
                                 <i v-waiting-animation-infinite class="fa fa-trash-o default-float" aria-hidden="true"></i>
                             </div>
                         </div>
@@ -100,21 +100,21 @@
                 <div class="small">
                     <template v-if="isDataFieldVisible('wishListItem.item.id')">
                         <div class="mt-3">
-                            <strong>{{ $translate("Ceres::Template.wishListItemId") }}:</strong>
+                            <strong>{{ $translate("Frontend::Template.wishListItemId") }}:</strong>
                             <span>{{ wishListItem.item.id }}</span>
                         </div>
                     </template>
 
                     <template v-if="isDataFieldVisible('wishListItem.variation.number')">
                         <div v-if="wishListItem.variation.number">
-                            <strong>{{ $translate("Ceres::Template.wishListItemNumber") }}:</strong>
+                            <strong>{{ $translate("Frontend::Template.wishListItemNumber") }}:</strong>
                             <span>{{ wishListItem.variation.number }}</span>
                         </div>
                     </template>
 
                     <template v-if="isDataFieldVisible('wishListItem.variation.availability')">
                         <div v-if="wishListItem.variation.availability.names.name">
-                            <strong>{{ $translate("Ceres::Template.wishListAvailability") }}:</strong>
+                            <strong>{{ $translate("Frontend::Template.wishListAvailability") }}:</strong>
                             <span class="badge" :class="'availability-' + wishListItem.variation.availability.id">{{ wishListItem.variation.availability.names.name }}</span>
                         </div>
                     </template>
@@ -221,7 +221,7 @@ export default {
 
             this.removeWishListItem(item)
                 .then(() => NotificationService.success(
-                    this.$translate("Ceres::Template.wishListRemoved")
+                    this.$translate("Frontend::Template.wishListRemoved")
                 ).closeAfter(3000));
         },
 

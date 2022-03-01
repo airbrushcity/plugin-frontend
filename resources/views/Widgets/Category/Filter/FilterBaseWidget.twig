@@ -1,5 +1,5 @@
-{% import "Ceres::Widgets.Helper.TwigBuilder" as Twig %}
-{% import "Ceres::Widgets.Helper.WidgetHelper" as WidgetHelper %}
+{% import "Frontend::Widgets.Helper.TwigBuilder" as Twig %}
+{% import "Frontend::Widgets.Helper.WidgetHelper" as WidgetHelper %}
 
 {% set customClass     = widget.settings.customClass.mobile %}
 {% set spacingSettings = widget.settings.spacing %}
@@ -20,8 +20,8 @@
     {{ Twig.if("className == 'category' and hasCategoryFilter == false") }}
         <div class="widget-placeholder p-0">
             <div>
-                <p class="title mb-0">{{ trans("Ceres::Widget.categoryFilterLabel") }}</p>
-                <p class="description mt-2 mb-2">{{ trans("Ceres::Widget.categoryPlaceholderDescription") }}</p>
+                <p class="title mb-0">{{ trans("Frontend::Widget.categoryFilterLabel") }}</p>
+                <p class="description mt-2 mb-2">{{ trans("Frontend::Widget.categoryPlaceholderDescription") }}</p>
             </div>
         </div>
     {{ Twig.else() }}

@@ -48,7 +48,7 @@
 {% if title | trim is not empty %}
     {% set title = title ~ " | " %}
 {% endif %}
-{% set title = title ~ trans("Ceres::Template.headerCompanyName") %}
+{% set title = title ~ trans("Frontend::Template.headerCompanyName") %}
 
 {% if not (image starts with 'https://' or image starts with 'http://' or image starts with 'layout/'or image starts with '/documents/') %}
     {% set image = plugin_path('Ceres') ~ "/" ~ image %}

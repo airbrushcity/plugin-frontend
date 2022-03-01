@@ -1,5 +1,5 @@
-{% import "Ceres::Widgets.Helper.TwigBuilder" as Twig %}
-{% import "Ceres::Widgets.Helper.WidgetHelper" as WidgetHelper %}
+{% import "Frontend::Widgets.Helper.TwigBuilder" as Twig %}
+{% import "Frontend::Widgets.Helper.WidgetHelper" as WidgetHelper %}
 
 {% set customClass = widget.settings.customClass.mobile %}
 {% set appearance = widget.settings.appearance.mobile %}
@@ -14,8 +14,8 @@
 {{ Twig.set("languageList", Twig.call("services.webstoreConfigurationRepository.getActiveLanguageList")) }}
 {{ Twig.for("language", "languageList") }}
     {{ Twig.set("languageISO", "services.localizationRepository.getLanguageCode(language)") }}
-    {{ Twig.do("set textTranslations = textTranslations | merge({(languageISO): trans('Ceres::Template.languageDetectionText', [], languageISO ) })") }}
-    {{ Twig.do("set buttonTranslations = buttonTranslations | merge({(languageISO): trans('Ceres::Template.languageDetectionButton', [], languageISO ) })") }}
+    {{ Twig.do("set textTranslations = textTranslations | merge({(languageISO): trans('Frontend::Template.languageDetectionText', [], languageISO ) })") }}
+    {{ Twig.do("set buttonTranslations = buttonTranslations | merge({(languageISO): trans('Frontend::Template.languageDetectionButton', [], languageISO ) })") }}
 {{ Twig.endfor() }}
 
 <div class="language-detection {% if not isPreview %}position-absolute {% endif %}header-fw widget-{{ appearance }}{% if customClass | length > 0 %} {{ customClass }}{% endif %}"

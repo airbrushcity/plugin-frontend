@@ -9,7 +9,7 @@
         <span class="price h1">
             <span>
                 <template v-if="!isVariationSelected || isSetLoading">
-                    {{ $translate("Ceres::Template." + dynamicTranslationKey,
+                    {{ $translate("Frontend::Template." + dynamicTranslationKey,
                         {
                             price: $options.filters.currency(dynamicPrice, currentVariation.prices.set.currency)
                         }
@@ -20,7 +20,7 @@
                     {{ dynamicPrice | currency(currentVariation.prices.set.currency) }}
                 </template>
             </span>
-            <sup>{{ $translate("Ceres::Template.singleItemFootnote1") }}</sup>
+            <sup>{{ $translate("Frontend::Template.singleItemFootnote1") }}</sup>
         </span>
     </div>
 </template>

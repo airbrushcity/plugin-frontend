@@ -1,6 +1,6 @@
 <template>
     <div class="mail-changed-info alert alert-info w-100" v-if="showMailChanged && !isGuest">
-        {{ $translate("Ceres::Template.checkoutChangedMail", { newMail: billingAddressMail, currMail: userMail}) }}
+        {{ $translate("Frontend::Template.checkoutChangedMail", { newMail: billingAddressMail, currMail: userMail}) }}
     </div>
 </template>
 <script>

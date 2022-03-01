@@ -6,7 +6,7 @@ Vue.filter("itemCrossPrice", function(crossPrice, isSpecialOffer)
     if (isSpecialOffer)
     {
         return TranslationService.translate(
-            "Ceres::Template.crossPriceSpecialOffer",
+            "Frontend::Template.crossPriceSpecialOffer",
             {
                 price: crossPrice
             }
@@ -14,7 +14,7 @@ Vue.filter("itemCrossPrice", function(crossPrice, isSpecialOffer)
     }
 
     return TranslationService.translate(
-        "Ceres::Template.crossPriceRRP",
+        "Frontend::Template.crossPriceRRP",
         {
             price: crossPrice
         }

@@ -1,7 +1,7 @@
-{% import "Ceres::PageDesign.Macros.LayoutContainer" as LayoutContainer %}
-{% import "Ceres::Checkout.Macros.OrderTotals" as Totals %}
+{% import "Frontend::PageDesign.Macros.LayoutContainer" as LayoutContainer %}
+{% import "Frontend::Checkout.Macros.OrderTotals" as Totals %}
 
-{% import "Ceres::PageDesign.Macros.ItemName" as ItemName %}
+{% import "Frontend::PageDesign.Macros.ItemName" as ItemName %}
 
 {% set basketTotalsCurrency = totals.currency %}
 
@@ -10,18 +10,18 @@
         <div class="card small">
             <!-- ORDER -->
             <div class="card-header">
-                <h5>{{ trans("Ceres::Template.orderConfirmationOrderId") }} {{ orderData.order.id }}</h5>
+                <h5>{{ trans("Frontend::Template.orderConfirmationOrderId") }} {{ orderData.order.id }}</h5>
             </div>
             <div class="card-body">
                 <div class="details">
                     <div class="row">
-                        <strong class="col-6 col-sm-5">{{ trans("Ceres::Template.orderConfirmationDate") }}</strong>
-                        <span class="col-6 col-sm-7">{{ orderData.order.createdAt | formatDateTime | date(trans("Ceres::Template.devDateTimeFormat")) }}</span>
+                        <strong class="col-6 col-sm-5">{{ trans("Frontend::Template.orderConfirmationDate") }}</strong>
+                        <span class="col-6 col-sm-7">{{ orderData.order.createdAt | formatDateTime | date(trans("Frontend::Template.devDateTimeFormat")) }}</span>
                     </div>
 
                     {% if orderData.status is defined and orderData.status is not empty %}
                         <div class="row">
-                            <strong class="col-6 col-sm-5">{{ trans("Ceres::Template.orderConfirmationStatus") }}</strong>
+                            <strong class="col-6 col-sm-5">{{ trans("Frontend::Template.orderConfirmationStatus") }}</strong>
                             <span class="col-6 col-sm-7">{{ orderData.status }}</span>
                         </div>
                     {% endif %}
@@ -31,7 +31,7 @@
 
                 <div>
                     <div class="row">
-                        <strong class="col-6 col-sm-5">{{ trans("Ceres::Template.orderConfirmationInvoiceAddress") }}</strong>
+                        <strong class="col-6 col-sm-5">{{ trans("Frontend::Template.orderConfirmationInvoiceAddress") }}</strong>
                         <div class="col-6 col-sm-7">
                             <div>{{ orderData.order.billingAddress.name1 }}</div>
                             <div>{{ orderData.order.billingAddress | addressOptionType(12) }}</div>
@@ -44,11 +44,11 @@
                     </div>
 
                     <div class="row mt-3">
-                        <strong class="col-6 col-sm-5">{{ trans("Ceres::Template.orderConfirmationShippingAddress") }}</strong>
+                        <strong class="col-6 col-sm-5">{{ trans("Frontend::Template.orderConfirmationShippingAddress") }}</strong>
                         <span class="col-6 col-sm-7">
                             {% if orderData.order.billingAddress.id == orderData.order.deliveryAddress.id %}
                                 <span>
-                                    {{ trans("Ceres::Template.orderConfirmationSameAsInvoice") }}
+                                    {{ trans("Frontend::Template.orderConfirmationSameAsInvoice") }}
                                 </span>
                             {% else %}
                                 <div>
@@ -59,7 +59,7 @@
                                     <div>{{ orderData.order.deliveryAddress.address1 }} {{ orderData.order.deliveryAddress.address2 }}</div>
                                     <div>
                                         {% if orderData.order.deliveryAddress.address1 == 'PACKSTATION' or orderData.order.deliveryAddress.address1 == 'POSTFILIALE' %}
-                                            {{ trans("Ceres::Template.addressPostNummer") }}
+                                            {{ trans("Frontend::Template.addressPostNummer") }}
                                             {{ orderData.order.deliveryAddress | addressOptionType(6) }}
                                         {% endif %}
 
@@ -78,16 +78,16 @@
                 {% if orderData.order.typeId == 1 or orderData.order.typeId == 8 %}
                     <div>
                         <div class="row">
-                            <strong class="col-6 col-sm-5">{{ trans("Ceres::Template.orderConfirmationPaymentMethod") }}</strong>
+                            <strong class="col-6 col-sm-5">{{ trans("Frontend::Template.orderConfirmationPaymentMethod") }}</strong>
                             <span class="col-6 col-sm-7" id="payment_name_{{ orderData.order.id }}">{{ orderData.paymentMethodName }}</span>
                         </div>
                         <div class="row">
-                            <strong class="col-6 col-sm-5">{{ trans("Ceres::Template.orderConfirmationPaymentStatus") }}</strong>
+                            <strong class="col-6 col-sm-5">{{ trans("Frontend::Template.orderConfirmationPaymentStatus") }}</strong>
                             {% set paymentMethodId = -1 %}
                             {% for propertyKey in orderData.order.properties %}
                                 {% if orderData.order.properties[loop.index0].typeId == 4 %}
                                     {% set paymentStatus = entry.order.properties[loop.index0].value %}
-                                    <span class="col-6 col-sm-7" id="payment_state_{{ orderData.order.id }}">{{ trans("Ceres::Template.orderConfirmationPaymentStatus_" ~ orderData.order.properties[loop.index0].value) }}</span>
+                                    <span class="col-6 col-sm-7" id="payment_state_{{ orderData.order.id }}">{{ trans("Frontend::Template.orderConfirmationPaymentStatus_" ~ orderData.order.properties[loop.index0].value) }}</span>
                                 {% elseif orderData.order.properties[loop.index0].typeId == 3 %}
                                     {% set paymentMethodId = orderData.order.properties[loop.index0].value %}
                                 {% endif %}
@@ -107,7 +107,7 @@
                             </change-payment-method>
                         {% endif %}
 
-                        {{ LayoutContainer.show("Ceres::OrderConfirmation.AdditionalPaymentInformation", orderData.order) }}
+                        {{ LayoutContainer.show("Frontend::OrderConfirmation.AdditionalPaymentInformation", orderData.order) }}
 
                     </div>
 
@@ -116,7 +116,7 @@
 
                 <div>
                     <div class="row">
-                        <strong class="col-6 col-sm-5">{{ trans("Ceres::Template.orderConfirmationShippingProfile") }}</strong>
+                        <strong class="col-6 col-sm-5">{{ trans("Frontend::Template.orderConfirmationShippingProfile") }}</strong>
                         <span class="col-6 col-sm-7">{{ orderData.shippingProvider }} - {{ orderData.shippingProfileName }}</span>
                     </div>
 
@@ -129,12 +129,12 @@
 
                     {% if shippingDate %}
                         <div class="row">
-                            <strong class="col-6 col-sm-5">{{ trans("Ceres::Template.orderConfirmationEstimatedShippingDate") }}</strong>
-                            <span class="col-6 col-sm-7">{{ shippingDate | date(trans("Ceres::Template.devDateFormat")) }}</span>
+                            <strong class="col-6 col-sm-5">{{ trans("Frontend::Template.orderConfirmationEstimatedShippingDate") }}</strong>
+                            <span class="col-6 col-sm-7">{{ shippingDate | date(trans("Frontend::Template.devDateFormat")) }}</span>
                         </div>
                     {% endif %}
 
-                    {{ LayoutContainer.show("Ceres::OrderConfirmation.AdditionalShippingInformation", orderData.order) }}
+                    {{ LayoutContainer.show("Frontend::OrderConfirmation.AdditionalShippingInformation", orderData.order) }}
                 </div>
 
             </div>
@@ -187,22 +187,22 @@
                             {% endif %}
 
                             <div class="row">
-                                <strong class="col-6 col-sm-3 col-md-5">{{ trans("Ceres::Template.orderConfirmationPricePerPiece") }}</strong>
+                                <strong class="col-6 col-sm-3 col-md-5">{{ trans("Frontend::Template.orderConfirmationPricePerPiece") }}</strong>
                                 <span class="col-6 col-sm-9 col-md-7 text-right">{{ itemPrice | formatMonetary( itemAmount.currency ) }}</span>
                             </div>
 
                             <div class="row">
-                                <strong class="col-6 col-sm-3 col-md-5">{{ trans("Ceres::Template.orderConfirmationQuantity") }}</strong>
+                                <strong class="col-6 col-sm-3 col-md-5">{{ trans("Frontend::Template.orderConfirmationQuantity") }}</strong>
                                 <span class="col-6 col-sm-9 col-md-7 text-right">{{ item.quantity }}</span>
                             </div>
                             {% if discountAmount > 0 %}
                                 <div class="row rebate-hint">
-                                    <strong class="col-6 col-sm-3 col-md-5">{{ trans("Ceres::Template.orderConfirmationItemDiscount") }}</strong>
+                                    <strong class="col-6 col-sm-3 col-md-5">{{ trans("Frontend::Template.orderConfirmationItemDiscount") }}</strong>
                                     <span class="col-6 col-sm-9 col-md-7 text-right">{{ discountAmount | formatMonetary( itemAmount.currency ) }}</span>
                                 </div>
                             {% endif %}
                             <div class="row">
-                                <strong class="col-6 col-sm-3 col-md-5">{{ trans("Ceres::Template.orderConfirmationTotal") }}</strong>
+                                <strong class="col-6 col-sm-3 col-md-5">{{ trans("Frontend::Template.orderConfirmationTotal") }}</strong>
                                 <strong class="col-6 col-sm-9 col-md-7 text-right">{{ itemPriceTotal | formatMonetary( itemAmount.currency ) }}</strong>
                             </div>
 

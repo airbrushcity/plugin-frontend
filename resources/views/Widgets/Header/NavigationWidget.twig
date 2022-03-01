@@ -1,5 +1,5 @@
-{% import "Ceres::Widgets.Helper.TwigBuilder" as Twig %}
-{% import "Ceres::Widgets.Helper.WidgetHelper" as WidgetHelper %}
+{% import "Frontend::Widgets.Helper.TwigBuilder" as Twig %}
+{% import "Frontend::Widgets.Helper.WidgetHelper" as WidgetHelper %}
 
 {% set customClass = widget.settings.customClass.mobile %}
 {% set spacingSettings = widget.settings.spacing %}
@@ -36,7 +36,7 @@
 {{ Twig.set("logoUrl", companyLogoUrl | json_encode) }}
 {{ Twig.print("add_asset(logoUrl,'image')") }}
 
-{{ Twig.import("Tree", "Ceres::Category.Macros.CategoryTree") }}
+{{ Twig.import("Tree", "Frontend::Category.Macros.CategoryTree") }}
 
 <nav class="navbar header-fw p-0 border-bottom{% if customClass | length > 0 %} {{ customClass }}{% endif %}{% if navigationStyle == 'megaMenu' %} megamenu{% else %} normalmenu{%endif%}{% if not isFixed %} unfixed{% endif %}">
     <div class="container-max d-block{% if spacingClasses | length > 0 %} {{ spacingClasses }}{% endif %}"
@@ -50,7 +50,7 @@
                         <img
                             class="img-fluid"
                             src="{{ fallbackImagePath }}"
-                            alt="{{ Twig.print('trans("Ceres::Template.headerCompanyName")') }}"
+                            alt="{{ Twig.print('trans("Frontend::Template.headerCompanyName")') }}"
                         />
                     </picture>
                 </a>

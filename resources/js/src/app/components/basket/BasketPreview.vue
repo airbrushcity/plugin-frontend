@@ -4,8 +4,8 @@
             <div class="basket-preview d-flex flex-column flex-nowrap bg-white shadow w-100">
 
                 <header class="basket-preview-header border-bottom p-3">
-                    <span class="h3 mb-0">{{ $translate("Ceres::Template.basketPreview") }}</span>
-                    <button v-toggle-basket-preview type="button" class="close" :aria-label="$translate('Ceres::Template.closeIcon')">
+                    <span class="h3 mb-0">{{ $translate("Frontend::Template.basketPreview") }}</span>
+                    <button v-toggle-basket-preview type="button" class="close" :aria-label="$translate('Frontend::Template.closeIcon')">
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </header>
@@ -67,15 +67,15 @@
                         <slot name="after-basket-totals"></slot>
 
                         <div class="basket-preview-footer d-flex pb-3">
-                            <a v-waiting-animation-infinite :href="$ceres.urls.basket" rel="nofollow" class="btn btn-outline-primary btn-block" :title="$translate('Ceres::Template.basket')">
+                            <a v-waiting-animation-infinite :href="$ceres.urls.basket" rel="nofollow" class="btn btn-outline-primary btn-block" :title="$translate('Frontend::Template.basket')">
                                 <i class="fa fa-shopping-cart"></i>
-                                {{ $translate("Ceres::Template.basket") }}
+                                {{ $translate("Frontend::Template.basket") }}
                             </a>
 
                             <slot name="before-checkout-button"></slot>
-                            <a v-waiting-animation-infinite :href="$ceres.urls.checkout" rel="nofollow" class="btn btn-primary btn-block" :title="$translate('Ceres::Template.basketCheckout')">
+                            <a v-waiting-animation-infinite :href="$ceres.urls.checkout" rel="nofollow" class="btn btn-primary btn-block" :title="$translate('Frontend::Template.basketCheckout')">
                                 <i class="fa fa-arrow-right" aria-hidden="true"></i>
-                                {{ $translate("Ceres::Template.basketCheckout") }}
+                                {{ $translate("Frontend::Template.basketCheckout") }}
                             </a>
                             <slot name="after-checkout-button"></slot>
                         </div>

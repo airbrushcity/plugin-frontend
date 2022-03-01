@@ -2,7 +2,7 @@
 
 {% block PartialHead %}
     {% embed getPartial('page-metadata') %}
-        {% block title trans("Ceres::Template.login") %}
+        {% block title trans("Frontend::Template.login") %}
     {% endembed %}
 {% endblock %}
 
@@ -11,10 +11,10 @@
             backlink="{{ request.get("backlink") | default("") }}"
             guest-email="{{ services.sessionStorageRepository.getSessionValue("guestEmail") }}">
         <template #extend-overlay-buttons>
-            {{ LayoutContainer.show("Ceres::LoginOverlay.ExtendOverlayButtons") }}
+            {{ LayoutContainer.show("Frontend::LoginOverlay.ExtendOverlayButtons") }}
         </template>
         <template #additional-content-after-buttons>
-            {{ LayoutContainer.show("Ceres::Login.AdditionalContentAfterButtons") }}
+            {{ LayoutContainer.show("Frontend::Login.AdditionalContentAfterButtons") }}
         </template>
     </login-view>
 {% endblock %}

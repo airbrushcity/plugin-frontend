@@ -9,7 +9,7 @@
                                 {{ consentGroup.label }}
                             </template>
                             <template v-else>
-                                {{ $translate("Ceres::Template.privacySettingsDefaultGroup") }}
+                                {{ $translate("Frontend::Template.privacySettingsDefaultGroup") }}
                             </template>
                             ({{ consentGroup.consents.length }})
                         </span>
@@ -19,7 +19,7 @@
                                        :checked="isConsented(consentGroup.key + '.*')">
                                 <label class="custom-control-label"></label>
                         </span>
-                        <span class="badge badge-primary bg-appearance" v-else>{{ $translate("Ceres::Template.privacySettingsNecessary") }}</span>
+                        <span class="badge badge-primary bg-appearance" v-else>{{ $translate("Frontend::Template.privacySettingsNecessary") }}</span>
                     </p>
                     <p class="card-text" v-if="consentGroup.description.length > 0">{{ consentGroup.description }}</p>
                 </div>
@@ -42,21 +42,21 @@
                             <table v-if="consent.provider.length > 0 || consent.description.length > 0 || consent.policyUrl.length > 0 || consent.lifespan.length > 0" class="table table-responsive-md table-sm table-striped mb-0">
                                 <tbody>
                                 <tr v-if="consent.provider.length > 0">
-                                    <td class="pl-3">{{ $translate("Ceres::Template.privacySettingsProvider") }}</td>
+                                    <td class="pl-3">{{ $translate("Frontend::Template.privacySettingsProvider") }}</td>
                                     <td class="pr-3">{{ consent.provider }}</td>
                                 </tr>
                                 <tr v-if="consent.description.length > 0">
-                                    <td class="pl-3">{{ $translate("Ceres::Template.privacySettingsDescription") }}</td>
+                                    <td class="pl-3">{{ $translate("Frontend::Template.privacySettingsDescription") }}</td>
                                     <td class="pr-3">{{ consent.description }}</td>
                                 </tr>
                                 <tr v-if="consent.policyUrl.length > 0">
-                                    <td class="pl-3">{{ $translate("Ceres::Template.privacySettingsPolicyUrl") }}</td>
+                                    <td class="pl-3">{{ $translate("Frontend::Template.privacySettingsPolicyUrl") }}</td>
                                     <td class="pr-3">
                                         <a class="text-primary text-appearance" :href="consent.policyUrl" target="_blank">{{ consent.policyUrl }}</a>
                                     </td>
                                 </tr>
                                 <tr v-if="consent.lifespan.length > 0">
-                                    <td class="pl-3">{{ $translate("Ceres::Template.privacySettingsLifespan") }}</td>
+                                    <td class="pl-3">{{ $translate("Frontend::Template.privacySettingsLifespan") }}</td>
                                     <td class="pr-3">{{ consent.lifespan }}</td>
                                 </tr>
                                 </tbody>
@@ -70,7 +70,7 @@
                         @click="setGroupVisibility(consentGroup.key, true, $event)"
                         v-if="!expandedGroups[consentGroup.key]"
                         data-testing="privacy-settings-show-more-information">
-                        {{ $translate("Ceres::Template.privacySettingsMoreInformation") }}
+                        {{ $translate("Frontend::Template.privacySettingsMoreInformation") }}
                     </a>
                     <a
                         href="#"
@@ -78,7 +78,7 @@
                         @click="setGroupVisibility(consentGroup.key, false, $event)"
                         v-else
                         data-testing="privacy-settings-hide-more-information">
-                        {{ $translate("Ceres::Template.privacySettingsLessInformation") }}
+                        {{ $translate("Frontend::Template.privacySettingsLessInformation") }}
                     </a>
                 </div>
             </div>

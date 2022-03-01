@@ -66,7 +66,7 @@ export default Vue.component("bank-data-select", {
          */
         openAddBank()
         {
-            this.headline = TranslationService.translate("Ceres::Template.myAccountBankAddDataTitle");
+            this.headline = TranslationService.translate("Frontend::Template.myAccountBankAddDataTitle");
             this.openModal(false);
         },
 
@@ -77,7 +77,7 @@ export default Vue.component("bank-data-select", {
          */
         openUpdateBank(index, bankData)
         {
-            this.headline = TranslationService.translate("Ceres::Template.myAccountBankUpdateDataTitle");
+            this.headline = TranslationService.translate("Frontend::Template.myAccountBankUpdateDataTitle");
 
             this.setUpdateData(index, bankData);
             this.openModal(true);
@@ -164,7 +164,7 @@ export default Vue.component("bank-data-select", {
                     this.closeModal();
 
                     NotificationService.success(
-                        TranslationService.translate("Ceres::Template.myAccountBankDataUpdated")
+                        TranslationService.translate("Frontend::Template.myAccountBankDataUpdated")
                     ).closeAfter(3000);
 
                     this.waiting = false;
@@ -174,7 +174,7 @@ export default Vue.component("bank-data-select", {
                     this.closeModal();
 
                     NotificationService.error(
-                        TranslationService.translate("Ceres::Template.myAccountBankDataNotUpdated")
+                        TranslationService.translate("Frontend::Template.myAccountBankDataNotUpdated")
                     ).closeAfter(5000);
 
                     this.waiting = false;
@@ -197,7 +197,7 @@ export default Vue.component("bank-data-select", {
                     this.closeModal();
 
                     NotificationService.success(
-                        TranslationService.translate("Ceres::Template.myAccountBankDataAdded")
+                        TranslationService.translate("Frontend::Template.myAccountBankDataAdded")
                     ).closeAfter(3000);
 
                     this.waiting = false;
@@ -207,7 +207,7 @@ export default Vue.component("bank-data-select", {
                     this.closeModal();
 
                     NotificationService.error(
-                        TranslationService.translate("Ceres::Template.myAccountBankDataNotAdded")
+                        TranslationService.translate("Frontend::Template.myAccountBankDataNotAdded")
                     ).closeAfter(5000);
 
                     this.waiting = false;
@@ -227,7 +227,7 @@ export default Vue.component("bank-data-select", {
                     this.userBankData.splice(this.updateBankIndex, 1);
 
                     NotificationService.success(
-                        TranslationService.translate("Ceres::Template.myAccountBankDataDeleted")
+                        TranslationService.translate("Frontend::Template.myAccountBankDataDeleted")
                     ).closeAfter(3000);
                 })
                 .fail(() =>
@@ -235,7 +235,7 @@ export default Vue.component("bank-data-select", {
                     this.closeDeleteModal();
 
                     NotificationService.error(
-                        TranslationService.translate("Ceres::Template.myAccountBankDataNotDeleted")
+                        TranslationService.translate("Frontend::Template.myAccountBankDataNotDeleted")
                     ).closeAfter(5000);
                 });
         },

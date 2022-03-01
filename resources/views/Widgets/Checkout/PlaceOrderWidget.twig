@@ -1,8 +1,8 @@
-{% import "Ceres::Widgets.Helper.TwigBuilder" as Twig %}
-{% import "Ceres::Widgets.Helper.WidgetHelper" as WidgetHelper %}
+{% import "Frontend::Widgets.Helper.TwigBuilder" as Twig %}
+{% import "Frontend::Widgets.Helper.WidgetHelper" as WidgetHelper %}
 
-{{ Twig.import("LayoutContainer", "Ceres::PageDesign.Macros.LayoutContainer") }}
-{{ Twig.component("Ceres::Checkout.Components.PlaceOrder") }}
+{{ Twig.import("LayoutContainer", "Frontend::PageDesign.Macros.LayoutContainer") }}
+{{ Twig.component("Frontend::Checkout.Components.PlaceOrder") }}
 
 {% set customClass = widget.settings.customClass.mobile %}
 {% set spacingSettings = widget.settings.spacing %}
@@ -16,7 +16,7 @@
 
 <div class="widget widget-place-order widget-{{ appearance | default("success") }}{% if customClass | length > 0 %} {{ customClass }}{% endif %}{% if spacingMargin | length > 0 %} {{ spacingMargin }}{% endif %}"
     {% if inlineMargin | length > 0 %} style="{{ inlineMargin }}"{% endif %}>
-    {{ Twig.print(Twig.call("LayoutContainer.show", ["Ceres::Checkout.BeforePlaceOrder"])) }}
+    {{ Twig.print(Twig.call("LayoutContainer.show", ["Frontend::Checkout.BeforePlaceOrder"])) }}
 
     <place-order
             {% if buttonSize is not empty %}button-size="{{ buttonSize }}"{% endif %}
@@ -26,5 +26,5 @@
             {% if inlinePadding | length > 0 %}padding-inline-styles="{{ inlinePadding }}"{% endif %}>
     </place-order>
 
-    {{ Twig.print(Twig.call("LayoutContainer.show", ["Ceres::Checkout.AfterPlaceOrder"])) }}
+    {{ Twig.print(Twig.call("LayoutContainer.show", ["Frontend::Checkout.AfterPlaceOrder"])) }}
 </div>

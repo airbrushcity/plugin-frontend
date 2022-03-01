@@ -2,7 +2,7 @@
 
 {% block PartialHead %}
     {% embed getPartial('page-metadata') %}
-        {% block title trans("Ceres::Template.returnConfirmationTitle") %}
+        {% block title trans("Frontend::Template.returnConfirmationTitle") %}
     {% endembed %}
 {% endblock %}
 
@@ -11,21 +11,21 @@
     <div class="page-content basket order-return container-max mb-5 mt-3">
         <div class="row mb-5">
             <div class="col-12">
-                <h2 class="h1">{{ trans("Ceres::Template.returnConfirmationThanks") }}</h2>
-                <p>{{ trans('Ceres::Template.returnConfirmationInfo') }}</p>
+                <h2 class="h1">{{ trans("Frontend::Template.returnConfirmationThanks") }}</h2>
+                <p>{{ trans('Frontend::Template.returnConfirmationInfo') }}</p>
             </div>
         </div>
         <hr>
         <div class="row">
             {% set loggedIn = frontend.Account.getIsAccountLoggedIn %}
             <div class="col-6 col-md-4 {% if loggedIn %}offset-md-2{% else %}offset-3 offset-md-4{% endif %}">
-                <a href="{{ homepageURL }}" type="" class="btn btn-primary btn-block bg-primary">{{ trans("Ceres::Template.returnConfirmationHomepage") }}</a>
+                <a href="{{ homepageURL }}" type="" class="btn btn-primary btn-block bg-primary">{{ trans("Frontend::Template.returnConfirmationHomepage") }}</a>
             </div>
 
 
             {% if loggedIn %}
                 <div class="col-6 col-md-4">
-                    <a href="{{ urls.myAccount }}" type="" class="btn btn-primary btn-block bg-primary">{{ trans("Ceres::Template.returnConfirmationMyAccount") }}</a>
+                    <a href="{{ urls.myAccount }}" type="" class="btn btn-primary btn-block bg-primary">{{ trans("Frontend::Template.returnConfirmationMyAccount") }}</a>
                 </div>
             {% endif %}
         </div>

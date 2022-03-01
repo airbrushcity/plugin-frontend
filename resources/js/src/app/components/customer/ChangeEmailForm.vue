@@ -1,17 +1,17 @@
 <template>
     <form method="post" @submit.prevent="submit()" class="clearfix">
         <div class="input-unit mt-3">
-            <label :for="'new-mail' + _uid" class="disabled">{{ $translate("Ceres::Template.myAccountNewEmail") }}</label>
+            <label :for="'new-mail' + _uid" class="disabled">{{ $translate("Frontend::Template.myAccountNewEmail") }}</label>
             <input type="email" name="email" class="form-control" :id="'new-mail' + _uid" :value="newMail" disabled>
         </div>
 
         <div class="input-unit">
-            <label :for="'password' + _uid">{{ $translate("Ceres::Template.loginPassword") }}</label>
+            <label :for="'password' + _uid">{{ $translate("Frontend::Template.loginPassword") }}</label>
             <input type="password" name="password" autocomplete="current-password" class="form-control" :id="'password' + _uid" v-model="password">
         </div>
 
         <button type="submit" :disabled="isDisabled" class="btn btn-primary btn-appearance float-right btn-medium btn-xs-max-width">
-            <span>{{ $translate("Ceres::Template.myAccountChangeEmail") }}</span>
+            <span>{{ $translate("Frontend::Template.myAccountChangeEmail") }}</span>
             <icon icon="envelope" :loading="isDisabled"></icon>
         </button>
     </form>
@@ -60,14 +60,14 @@ export default {
                 .done(response =>
                 {
                     NotificationService.success(
-                        this.$translate("Ceres::Template.myAccountChangeEmailSuccessful")
+                        this.$translate("Frontend::Template.myAccountChangeEmailSuccessful")
                     ).closeAfter(3000);
                     window.location.assign(window.location.origin);
                 })
                 .fail(() =>
                 {
                     NotificationService.error(
-                        this.$translate("Ceres::Template.myAccountChangeEmailFailed")
+                        this.$translate("Frontend::Template.myAccountChangeEmailFailed")
                     ).closeAfter(10000);
                 })
                 .always(() =>

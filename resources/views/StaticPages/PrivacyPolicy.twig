@@ -1,11 +1,11 @@
 {% extends getPartial('page-design') %}
 
-{% import "Ceres::PageDesign.Macros.LayoutContainer" as LayoutContainer %}
+{% import "Frontend::PageDesign.Macros.LayoutContainer" as LayoutContainer %}
 
 {% block PartialHead %}
     {% embed getPartial('page-metadata') %}
-        {% block title          trans("Ceres::Template.privacyPolicy", {"hyphen": ""}) %}
-        {% block description    trans('Ceres::Template.privacyPolicyMetaDescription') %}
+        {% block title          trans("Frontend::Template.privacyPolicy", {"hyphen": ""}) %}
+        {% block description    trans('Frontend::Template.privacyPolicyMetaDescription') %}
         {% block robots         ceresConfig.meta.robotsPrivacyPolicy %}
     {% endembed %}
 {% endblock %}
@@ -18,7 +18,7 @@
         <div class="row">
             <div class="col-12">
                 {% autoescape false %}
-                    <h1 class="pt-3">{{ trans("Ceres::Template.privacyPolicy", {"hyphen": "&shy;"}) }}</h1>
+                    <h1 class="pt-3">{{ trans("Frontend::Template.privacyPolicy", {"hyphen": "&shy;"}) }}</h1>
                 {% endautoescape %}
 
                 <hr class="my-5">
@@ -29,7 +29,7 @@
                     <p>{{ privacyPolicy.plainText }}</p>
                 {% endif %}
 
-                {{ LayoutContainer.show("Ceres::StaticPages.PrivacyPolicy") }}
+                {{ LayoutContainer.show("Frontend::StaticPages.PrivacyPolicy") }}
             </div>
         </div>
     </div>

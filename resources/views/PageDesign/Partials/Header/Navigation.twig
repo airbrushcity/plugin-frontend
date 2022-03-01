@@ -1,6 +1,6 @@
 {% set companyLogo  = config("Ceres.header.company_logo") %}
 {% set showHeaderNavBar = config("Ceres.header.show_navbars") %}
-{% set companyName  = trans("Ceres::Template.headerCompanyName") %}
+{% set companyName  = trans("Frontend::Template.headerCompanyName") %}
 {% set useMegaMenu  = config("Ceres.header.megamenu_levels") > 1 %}
 
 <nav class="navbar header-fw p-0 border-bottom{% if useMegaMenu %} megamenu{% else %} normalmenu{% endif %}">
@@ -24,7 +24,7 @@
 
             <div class="main-navbar-collapsable d-none d-lg-block">
                 {% if showHeaderNavBar == "top" or showHeaderNavBar == "both" or not services.template.isCategory() %}
-                    {% include "Ceres::PageDesign.Partials.Header.NavigationList" %}
+                    {% include "Frontend::PageDesign.Partials.Header.NavigationList" %}
                 {% endif %}
             </div>
 

@@ -81,21 +81,21 @@
 
                     <template v-if="isDataFieldVisible('item_id') && variation.item.id">
                         <div class="mt-3">
-                            <strong>{{ $translate("Ceres::Template.basketItemId") }}:</strong>
+                            <strong>{{ $translate("Frontend::Template.basketItemId") }}:</strong>
                             <span>{{ variation.item.id }}</span>
                         </div>
                     </template>
 
                     <template v-if="isDataFieldVisible('custom_number') && variation.variation.number">
                         <div>
-                            <strong>{{ $translate("Ceres::Template.basketItemNumber") }}:</strong>
+                            <strong>{{ $translate("Frontend::Template.basketItemNumber") }}:</strong>
                             <span>{{ variation.variation.number }}</span>
                         </div>
                     </template>
 
                     <template v-if="isDataFieldVisible('availability') && variation.variation.availability.names.name">
                         <div>
-                            <strong>{{ $translate("Ceres::Template.basketAvailability") }}:</strong>
+                            <strong>{{ $translate("Frontend::Template.basketAvailability") }}:</strong>
                             <span class="badge" :class="'availability-' + variation.variation.availability.id">
                                 {{ variation.variation.availability.names.name }}
                             </span>

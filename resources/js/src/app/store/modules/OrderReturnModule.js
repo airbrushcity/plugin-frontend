@@ -81,7 +81,7 @@ const actions =
                             {
                                 NotificationService.error(
                                     this.$translate(
-                                        "Ceres::Template." + ExceptionMap.get(error.data.exceptionCode.toString()),
+                                        "Frontend::Template." + ExceptionMap.get(error.data.exceptionCode.toString()),
                                         error.data.placeholder
                                     )
                                 ).closeAfter(5000);

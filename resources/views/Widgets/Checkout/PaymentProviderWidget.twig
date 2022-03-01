@@ -1,5 +1,5 @@
-{% import "Ceres::Widgets.Helper.TwigBuilder" as Twig %}
-{% import "Ceres::Widgets.Helper.WidgetHelper" as WidgetHelper %}
+{% import "Frontend::Widgets.Helper.TwigBuilder" as Twig %}
+{% import "Frontend::Widgets.Helper.WidgetHelper" as WidgetHelper %}
 
 {% set customClass = widget.settings.customClass.mobile %}
 {% set spacingSettings = widget.settings.spacing %}
@@ -8,23 +8,23 @@
 {% set spacingPadding  = WidgetHelper.getSpacingClasses(spacingSettings, spacingSettings.customPadding.mobile, "") %}
 {% set spacingMargin   = WidgetHelper.getSpacingClasses(spacingSettings, "", spacingSettings.customMargin.mobile) %}
 
-{{ Twig.import("LayoutContainer", "Ceres::PageDesign.Macros.LayoutContainer") }}
-{{ Twig.component("Ceres::Checkout.Components.PaymentProviderSelect") }}
+{{ Twig.import("LayoutContainer", "Frontend::PageDesign.Macros.LayoutContainer") }}
+{{ Twig.component("Frontend::Checkout.Components.PaymentProviderSelect") }}
 
-{{ Twig.set("overridePaymentList", Twig.call("LayoutContainer.show", ["Ceres::Checkout.PaymentList"])) }}
+{{ Twig.set("overridePaymentList", Twig.call("LayoutContainer.show", ["Frontend::Checkout.PaymentList"])) }}
 {% set hintText = widget.settings.hintText.mobile %}
 
 <div class="widget widget-provider-select widget-{{ widget.settings.appearance.mobile | default("primary") }}{% if customClass | length > 0 %} {{ customClass }}{% endif %}{% if spacingMargin | length > 0 %} {{ spacingMargin }}{% endif %}"
     {% if inlineMargin | length > 0 %} style="{{ inlineMargin }}"{% endif %}>
     <div {{ WidgetHelper.makeEditable("hintText", TOOLBAR_LAYOUT.ALL, isPreview) }}>
         {% if hintText is empty %}
-            <h3>{{ WidgetHelper.editableTwig(isPreview, Twig.trans("Ceres::Template.checkoutPaymentMethod")) }}</h3>
+            <h3>{{ WidgetHelper.editableTwig(isPreview, Twig.trans("Frontend::Template.checkoutPaymentMethod")) }}</h3>
         {% else %}
             {{ WidgetHelper.editableTwig(isPreview, hintText) }}
         {% endif %}
     </div>
 
-    {{ Twig.print(Twig.call("LayoutContainer.show", ["Ceres::Checkout.BeforePaymentList"])) }}
+    {{ Twig.print(Twig.call("LayoutContainer.show", ["Frontend::Checkout.BeforePaymentList"])) }}
 
     {{ Twig.if("overridePaymentList | trim is empty") }}
         <div class="payment-method-select">
@@ -37,5 +37,5 @@
         {{ Twig.print("overridePaymentList") }}
     {{ Twig.endif() }}
 
-    {{ Twig.print(Twig.call("LayoutContainer.show", ["Ceres::Checkout.AfterPaymentList"])) }}
+    {{ Twig.print(Twig.call("LayoutContainer.show", ["Frontend::Checkout.AfterPaymentList"])) }}
 </div>

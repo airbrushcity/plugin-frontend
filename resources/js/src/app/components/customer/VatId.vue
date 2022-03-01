@@ -21,7 +21,7 @@
                 data-testing="vat-id"
             >
             <label :for="'txtVatNumber' + _uid">
-                {{ transformTranslation("Ceres::Template.addressVatNumber", "de", "billing_address.vatNumber") }}
+                {{ transformTranslation("Frontend::Template.addressVatNumber", "de", "billing_address.vatNumber") }}
             </label>
         </div>
     </div>

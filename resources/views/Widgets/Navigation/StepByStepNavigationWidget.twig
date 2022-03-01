@@ -1,5 +1,5 @@
-{% import "Ceres::Widgets.Helper.WidgetHelper" as WidgetHelper %}
-{% import "Ceres::Widgets.Helper.TwigBuilder" as Twig %}
+{% import "Frontend::Widgets.Helper.WidgetHelper" as WidgetHelper %}
+{% import "Frontend::Widgets.Helper.TwigBuilder" as Twig %}
 
 {% set customClass     = widget.settings.customClass.mobile %}
 {% set appearance      = widget.settings.appearance.mobile | default("none") %}
@@ -72,7 +72,7 @@
                             {{ Twig.if("children | length > chunkSize") }}
                                 <div class="mb-3 mx-auto">
                                     <button type="button" class="btn btn-appearance disabled px-4 py-3">
-                                        <span>{{ trans("Ceres::Template.stepByStepNavigationShowMore") }}</span>
+                                        <span>{{ trans("Frontend::Template.stepByStepNavigationShowMore") }}</span>
                                         <i class="fa fa-repeat fa-fw fa-spin"></i>
                                     </button>
                                 </div>

@@ -1,6 +1,6 @@
 {% extends getPartial('page-design') %}
-{% import "Ceres::PageDesign.Macros.LayoutContainer" as LayoutContainer %}
-{% import "Ceres::PageDesign.Macros.ItemName" as ItemName %}
+{% import "Frontend::PageDesign.Macros.LayoutContainer" as LayoutContainer %}
+{% import "Frontend::PageDesign.Macros.ItemName" as ItemName %}
 
 {% block PartialHead %}
 
@@ -116,13 +116,13 @@
     {% if item.documents[0].data.item.add_cms_page > 0 and not isShopBuilder %}
         {# Item template is configured for the item #}
         {% set template %}
-            {% include [category_template( item.documents[0].data.item.add_cms_page, lang, webstoreConfig.webstoreId ), "Ceres::Item.SingleItemView"] %}
+            {% include [category_template( item.documents[0].data.item.add_cms_page, lang, webstoreConfig.webstoreId ), "Frontend::Item.SingleItemView"] %}
         {% endset %}
 
         {% if template | trim is not empty %}
             {{ template }}
         {% else %}
-            {% include "Ceres::Item.SingleItemView" %}
+            {% include "Frontend::Item.SingleItemView" %}
         {% endif %}
 
     {% elseif shopBuilderTemplate | trim is not empty or isShopBuilder %}
@@ -151,7 +151,7 @@
         {# Empty shop builder template is loading #}
     {% else %}
         {# No item template defined in ShopBuilder => use default template from plugin #}
-        {% include "Ceres::Item.SingleItemView" %}
+        {% include "Frontend::Item.SingleItemView" %}
     {% endif %}
 
 {% endblock %}

@@ -1,4 +1,4 @@
-{% import "Ceres::PageDesign.Macros.LayoutContainer" as LayoutContainer %}
+{% import "Frontend::PageDesign.Macros.LayoutContainer" as LayoutContainer %}
 
 <header id="page-header" class="default-header d-print-none">
     <div class="container-max">
@@ -7,20 +7,20 @@
                 <div class="top-bar header-fw">
                     <div class="container-max px-0 pr-lg-3">
                         <div class="row mx-0 flex-row-reverse position-relative">
-                            {{ LayoutContainer.show("Ceres::Header.LeftSide") }}
+                            {{ LayoutContainer.show("Frontend::Header.LeftSide") }}
                             <div class="top-bar-items">
                                 <div class="controls">
                                     <ul id="controlsList" class="controls-list mb-0 d-flex list-inline pl-2 pl-sm-1 pl-md-0">
                                         <li class="list-inline-item control-user">
                                             <client-only>
                                                 <user-login-handler>
-                                                    <a class="nav-link" data-toggle="modal" aria-label="{{ trans('Ceres::Template.login') }}">
+                                                    <a class="nav-link" data-toggle="modal" aria-label="{{ trans('Frontend::Template.login') }}">
                                                         <i class="fa fa-user mr-0 mr-sm-1" aria-hidden="true"></i>
-                                                        <span class="d-none d-sm-inline">{{ trans("Ceres::Template.login") }}</span>
+                                                        <span class="d-none d-sm-inline">{{ trans("Frontend::Template.login") }}</span>
                                                     </a>
-                                                    <a class="nav-link" data-toggle="modal" aria-label="{{ trans('Ceres::Template.loginRegister') }}">
+                                                    <a class="nav-link" data-toggle="modal" aria-label="{{ trans('Frontend::Template.loginRegister') }}">
                                                         <i class="fa fa-user-plus mr-0 mr-sm-1" aria-hidden="true"></i>
-                                                        <span class="d-none d-sm-inline">{{ trans("Ceres::Template.loginRegister") }}</span>
+                                                        <span class="d-none d-sm-inline">{{ trans("Frontend::Template.loginRegister") }}</span>
                                                     </a>
                                                 </user-login-handler>
                                             </client-only>
@@ -32,7 +32,7 @@
                                                aria-expanded="false"
                                                aria-controls="countrySettings"
                                                data-parent="#controlsList"
-                                               aria-label="{{ trans('Ceres::Template.headerCountry') }}">
+                                               aria-label="{{ trans('Frontend::Template.headerCountry') }}">
                                                 <i class="flag-icon flag-icon-{{ lang }}"></i>
                                             </a>
                                         </li>
@@ -45,7 +45,7 @@
                                                    aria-expanded="false"
                                                    aria-controls="currencySelect"
                                                    data-parent="#controlsList"
-                                                   aria-label="{{ trans('Ceres::Template.headerCurrency') }}">
+                                                   aria-label="{{ trans('Frontend::Template.headerCurrency') }}">
                                                     <span>{{ services.checkout.getCurrencyData()[currencyFormat] }}</span>
                                                 </a>
                                             </li>
@@ -57,7 +57,7 @@
                                                 aria-expanded="false"
                                                 aria-controls="searchBox"
                                                 data-parent="#controlsList"
-                                                aria-label="{{ trans('Ceres::Template.headerSearch') }}"
+                                                aria-label="{{ trans('Frontend::Template.headerSearch') }}"
                                                 @mouseover.once="$store.dispatch('loadComponent', 'item-search')">
                                                 <span class="anicon-search-item" aria-hidden="true"></span>
                                             </a>
@@ -66,7 +66,7 @@
                                             <li class="list-inline-item control-wish-list">
                                                 <lazy-hydrate when-idle>
                                                     <wish-list-count>
-                                                        <a class="nav-link" aria-label="{{ trans('Ceres::Template.wishList') }}">
+                                                        <a class="nav-link" aria-label="{{ trans('Frontend::Template.wishList') }}">
                                                             <span class="badge-right mr-1 d-none d-sm-inline">0</span>
                                                             <i class="fa fa-heart-o" aria-hidden="true"></i>
                                                         </a>
@@ -89,46 +89,46 @@
 
                                             <basket-preview v-if="$store.state.lazyComponent.components['basket-preview']" :show-net-prices="{{ showNetPrices | json_encode }}">
                                                 <template #before-basket-item>
-                                                    {{ LayoutContainer.show("Ceres::BasketList.BeforeItem") }}
+                                                    {{ LayoutContainer.show("Frontend::BasketList.BeforeItem") }}
                                                 </template>
                                                 <template #after-basket-item>
-                                                    {{ LayoutContainer.show("Ceres::BasketList.AfterItem") }}
+                                                    {{ LayoutContainer.show("Frontend::BasketList.AfterItem") }}
                                                 </template>
                                                 <template #before-basket-totals>
-                                                    {{ LayoutContainer.show("Ceres::BasketPreview.BeforeBasketTotals") }}
+                                                    {{ LayoutContainer.show("Frontend::BasketPreview.BeforeBasketTotals") }}
                                                 </template>
                                                 <template #before-item-sum>
-                                                    {{ LayoutContainer.show("Ceres::BasketTotals.BeforeItemSum") }}
+                                                    {{ LayoutContainer.show("Frontend::BasketTotals.BeforeItemSum") }}
                                                 </template>
                                                 <template #after-item-sum>
-                                                    {{ LayoutContainer.show("Ceres::BasketTotals.AfterItemSum") }}
+                                                    {{ LayoutContainer.show("Frontend::BasketTotals.AfterItemSum") }}
                                                 </template>
                                                 <template #before-shipping-costs>
-                                                    {{ LayoutContainer.show("Ceres::BasketTotals.BeforeShippingCosts") }}
+                                                    {{ LayoutContainer.show("Frontend::BasketTotals.BeforeShippingCosts") }}
                                                 </template>
                                                 <template #after-shipping-costs>
-                                                    {{ LayoutContainer.show("Ceres::BasketTotals.AfterShippingCosts") }}
+                                                    {{ LayoutContainer.show("Frontend::BasketTotals.AfterShippingCosts") }}
                                                 </template>
                                                 <template #before-total-sum>
-                                                    {{ LayoutContainer.show("Ceres::BasketTotals.BeforeTotalSum") }}
+                                                    {{ LayoutContainer.show("Frontend::BasketTotals.BeforeTotalSum") }}
                                                 </template>
                                                 <template #before-vat>
-                                                    {{ LayoutContainer.show("Ceres::BasketTotals.BeforeVat") }}
+                                                    {{ LayoutContainer.show("Frontend::BasketTotals.BeforeVat") }}
                                                 </template>
                                                 <template #after-vat>
-                                                    {{ LayoutContainer.show("Ceres::BasketTotals.AfterVat") }}
+                                                    {{ LayoutContainer.show("Frontend::BasketTotals.AfterVat") }}
                                                 </template>
                                                 <template #after-total-sum>
-                                                    {{ LayoutContainer.show("Ceres::BasketTotals.AfterTotalSum") }}
+                                                    {{ LayoutContainer.show("Frontend::BasketTotals.AfterTotalSum") }}
                                                 </template>
                                                 <template #after-basket-totals>
-                                                    {{ LayoutContainer.show("Ceres::BasketPreview.AfterBasketTotals") }}
+                                                    {{ LayoutContainer.show("Frontend::BasketPreview.AfterBasketTotals") }}
                                                 </template>
                                                 <template #before-checkout-button>
-                                                    {{ LayoutContainer.show("Ceres::BasketPreview.BeforeCheckoutButton") }}
+                                                    {{ LayoutContainer.show("Frontend::BasketPreview.BeforeCheckoutButton") }}
                                                 </template>
                                                 <template #after-checkout-button>
-                                                    {{ LayoutContainer.show("Ceres::BasketPreview.AfterCheckoutButton") }}
+                                                    {{ LayoutContainer.show("Frontend::BasketPreview.AfterCheckoutButton") }}
                                                 </template>
                                             </basket-preview>
                                         </li>
@@ -141,7 +141,7 @@
                     <div class="container-max px-0 px-lg-3">
                         <div class="row mx-0 flex-row-reverse position-relative">
                             <div id="searchBox" class="cmp cmp-search-box collapse">
-                                {% set overrideSearchBar = LayoutContainer.show("Ceres::Search.SearchBar") %}
+                                {% set overrideSearchBar = LayoutContainer.show("Frontend::Search.SearchBar") %}
                                 {% if overrideSearchBar | trim is empty %}
                                     <lazy-load component="item-search">
                                         <item-search></item-search>
@@ -157,7 +157,7 @@
                                         <div class="row py-3">
                                             <div class="currency-list col-12">
                                                 <div class="list-title">
-                                                    <strong>{{ trans("Ceres::Template.headerCurrency") }}</strong>
+                                                    <strong>{{ trans("Frontend::Template.headerCurrency") }}</strong>
                                                     <hr>
                                                 </div>
                                                 <ul class="row text-center text-sm-left">
@@ -186,7 +186,7 @@
 
                                             <div class="language-settings">
                                                 <div class="list-title">
-                                                    <strong>{{ trans("Ceres::Template.headerSelectLanguage") }}</strong>
+                                                    <strong>{{ trans("Frontend::Template.headerSelectLanguage") }}</strong>
                                                     <hr>
                                                 </div>
 
@@ -198,7 +198,7 @@
                                                         <li class="col-6 col-sm-4 px-0{% if lang == language %} active{% endif %}">
                                                             <a class="nav-link" href="{% if languageUrls[languageISO] is defined %}{{ languageUrls[languageISO] ~ queryString() }}{% elseif language != defaultLanguage %}/{{ language }}{{ urls.trailingSlashSuffix }}{% else %}/{% endif %}" data-update-url>
                                                                 <i class="flag-icon flag-icon-{{ language }}"></i>
-                                                                {{ trans("Ceres::Template.header" ~ language | capitalize) }}
+                                                                {{ trans("Frontend::Template.header" ~ language | capitalize) }}
                                                             </a>
                                                         </li>
                                                     {% endfor %}
@@ -208,7 +208,7 @@
                                         <div class="col-12 col-lg-6">
                                             <div class="shipping-settings">
                                                 <div class="list-title">
-                                                    <strong>{{ trans("Ceres::Template.headerSelectShippingCountry") }}</strong>
+                                                    <strong>{{ trans("Frontend::Template.headerSelectShippingCountry") }}</strong>
                                                     <hr>
                                                 </div>
                                                 <intersect>
@@ -226,12 +226,12 @@
                     </div>
                 </div>
 
-                {% include "Ceres::PageDesign.Partials.Header.Navigation" %}
+                {% include "Frontend::PageDesign.Partials.Header.Navigation" %}
 
                 {% cacheslot breadcrumbs %}
                     {# breadcrumbs are related to every single page so they need to be wrapped in a cache slot #}
                     {% if not services.template.isHome() and not services.template.isMyAccount() and not services.template.isCheckout() %}
-                        {% include "Ceres::PageDesign.Partials.Header.Breadcrumb" %}
+                        {% include "Frontend::PageDesign.Partials.Header.Breadcrumb" %}
                     {% endif %}
                 {% endcacheslot %}
             </div>

@@ -17,7 +17,7 @@
                        v-tooltip="isPaymentMethodExcluded(paymentProvider.id)"
                        data-toggle="tooltip"
                        data-placement="top"
-                       data-title="{{ trans("Ceres::Template.checkoutChangeShippingProfileHint") }}">
+                       data-title="{{ trans("Frontend::Template.checkoutChangeShippingProfileHint") }}">
                     <div class="icon">
                         <img class="img-fluid" :src="paymentProvider.icon" :alt="paymentProvider.name" :title="paymentProvider.name">
                     </div><!--
@@ -26,7 +26,7 @@
                         <small v-if="paymentProvider.sourceUrl" class="float-right">
                             <a :href="paymentProvider.sourceUrl" rel="noopener noreferrer" target="_blank">
                                 <i class="fa fa-external-link" aria-hidden="true"></i>
-                                {{ trans("Ceres::Template.checkoutPaymentMethodDetailsLink") }}
+                                {{ trans("Frontend::Template.checkoutPaymentMethodDetailsLink") }}
                             </a>
                         </small>
                         <div>
