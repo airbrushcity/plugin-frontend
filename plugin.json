@@ -2,7 +2,7 @@
     "version"           : "5.0.99",
     "name"              : "Frontend",
     "marketplaceName"   : {"de": "Frontend","en": "Frontend"},
-    "description"       : "This is a complete override theme plugin for plentymarkets online stores.",
+    "description"       : "This is a complete optimized override theme plugin for plentymarkets online stores.",
     "author"            : "Alexander Kolbfleisch",
     "license"           : "AGPL-3.0",
     "pluginIcon"        : "icon_plugin_xs.png",
