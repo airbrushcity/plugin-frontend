@@ -20,13 +20,6 @@
     "namespace"         : "Frontend",
     "serviceProvider"   : "Frontend\\Providers\\TemplateServiceProvider",
     "javaScriptFiles"   : [],
-    "runOnBuild"        : [
-        "Frontend\\Migrations\\WebshopSettingsMigration_0_0_1",
-        "Frontend\\Migrations\\ConfigPropertiesMigration_0_0_1",
-        "Frontend\\Migrations\\Migration_2018_07_06_001_RebuildShopBuilderHomepage",
-        "Frontend\\Wizard\\ShopWizard\\Migrations\\CreateShopWizardPreviewConfigTable",
-        "Frontend\\Wizard\\ShopWizard\\Migrations\\UpdateShopWizardPreviewTableWebstoreId"
-    ],
     "dataProviders"     :
     [
         {
