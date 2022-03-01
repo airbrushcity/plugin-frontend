@@ -2,7 +2,7 @@
     "version"           : "5.0.99",
     "name"              : "Frontend",
     "marketplaceName"   : {"de": "Frontend","en": "Frontend"},
-    "description"       : "This is a complete override template plugin for plentymarkets online stores.",
+    "description"       : "This is a complete override theme plugin for plentymarkets online stores.",
     "author"            : "Alexander Kolbfleisch",
     "license"           : "AGPL-3.0",
     "pluginIcon"        : "icon_plugin_xs.png",
@@ -12,8 +12,8 @@
     "email"             : "a.kolbfleisch@airbrush-city.de",
     "phone"             : "+49 5824 965440",
     "categories"        : ["3885"],
-    "keywords"          : ["plentymarkets", "plugins", "layout", "template", "frontend", "plentyshop"],
-    "type"              : "template",
+    "keywords"          : ["plentymarkets", "plugins", "layout", "theme", "frontend", "plentyshop"],
+    "type"              : "theme",
     "require"           : {
         "IO": "~5.0.46"
     },
@@ -21,7 +21,7 @@
     "serviceProvider"   : "Frontend\\Providers\\TemplateServiceProvider",
     "javaScriptFiles"   : [],
     "dataProviders": [{
-            "key": "Frontend\\Containers\\FrontContainer",
+            "key": "Frontend\\Containers\\FrontendContainer",
             "name": "Frontend",
             "description": "Seo und Optik optimierung"
         }
