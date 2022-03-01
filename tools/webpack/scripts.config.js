@@ -13,8 +13,8 @@ module.exports = env =>
             checkout: "./resources/js/src/checkout.js"
         },
         output: {
-            filename: "ceres-[name]" + (env.prod ? ".min" : "") + ".js",
-            chunkFilename: "chunks/ceres-[name]"+ (env.prod ? ".min" : "") + ".js",
+            filename: "logic-[name]" + (env.prod ? ".min" : "") + ".js",
+            chunkFilename: "chunks/logic-[name]"+ (env.prod ? ".min" : "") + ".js",
             path: path.resolve(__dirname, "..", "..", "resources/js/dist/")
         },
         resolve: {

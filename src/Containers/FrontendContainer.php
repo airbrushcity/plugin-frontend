@@ -1,13 +1,13 @@
 <?php
  
-namespace Front\Containers;
+namespace Frontend\Containers;
  
 use Plenty\Plugin\Templates\Twig;
  
-class FrontContainer
+class FrontendContainer
 {
     public function call(Twig $twig):string
     {
-        return $twig->render('Front::content.Front');
+        return $twig->render('Frontend::content.Frontend');
     }
 }

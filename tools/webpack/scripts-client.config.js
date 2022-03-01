@@ -10,8 +10,8 @@ module.exports = env =>
         mode: env.prod ? "production" : "development",
         entry: "./resources/js/src/entry-client.js",
         output: {
-            filename: "ceres-client" + (env.prod ? ".min" : "") + ".js",
-            chunkFilename: "chunks/ceres-client-[name]"+ (env.prod ? ".min" : "") + ".js",
+            filename: "logic-client" + (env.prod ? ".min" : "") + ".js",
+            chunkFilename: "chunks/logic-client-[name]"+ (env.prod ? ".min" : "") + ".js",
             path: path.resolve(__dirname, "..", "..", "resources/js/dist/"),
         },
         resolve: {

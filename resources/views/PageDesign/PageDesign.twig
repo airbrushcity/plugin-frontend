@@ -17,11 +17,8 @@
         {{ LayoutContainer.show("Frontend::SingleItem.Styles") }}
     {% endif %}
 </head>
-
 <body class="{{ bodyClasses | join(' ') }} {% if request.get('openBasketPreview') == 1 %} basket-open{% endif %}">
-
 {{ LayoutContainer.show("Frontend::PageDesign.AfterOpeningBodyTag") }}
-
 <script>if('ontouchstart' in document.documentElement){document.body.classList.add("touch");}else{document.body.classList.add("no-touch");}</script>
 
 <!-- SSR:app() -->
@@ -74,7 +71,7 @@
                                 {{ trans("Frontend::Template.regCreateAccount") }}
 
                             </div>
-
+                            
                             <popper v-cloak class="ml-auto">
                                 <template #handle>
                                     <button class="btn btn-icon btn-secondary btn-sm">
@@ -217,9 +214,9 @@
     {% set minSuffix = '' %}
 {% endif %}
 
-<!-- SSR:entry({{ ssr_entry('Frontend', 'resources/js/dist/frontend-server' ~ minSuffix ~ '.js') }}) -->
+<!-- SSR:entry({{ ssr_entry('Frontend', 'resources/js/dist/logic-server' ~ minSuffix ~ '.js') }}) -->
 <!-- SSR:on() -->
-<script src="{{ plugin_path('Frontend') }}/js/dist/frontend-client{{ minSuffix }}.js?v={{ buildHash }}"></script>
+<script src="{{ plugin_path('Frontend') }}/js/dist/logic-client{{ minSuffix }}.js?v={{ buildHash }}"></script>
 <!-- /SSR -->
 <!-- SSR:off() -->
 <script src="{{ plugin_path('Frontend') }}/js/dist/{{ assetName }}{{ minSuffix }}.js?v={{ buildHash }}"></script>
@@ -273,19 +270,12 @@
 <!-- /SSR -->
 
 {% if isShopBuilder %}{% include "Frontend::Widgets.ShopBuilderDataStore" %}{% endif %}
-
 <script>
     {% if request.get("openBasketPreview") == 1 %}window.ceresStore.dispatch("loadComponent", "basket-preview"){% endif %}
     {% if request.get("show") == "forgotPassword" %}window.ceresStore.dispatch("loadComponent", "forgot-password-modal"){% endif %}
 </script>
-
 {{ get_filtered_tags() }}
-
 {{ get_shop_builder_scripts( "latest", ceresConfig.log.performanceLevel == 'live') }}
-
-{% if not services.template.shouldBeCached() %}
-    <input type="hidden" id="csrf-token" value="{{ csrf_token() }}">
-{% endif %}
-
+{% if not services.template.shouldBeCached() %}<input type="hidden" id="csrf-token" value="{{ csrf_token() }}">{% endif %}
 </body>
 </html>

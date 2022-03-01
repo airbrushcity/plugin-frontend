@@ -208,7 +208,6 @@ class FrontendServiceProvider extends TemplateServiceProvider
 		$this->overrideTemplate("Ceres::Widgets.OrderConfirmation.OrderTotalsWidget", "Frontend::Widgets.OrderConfirmation.OrderTotalsWidget");	
 		$this->overrideTemplate("Ceres::Widgets.OrderConfirmation.PurchasedItemsWidget", "Frontend::Widgets.OrderConfirmation.PurchasedItemsWidget");	
 		$this->overrideTemplate("Ceres::WishList.WishListView", "Frontend::WishList.WishListView");	
-
 		$container = pluginApp(ResultFieldTemplate::class);
 		$container->setTemplate(ResultFieldTemplate::TEMPLATE_LIST_ITEM,'Frontend::ResultFields.AutoCompleteListItem');
 		$container->setTemplate(ResultFieldTemplate::TEMPLATE_LIST_ITEM,'Frontend::ResultFields.BasketItem');
