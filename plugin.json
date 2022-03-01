@@ -1,5 +1,5 @@
 {
-    "version"           : "5.0.47",
+    "version"           : "5.0.99",
     "name"              : "Frontend",
     "marketplaceName"   : {"de": "Frontend","en": "Frontend"},
     "description"       : "This is a complete override template plugin for plentymarkets online stores.",

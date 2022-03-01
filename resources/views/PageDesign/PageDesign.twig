@@ -1,37 +1,15 @@
-{% import "Frontend::PageDesign.Macros.IncludeComponents" as Loader %}
-{% import "Frontend::PageDesign.Macros.LayoutContainer" as LayoutContainer %}
-{% import "Frontend::PageDesign.Macros.Translations" as Translations %}
-{{ component( "Frontend::PageDesign.Components.Notifications" ) }}
-{{ component( "Frontend::PageDesign.Components.Popper" ) }}
-{{ component( "Frontend::Customer.Components.ForgotPassword" ) }}
-
-{% if isShopBuilder %}
-    {% include "Frontend::Widgets.WidgetComponents" %}
-{% endif %}
-
-{% set isItem = services.template.isItem() == "1" %}
-{% set currencyFormat = config("Deres.currency.format") %}
-{% set defaultLanguage = webstoreConfig.defaultLanguage %}
-
+{% import "Frontend::PageDesign.Macros.IncludeComponents" as Loader %}{% import "Frontend::PageDesign.Macros.LayoutContainer" as LayoutContainer %}{% import "Frontend::PageDesign.Macros.Translations" as Translations %}{{ component( "Frontend::PageDesign.Components.Notifications" ) }}{{ component( "Frontend::PageDesign.Components.Popper" ) }}{{ component( "Frontend::Customer.Components.ForgotPassword" ) }}{% if isShopBuilder %}{% include "Frontend::Widgets.WidgetComponents" %}{% endif %}{% set isItem = services.template.isItem() == "1" %}{% set currencyFormat = config("Ceres.currency.format") %}{% set defaultLanguage = webstoreConfig.defaultLanguage %}
 <!DOCTYPE html>
-
 <html lang="{{ lang }}" data-framework="vue" prefix="og: http://ogp.me/ns#" class="icons-loading">
-
 <head>
     {{ LayoutContainer.show("Frontend::PageDesign.AfterOpeningHeadTag") }}
-
-    {{ get_consent_scripts(ceresConfig.global.blockCookies) }}
-
     {% include getPartial('head') %}
-
     {% block PartialHead %}
         {% embed getPartial('page-metadata') %}{% endembed %}
     {% endblock %}
-
     {% for styleTemplate in get_additional_styles() %}
         {% include styleTemplate.path ignore missing with styleTemplate.params %}
     {% endfor %}
-
     {% if assetName == 'frontend-checkout' %}
         {{ LayoutContainer.show("Frontend::Checkout.Styles") }}
     {% endif %}
@@ -44,16 +22,7 @@
 
 {{ LayoutContainer.show("Frontend::PageDesign.AfterOpeningBodyTag") }}
 
-<script>
-    if('ontouchstart' in document.documentElement)
-    {
-        document.body.classList.add("touch");
-    }
-    else
-    {
-        document.body.classList.add("no-touch");
-    }
-</script>
+<script>if('ontouchstart' in document.documentElement){document.body.classList.add("touch");}else{document.body.classList.add("no-touch");}</script>
 
 <!-- SSR:app() -->
 <div id="vue-app" class="app">
@@ -61,7 +30,6 @@
     <lazy-hydrate when-idle>
         <notifications template="#vue-notifications" :initial-notifications="{{ notifications | json_encode() }}"></notifications>
     </lazy-hydrate>
-
     {% include getPartial('header') %}
 
     <div id="page-body" class="main">
@@ -304,9 +272,7 @@
 </script>
 <!-- /SSR -->
 
-{% if isShopBuilder %}
-    {% include "Frontend::Widgets.ShopBuilderDataStore" %}
-{% endif %}
+{% if isShopBuilder %}{% include "Frontend::Widgets.ShopBuilderDataStore" %}{% endif %}
 
 <script>
     {% if request.get("openBasketPreview") == 1 %}window.ceresStore.dispatch("loadComponent", "basket-preview"){% endif %}
