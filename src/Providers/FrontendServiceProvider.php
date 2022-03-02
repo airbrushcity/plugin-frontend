@@ -22,19 +22,32 @@ class FrontendServiceProvider extends TemplateServiceProvider
 	
 	public function boot(Twig $twig, Dispatcher $eventDispatcher)
     {   		
-		$this->overrideTemplate("Ceres::Basket.Basket", "Frontend::Basket.Basket");
-		$this->overrideTemplate("Ceres::Basket.Macros.AddToBasket", "Frontend::Basket.Macros.AddToBasket");
-		$this->overrideTemplate("Ceres::Category.Content.CategoryContent", "Frontend::Category.Content.CategoryContent");
-		$this->overrideTemplate("Ceres::Category.Item.CategoryItem", "Frontend::Category.Item.CategoryItem");
+	    $this->overrideTemplate("Ceres::PageDesign.Macros.IncludeComponents", "Frontend::PageDesign.Macros.IncludeComponents");
+		$this->overrideTemplate("Ceres::PageDesign.Macros.ItemName", "Frontend::PageDesign.Macros.ItemName");
+		$this->overrideTemplate("Ceres::PageDesign.Macros.LayoutContainer", "Frontend::PageDesign.Macros.LayoutContainer");
+		$this->overrideTemplate("Ceres::PageDesign.Macros.Translations", "Frontend::PageDesign.Macros.Translations");
+		$this->overrideTemplate("Ceres::PageDesign.Partials.Footer", "Frontend::PageDesign.Partials.Footer");
+		$this->overrideTemplate("Ceres::PageDesign.Partials.Head", "Frontend::PageDesign.Partials.Head");
+		$this->overrideTemplate("Ceres::PageDesign.Partials.PageMetadata", "Frontend::PageDesign.Partials.PageMetadata");
+		$this->overrideTemplate("Ceres::PageDesign.Partials.PaginationTemplate", "Frontend::PageDesign.Partials.PaginationTemplate");
+		$this->overrideTemplate("Ceres::PageDesign.Partials.Header.Breadcrumb", "Frontend::PageDesign.Partials.Header.Breadcrumb");
+		$this->overrideTemplate("Ceres::PageDesign.Partials.Header.DefaultHeader.twig", "Frontend::PageDesign.Partials.Header.DefaultHeader");
+		$this->overrideTemplate("Ceres::PageDesign.Partials.Header.Header", "Frontend::PageDesign.Partials.Header.Header");
+		$this->overrideTemplate("Ceres::PageDesign.Partials.Header.Navigation", "Frontend::PageDesign.Partials.Header.Navigation");
+		$this->overrideTemplate("Ceres::PageDesign.Partials.Header.NavigationList", "Frontend::PageDesign.Partials.Header.NavigationList");
+		$this->overrideTemplate("Ceres::PageDesign.Partials.Header.SideNavigation", "Frontend::PageDesign.Partials.Header.SideNavigation");
+		$this->overrideTemplate("Ceres::PageDesign.PageDesign", "Frontend::PageDesign.PageDesign");	
+		
 		$this->overrideTemplate("Ceres::Category.Item.Partials.CategoryParallaxImage", "Frontend::Category.Item.Partials.CategoryParallaxImage");
 		$this->overrideTemplate("Ceres::Category.Item.Partials.ItemSorting", "Frontend::Category.Item.Partials.ItemSorting");
 		$this->overrideTemplate("Ceres::Category.Item.Partials.ItemsPerPage", "Frontend::Category.Item.Partials.ItemsPerPage");
 		$this->overrideTemplate("Ceres::Category.Item.Partials.Pagination", "Frontend::Category.Item.Partials.Pagination");
 		$this->overrideTemplate("Ceres::Category.Item.Macros.CategoryTree", "Frontend::Category.Item.Macros.CategoryTree");
-		$this->overrideTemplate("Ceres::Checkout.CheckoutCategory", "Frontend::Checkout.CheckoutCategory");
-		$this->overrideTemplate("Ceres::Checkout.CheckoutView", "Frontend::Checkout.CheckoutView");
-		$this->overrideTemplate("Ceres::Checkout.OrderConfirmation", "Frontend::Checkout.OrderConfirmation");
-		$this->overrideTemplate("Ceres::Checkout.OrderDetails", "Frontend::Checkout.OrderDetails");
+		$this->overrideTemplate("Ceres::Category.Content.CategoryContent", "Frontend::Category.Content.CategoryContent");
+		$this->overrideTemplate("Ceres::Category.Item.CategoryItem", "Frontend::Category.Item.CategoryItem");
+		
+		$this->overrideTemplate("Ceres::Basket.Basket", "Frontend::Basket.Basket");
+		$this->overrideTemplate("Ceres::Basket.Macros.AddToBasket", "Frontend::Basket.Macros.AddToBasket");
 		$this->overrideTemplate("Ceres::Checkout.Components.AcceptGtcCheck", "Frontend::Checkout.Components.AcceptGtcCheck");
 		$this->overrideTemplate("Ceres::Checkout.Components.Checkout", "Frontend::Checkout.Components.Checkout");
 		$this->overrideTemplate("Ceres::Checkout.Components.ContactWishInput", "Frontend::Checkout.Components.ContactWishInput");
@@ -45,6 +58,10 @@ class FrontendServiceProvider extends TemplateServiceProvider
 		$this->overrideTemplate("Ceres::Checkout.Components.SubscribeNewsletterCheck", "Frontend::Checkout.Components.SubscribeNewsletterCheck");
 		$this->overrideTemplate("Ceres::Checkout.Macros.Address", "Frontend::Checkout.Macros.Address");
 		$this->overrideTemplate("Ceres::Checkout.Macros.OrderTotals", "Frontend::Checkout.Macros.OrderTotals");
+		$this->overrideTemplate("Ceres::Checkout.CheckoutCategory", "Frontend::Checkout.CheckoutCategory");
+		$this->overrideTemplate("Ceres::Checkout.CheckoutView", "Frontend::Checkout.CheckoutView");
+		$this->overrideTemplate("Ceres::Checkout.OrderConfirmation", "Frontend::Checkout.OrderConfirmation");
+		$this->overrideTemplate("Ceres::Checkout.OrderDetails", "Frontend::Checkout.OrderDetails");
 		$this->overrideTemplate("Ceres::Containers.ItemLists.ItemList1", "Frontend::Containers.ItemLists.ItemList1");
 		$this->overrideTemplate("Ceres::Containers.ItemLists.ItemList2", "Frontend::Containers.ItemLists.ItemList2");
 		$this->overrideTemplate("Ceres::Containers.ItemLists.ItemList3", "Frontend::Containers.ItemLists.ItemList3");
@@ -85,21 +102,6 @@ class FrontendServiceProvider extends TemplateServiceProvider
 		$this->overrideTemplate("Ceres::Newsletter.NewsletterOptOut", "Frontend::Newsletter.NewsletterOptOut");	
 		$this->overrideTemplate("Ceres::OrderReturn.OrderReturnConfirmation", "Frontend::OrderReturn.OrderReturnConfirmation");	
 		$this->overrideTemplate("Ceres::OrderReturn.OrderReturnView", "Frontend::OrderReturn.OrderReturnView");	
-		$this->overrideTemplate("Ceres::PageDesign.PageDesign", "Frontend::PageDesign.PageDesign");	
-	    $this->overrideTemplate("Ceres::PageDesign.Macros.IncludeComponents", "Frontend::PageDesign.Macros.IncludeComponents");
-		$this->overrideTemplate("Ceres::PageDesign.Macros.ItemName", "Frontend::PageDesign.Macros.ItemName");
-		$this->overrideTemplate("Ceres::PageDesign.Macros.LayoutContainer", "Frontend::PageDesign.Macros.LayoutContainer");
-		$this->overrideTemplate("Ceres::PageDesign.Macros.Translations", "Frontend::PageDesign.Macros.Translations");
-		$this->overrideTemplate("Ceres::PageDesign.Partials.Footer", "Frontend::PageDesign.Partials.Footer");
-		$this->overrideTemplate("Ceres::PageDesign.Partials.Head", "Frontend::PageDesign.Partials.Head");
-		$this->overrideTemplate("Ceres::PageDesign.Partials.PageMetadata", "Frontend::PageDesign.Partials.PageMetadata");
-		$this->overrideTemplate("Ceres::PageDesign.Partials.PaginationTemplate", "Frontend::PageDesign.Partials.PaginationTemplate");
-		$this->overrideTemplate("Ceres::PageDesign.Partials.Header.Breadcrumb", "Frontend::PageDesign.Partials.Header.Breadcrumb");
-		$this->overrideTemplate("Ceres::PageDesign.Partials.Header.DefaultHeader.twig", "Frontend::PageDesign.Partials.Header.DefaultHeader");
-		$this->overrideTemplate("Ceres::PageDesign.Partials.Header.Header", "Frontend::PageDesign.Partials.Header.Header");
-		$this->overrideTemplate("Ceres::PageDesign.Partials.Header.Navigation", "Frontend::PageDesign.Partials.Header.Navigation");
-		$this->overrideTemplate("Ceres::PageDesign.Partials.Header.NavigationList", "Frontend::PageDesign.Partials.Header.NavigationList");
-		$this->overrideTemplate("Ceres::PageDesign.Partials.Header.SideNavigation", "Frontend::PageDesign.Partials.Header.SideNavigation");
 		$this->overrideTemplate("Ceres::StaticPages.CancellationForm", "Frontend::StaticPages.CancellationForm");
 		$this->overrideTemplate("Ceres::StaticPages.CancellationRights", "Frontend::StaticPages.CancellationRights");
 		$this->overrideTemplate("Ceres::StaticPages.ItemNotFound", "Frontend::StaticPages.ItemNotFound");
@@ -208,6 +210,7 @@ class FrontendServiceProvider extends TemplateServiceProvider
 		$this->overrideTemplate("Ceres::Widgets.OrderConfirmation.OrderTotalsWidget", "Frontend::Widgets.OrderConfirmation.OrderTotalsWidget");	
 		$this->overrideTemplate("Ceres::Widgets.OrderConfirmation.PurchasedItemsWidget", "Frontend::Widgets.OrderConfirmation.PurchasedItemsWidget");	
 		$this->overrideTemplate("Ceres::WishList.WishListView", "Frontend::WishList.WishListView");	
+		
 		$container = pluginApp(ResultFieldTemplate::class);
 		$container->setTemplate(ResultFieldTemplate::TEMPLATE_LIST_ITEM,'Frontend::ResultFields.AutoCompleteListItem');
 		$container->setTemplate(ResultFieldTemplate::TEMPLATE_LIST_ITEM,'Frontend::ResultFields.BasketItem');
