@@ -18,7 +18,7 @@
         "IO": "~5.0.46"
     },
     "namespace"         : "Frontend",
-    "serviceProvider"   : "Frontend\\Providers\\TemplateServiceProvider",
+    "serviceProvider"   : "Frontend\\Providers\\FrontendServiceProvider",
     "javaScriptFiles"   : [],
     "dataProviders": [{
             "key": "Frontend\\Containers\\FrontendContainer",
