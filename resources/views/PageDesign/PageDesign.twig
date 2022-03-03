@@ -2,20 +2,41 @@
 <!DOCTYPE html>
 <html lang="{{ lang }}" data-framework="vue" prefix="og: http://ogp.me/ns#" class="icons-loading">
 <head>
-    {{ LayoutContainer.show("Frontend::PageDesign.AfterOpeningHeadTag") }}
-    {% include getPartial('head') %}
-    {% block PartialHead %}
-        {% embed getPartial('page-metadata') %}{% endembed %}
-    {% endblock %}
-    {% for styleTemplate in get_additional_styles() %}
-        {% include styleTemplate.path ignore missing with styleTemplate.params %}
-    {% endfor %}
-    {% if assetName == 'frontend-checkout' %}
-        {{ LayoutContainer.show("Frontend::Checkout.Styles") }}
-    {% endif %}
-    {% if isItem %}
-        {{ LayoutContainer.show("Frontend::SingleItem.Styles") }}
-    {% endif %}
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="format-detection" content="telephone=no"> {# avoid DOM manipulation by Safari #}
+
+{% block PartialHead %}
+{% embed getPartial('page-metadata') %}{% endembed %}
+{% endblock %}
+{% include getPartial('head') %}
+{% set minSuffix = '.min' %}{% if ceresConfig.log.performanceLevel  == 'development' %}{% set minSuffix = '' %}{% endif %}
+{% if assetName == 'ceres-checkout' %}
+{% set checkoutCSS = config("Frontend.Settings.CdnPluginUrl") ~ "/css/design-checkout" ~ minSuffix ~ ".css?v=" ~ buildHash %}
+{% set checkoutSCSS = config("Frontend.Settings.CdnPluginUrl") ~ "/css/design-checkout" ~ minSuffix ~ ".scss?v=" ~ buildHash %}
+<link rel="stylesheet" href="{{ checkoutCSS }}"{% if isShopBuilder %} data-sass-root="{{ plugin_path("Frontend") }}" data-sass-original="{{ checkoutSCSS }}"{% endif %}>
+{% else %}
+{% set defaultCSS = config("Frontend.Settings.CdnPluginUrl") ~ "/css/design-base" ~ minSuffix ~ ".css?v=" ~ buildHash %}
+{% set defaultSCSS = config("Frontend.Settings.CdnPluginUrl") ~ "/css/design-base" ~ minSuffix ~ ".scss?v=" ~ buildHash %}
+<link rel="stylesheet" href="{{ defaultCSS }}"{% if isShopBuilder %} data-sass-root="{{ config("Frontend.Settings.CdnPluginUrl") }}" data-sass-original="{{ defaultSCSS }}"{% endif %}>
+{% endif %}
+{% if isItem %}
+{% set itemCSS = config("Frontend.Settings.CdnPluginUrl") ~ "/css/design-item.min.css?v=" ~ buildHash %}
+{% set itemSCSS = config("Frontend.Settings.CdnPluginUrl") ~ "/css/design-item.scss?v=" ~ buildHash %}
+<link rel="stylesheet" href="{{ itemCSS }}"{% if isShopBuilder %} data-sass-root="{{ plugin_path('Frontend') }}" data-sass-original="{{ itemSCSS }}"{% endif %}>
+{{ LayoutContainer.show("Frontend::SingleItem.Styles") }}
+{% endif %}
+
+{% if isShopBuilder %}<link rel="stylesheet" href="{{ plugin_path("Frontend") }}/css/design-shopbuilder.css?v={{ buildHash }}">{% endif %}
+{{ LayoutContainer.show("Ceres::Template.StyleOverwrite") }}
+<!-- Extend the existing style with a template -->
+{{ LayoutContainer.show("Ceres::Template.Style") }}
+{{ get_shop_builder_styles() }}
+
+{% for styleTemplate in get_additional_styles() %}
+{% include styleTemplate.path ignore missing with styleTemplate.params %}
+{% endfor %}
 </head>
 <body class="{{ bodyClasses | join(' ') }} {% if request.get('openBasketPreview') == 1 %} basket-open{% endif %}">
 {{ LayoutContainer.show("Frontend::PageDesign.AfterOpeningBodyTag") }}

@@ -51,7 +51,7 @@
 {% set title = title ~ trans("Frontend::Template.headerCompanyName") %}
 
 {% if not (image starts with 'https://' or image starts with 'http://' or image starts with 'layout/'or image starts with '/documents/') %}
-    {% set image = plugin_path('Ceres') ~ "/" ~ image %}
+    {% set image = plugin_path('Frontend') ~ "/" ~ image %}
 {% endif %}
 
 <meta name="robots" content="{% if forceNoIndex %}NOINDEX{% else %}{{ robots }}{% endif %}">
