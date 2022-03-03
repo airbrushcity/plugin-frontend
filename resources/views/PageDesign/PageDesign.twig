@@ -12,7 +12,7 @@
 {% endblock %}
 {% include getPartial('head') %}
 {% set minSuffix = '.min' %}{% if ceresConfig.log.performanceLevel  == 'development' %}{% set minSuffix = '' %}{% endif %}
-{% if assetName == 'ceres-checkout' %}
+{% if assetName == 'design-checkout' %}
 {% set checkoutCSS = config("Frontend.Settings.CdnPluginUrl") ~ "/css/design-checkout" ~ minSuffix ~ ".css?v=" ~ buildHash %}
 {% set checkoutSCSS = config("Frontend.Settings.CdnPluginUrl") ~ "/css/design-checkout" ~ minSuffix ~ ".scss?v=" ~ buildHash %}
 <link rel="stylesheet" href="{{ checkoutCSS }}"{% if isShopBuilder %} data-sass-root="{{ plugin_path("Frontend") }}" data-sass-original="{{ checkoutSCSS }}"{% endif %}>
@@ -213,7 +213,7 @@
 <script src="{{ config("Frontend.Settings.CdnPluginUrl") }}/js/dist/logic-client{{ minSuffix }}.js?v={{ buildHash }}"></script>
 <!-- /SSR -->
 <!-- SSR:off() -->
-<script src="{{ config("Frontend.Settings.CdnPluginUrl") }}/js/dist/{{ assetName }}{{ minSuffix }}.js?v={{ buildHash }}"></script>
+<script src="{{ config("Frontend.Settings.CdnPluginUrl") }}/js/dist/{{ jsName }}{{ minSuffix }}.js?v={{ buildHash }}"></script>
 <!-- /SSR -->
 
 {% for scriptTemplate in get_additional_scripts() %}
@@ -222,7 +222,7 @@
 
 {{ LayoutContainer.show("Frontend::Script.AfterScriptsLoaded") }}
 
-{% if assetName == 'frontend-checkout' %}
+{% if jsName == 'frontend-checkout' %}
     {{ LayoutContainer.show("Frontend::Checkout.AfterScriptsLoaded") }}
 {% endif %}
 
