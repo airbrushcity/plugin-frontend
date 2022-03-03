@@ -19,11 +19,13 @@
 {% else %}
 {% set defaultCSS = config("Frontend.Settings.CdnPluginUrl") ~ "/css/design-base" ~ minSuffix ~ ".css?v=" ~ buildHash %}
 {% set defaultSCSS = config("Frontend.Settings.CdnPluginUrl") ~ "/css/design-base" ~ minSuffix ~ ".scss?v=" ~ buildHash %}
+
 <link rel="stylesheet" href="{{ defaultCSS }}"{% if isShopBuilder %} data-sass-root="{{ config("Frontend.Settings.CdnPluginUrl") }}" data-sass-original="{{ defaultSCSS }}"{% endif %}>
 {% endif %}
 {% if isItem %}
 {% set itemCSS = config("Frontend.Settings.CdnPluginUrl") ~ "/css/design-item.min.css?v=" ~ buildHash %}
 {% set itemSCSS = config("Frontend.Settings.CdnPluginUrl") ~ "/css/design-item.scss?v=" ~ buildHash %}
+
 <link rel="stylesheet" href="{{ itemCSS }}"{% if isShopBuilder %} data-sass-root="{{ plugin_path('Frontend') }}" data-sass-original="{{ itemSCSS }}"{% endif %}>
 {{ LayoutContainer.show("Frontend::SingleItem.Styles") }}
 {% endif %}
