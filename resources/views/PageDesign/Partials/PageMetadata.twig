@@ -55,22 +55,20 @@
     {% set image = plugin_path('Frontend') ~ "/" ~ image %}
 {% endif %}
 {% endspaceless %}
+<meta name="robots" content="{% if forceNoIndex %}NOINDEX{% else %}{{ robots }}{% endif %}">
 
 <title>{{ title | trim | raw }}</title>
-
 {% if description | trim is not empty %}
-    <meta name="description" content="{{ description | trim }}">
+<meta name="description" content="{{ description | trim }}">
 {% endif %}
 {% if keywords | trim is not empty %}
-    <meta name="keywords" content="{{ keywords | trim }}">
+<meta name="keywords" content="{{ keywords | trim }}">
 {% endif %}
-<meta name="robots" content="{% if forceNoIndex %}NOINDEX{% else %}{{ robots }}{% endif %}">
 
 <meta property="og:title" content="{{ title | trim | raw }}"/>
 <meta property="og:type" content="article"/>
 <meta property="og:url" content="{{ url | trim }}"/>
 <meta property="og:image" content="{{ image | trim }}"/>
-
 <script type="application/ld+json">
 {% block schemaOrg %}
 {
