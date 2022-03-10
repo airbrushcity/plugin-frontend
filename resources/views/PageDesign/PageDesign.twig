@@ -1,4 +1,16 @@
-{% import "Frontend::PageDesign.Macros.IncludeComponents" as Loader %}{% import "Frontend::PageDesign.Macros.LayoutContainer" as LayoutContainer %}{% import "Frontend::PageDesign.Macros.Translations" as Translations %}{{ component( "Frontend::PageDesign.Components.Notifications" ) }}{{ component( "Frontend::PageDesign.Components.Popper" ) }}{{ component( "Frontend::Customer.Components.ForgotPassword" ) }}{% if isShopBuilder %}{% include "Frontend::Widgets.WidgetComponents" %}{% endif %}{% set isItem = services.template.isItem() == "1" %}{% set currencyFormat = config("Ceres.currency.format") %}{% set defaultLanguage = webstoreConfig.defaultLanguage %}
+{% import "Frontend::PageDesign.Macros.IncludeComponents" as Loader %}
+{% import "Frontend::PageDesign.Macros.LayoutContainer" as LayoutContainer %}
+{% import "Frontend::PageDesign.Macros.Translations" as Translations %}
+{{ component( "Ceres::PageDesign.Components.Notifications" ) }}
+{{ component( "Ceres::PageDesign.Components.Popper" ) }}
+{{ component( "Ceres::Customer.Components.ForgotPassword" ) }}
+
+{% if isShopBuilder %}{% include "Ceres::Widgets.WidgetComponents" %}{% endif %}
+
+{% set isItem = services.template.isItem() == "1" %}
+{% set currencyFormat = config("Ceres.currency.format") %}
+{% set defaultLanguage = webstoreConfig.defaultLanguage %}
+
 <!DOCTYPE html>
 <html lang="{{ lang }}" data-framework="vue" prefix="og: http://ogp.me/ns#" class="icons-loading">
 <head>
