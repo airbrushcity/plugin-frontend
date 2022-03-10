@@ -15,8 +15,8 @@
     "keywords"          : ["plentymarkets", "plugins", "layout", "theme", "frontend", "plentyshop"],
     "type"              : "theme",
     "require"           : {
-        "IO": ">=5.0.46",
-		"Ceres": ">=5.0.46"
+        "IO": ">=5.0.45",
+		"Ceres": ">=5.0.45"
     },
     "namespace"         : "Frontend",
     "serviceProvider"   : "Frontend\\Providers\\FrontendServiceProvider",
