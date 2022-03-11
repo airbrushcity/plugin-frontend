@@ -10163,21 +10163,7 @@ html.ie {
     }
 }
 
-.cookie-bar {
-    .privacy-settings {
-        max-height: 50vh;
-
-        td:first-child {
-            width: 200px;
-        }
-    }
-
-    &.out {
-        right: auto;
-        left: 15px;
-    }
-}
-
+// @import "components/cookie-bar";
 .tooltip {
     pointer-events: none;
 }
@@ -14574,7 +14560,7 @@ header .widget {
 
 
 
-
+.container-max {max-width: 1400px}
 .checkout {
     .basket-items-list .item {
         padding-right: 0;
