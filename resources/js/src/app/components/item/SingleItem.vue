@@ -31,7 +31,7 @@
 
                             <div class="mb-5">
                                 <span class="articlenumber small text-muted">
-                                    <b>{{ $translate("Frontend::Template.singleItemNumber") }} </b>
+                                    <b>{{ $translate("Ceres::Template.singleItemNumber") }} </b>
                                     <span>{{ currentVariation.variation.number }}</span>
                                 </span>
                             </div>
@@ -66,7 +66,7 @@
                                 </div>
 
                                 <div v-if="currentVariation.item.itemType === 'set'" class="alert alert-info w-100">
-                                    {{ $translate("Frontend::Template.singleItemSetInfo") }}
+                                    {{ $translate("Ceres::Template.singleItemSetInfo") }}
                                 </div>
                                 <div v-else class="col-12 col-sm-7 col-md-12 col-lg-8 my-3">
                                     <add-to-basket
@@ -105,9 +105,9 @@
                             <hr>
 
                             <span class="vat small text-muted">
-                                {{ $translate("Frontend::Template.singleItemFootnote1") }} <template v-if="showNetPrices">{{ $translate("Frontend::Template.singleItemExclVAT") }}</template><template v-else>{{ $translate("Frontend::Template.singleItemInclVAT") }}</template> {{ $translate("Frontend::Template.singleItemExclusive") }}
-                            <a v-if="hasShippingCostsCategoryId" data-toggle="modal" href="#shippingscosts" :title="$translate('Frontend::Template.singleItemShippingCosts')">{{ $translate("Frontend::Template.singleItemShippingCosts") }}</a>
-                            <a v-else :title="$translate('Frontend::Template.singleItemShippingCosts')">{{ $translate("Frontend::Template.singleItemShippingCosts") }}</a>
+                                {{ $translate("Ceres::Template.singleItemFootnote1") }} <template v-if="showNetPrices">{{ $translate("Ceres::Template.singleItemExclVAT") }}</template><template v-else>{{ $translate("Ceres::Template.singleItemInclVAT") }}</template> {{ $translate("Ceres::Template.singleItemExclusive") }}
+                            <a v-if="hasShippingCostsCategoryId" data-toggle="modal" href="#shippingscosts" :title="$translate('Ceres::Template.singleItemShippingCosts')">{{ $translate("Ceres::Template.singleItemShippingCosts") }}</a>
+                            <a v-else :title="$translate('Ceres::Template.singleItemShippingCosts')">{{ $translate("Ceres::Template.singleItemShippingCosts") }}</a>
 
                             </span>
 
@@ -121,15 +121,15 @@
                         <div class="my-5">
                             <ul class="nav nav-tabs" role="tablist">
                                 <li class="nav-item" v-if="isDescriptionTabActive">
-                                    <a class="nav-link active" data-toggle="tab" :href="'#details-' + currentVariation.variation.id" role="tab">{{ $translate("Frontend::Template.singleItemDescription") }}</a>
+                                    <a class="nav-link active" data-toggle="tab" :href="'#details-' + currentVariation.variation.id" role="tab">{{ $translate("Ceres::Template.singleItemDescription") }}</a>
                                 </li>
 
                                 <li class="nav-item" v-if="isTechnicalDataTabActive">
-                                    <a :class="{ 'active': !isDescriptionTabActive && isTechnicalDataTabActive }" class="nav-link" data-toggle="tab" :href="'#data-' + currentVariation.variation.id" role="tab">{{ $translate("Frontend::Template.singleItemTechnicalData") }}</a>
+                                    <a :class="{ 'active': !isDescriptionTabActive && isTechnicalDataTabActive }" class="nav-link" data-toggle="tab" :href="'#data-' + currentVariation.variation.id" role="tab">{{ $translate("Ceres::Template.singleItemTechnicalData") }}</a>
                                 </li>
 
                                 <li class="nav-item">
-                                    <a :class="{ 'active': !isDescriptionTabActive && !isTechnicalDataTabActive }" class="nav-link" data-toggle="tab" href="#assessments-details" role="tab">{{ $translate("Frontend::Template.singleItemMoreDetails") }}</a>
+                                    <a :class="{ 'active': !isDescriptionTabActive && !isTechnicalDataTabActive }" class="nav-link" data-toggle="tab" href="#assessments-details" role="tab">{{ $translate("Ceres::Template.singleItemMoreDetails") }}</a>
                                 </li>
 
                                 <slot name="add-detail-tabs"></slot>
@@ -151,57 +151,57 @@
                                         <table class="table table-striped table-hover table-sm">
                                             <tbody>
                                             <tr v-if="itemConfig.includes('item.id') || itemConfig.includes('all')">
-                                                <td>{{ $translate("Frontend::Template.singleItemId") }}</td>
+                                                <td>{{ $translate("Ceres::Template.singleItemId") }}</td>
                                                 <td>{{ currentVariation.item.id }}</td>
                                             </tr>
 
                                             <tr v-if="currentVariation.item.condition && currentVariation.item.condition.names.name !== '' && (itemConfig.includes('item.condition') || itemConfig.includes('all'))">
-                                                <td>{{ $translate("Frontend::Template.singleItemCondition") }}</td>
+                                                <td>{{ $translate("Ceres::Template.singleItemCondition") }}</td>
                                                 <td>{{ currentVariation.item.condition.names.name }}</td>
                                             </tr>
 
                                             <tr v-if="itemConfig.includes('item.age_rating') || itemConfig.includes('all')">
-                                                <td>{{ $translate("Frontend::Template.singleItemAge") }}</td>
+                                                <td>{{ $translate("Ceres::Template.singleItemAge") }}</td>
                                                 <td>{{ currentVariation.item.ageRestriction | ageRestriction }}</td>
                                             </tr>
 
                                             <tr v-if="currentVariation.variation.externalId !== '' && (itemConfig.includes('item.external_id') || itemConfig.includes('all'))">
-                                                <td>{{ $translate("Frontend::Template.singleItemExternalVariationId") }}</td>
+                                                <td>{{ $translate("Ceres::Template.singleItemExternalVariationId") }}</td>
                                                 <td>{{ currentVariation.variation.externalId }}</td>
                                             </tr>
 
                                             <tr v-if="currentVariation.variation.model !== '' && (itemConfig.includes('item.variation_model') || itemConfig.includes('all'))">
-                                                <td>{{ $translate("Frontend::Template.singleItemModel") }}</td>
+                                                <td>{{ $translate("Ceres::Template.singleItemModel") }}</td>
                                                 <td>{{ currentVariation.variation.model }}</td>
                                             </tr>
 
                                             <tr v-if="currentVariation.filter.hasManufacturer && currentVariation.item.manufacturer.externalName !== '' && (itemConfig.includes('item.manufacturer') || itemConfig.includes('all'))">
-                                                <td>{{ $translate("Frontend::Template.singleItemManufacturer") }}</td>
+                                                <td>{{ $translate("Ceres::Template.singleItemManufacturer") }}</td>
                                                 <td>{{ currentVariation.item.manufacturer.externalName }}</td>
                                             </tr>
 
                                             <tr v-if="currentVariation.item.producingCountry && currentVariation.item.producingCountry.names.name !== '' && (itemConfig.includes('item.producerCountry') || itemConfig.includes('all'))">
-                                                <td>{{ $translate("Frontend::Template.singleItemManufacturingCountry") }}</td>
+                                                <td>{{ $translate("Ceres::Template.singleItemManufacturingCountry") }}</td>
                                                 <td>{{ currentVariation.item.producingCountry.names.name }}</td>
                                             </tr>
 
                                             <tr v-if="currentVariation.unit && (itemConfig.includes('item.variationBase_content') || itemConfig.includes('all'))">
-                                                <td>{{ $translate("Frontend::Template.singleItemContent") }}</td>
+                                                <td>{{ $translate("Ceres::Template.singleItemContent") }}</td>
                                                 <td>{{ currentVariation.unit.content }} {{ currentVariation.unit.names.name }}</td>
                                             </tr>
 
                                             <tr v-if="currentVariation.variation.weightG !== '' && (itemConfig.includes('item.weightG') || itemConfig.includes('all'))">
-                                                <td>{{ $translate("Frontend::Template.singleItemWeight") }}</td>
+                                                <td>{{ $translate("Ceres::Template.singleItemWeight") }}</td>
                                                 <td>{{ currentVariation.variation.weightG }} g</td>
                                             </tr>
 
                                             <tr v-if="currentVariation.variation.weightNetG !== '' && (itemConfig.includes('item.weightNetG') || itemConfig.includes('all'))">
-                                                <td>{{ $translate("Frontend::Template.singleItemNetWeight") }}</td>
+                                                <td>{{ $translate("Ceres::Template.singleItemNetWeight") }}</td>
                                                 <td>{{ currentVariation.variation.weightNetG }} g</td>
                                             </tr>
 
                                             <tr v-if="itemConfig.includes('item.variation_dimensions') || itemConfig.includes('all')">
-                                                <td>{{ $translate("Frontend::Template.singleItemDimensions") }}</td>
+                                                <td>{{ $translate("Ceres::Template.singleItemDimensions") }}</td>
                                                 <td>
                                                     <span>{{ currentVariation.variation.lengthMM }}</span>&times;<!--
                                                 --><span>{{ currentVariation.variation.widthMM }}</span>&times;<!--
@@ -210,7 +210,7 @@
                                             </tr>
 
                                             <tr v-if="currentVariation.variation.customsTariffNumber !== '' && (itemConfig.includes('variation.customs_tariff_number') || itemConfig.includes('all'))">
-                                                <td>{{ $translate("Frontend::Template.singleItemCustomsTariffNumber") }}</td>
+                                                <td>{{ $translate("Ceres::Template.singleItemCustomsTariffNumber") }}</td>
                                                 <td>{{ currentVariation.variation.customsTariffNumber }}</td>
                                             </tr>
                                             </tbody>

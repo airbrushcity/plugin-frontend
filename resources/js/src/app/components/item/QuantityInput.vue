@@ -6,7 +6,7 @@
                @change="setValue($event.target.value)"
                :disabled="waiting"
                ref="quantityInputField"
-               :aria-label="$translate('Frontend::Template.itemQuantityInput')">
+               :aria-label="$translate('Ceres::Template.itemQuantityInput')">
 
         <div class="qty-btn-container d-flex flex-column">
             <button class="btn qty-btn flex-fill d-flex justify-content-center p-0"
@@ -17,7 +17,7 @@
                  data-placement="top"
                  data-testing="quantity-btn-increase"
                  :title="maximumHint"
-                 :aria-label="$translate('Frontend::Template.itemQuantityInputIncrease')">
+                 :aria-label="$translate('Ceres::Template.itemQuantityInputIncrease')">
                 <i class="fa fa-plus default-float" aria-hidden="true"></i>
             </button>
 
@@ -29,7 +29,7 @@
                  data-placement="bottom"
                  data-testing="quantity-btn-decrease"
                  :title="minimumHint"
-                 :aria-label="$translate('Frontend::Template.itemQuantityInputDecrease')">
+                 :aria-label="$translate('Ceres::Template.itemQuantityInputDecrease')">
                 <i class="fa fa-minus default-float" aria-hidden="true"></i>
             </button>
         </div>
@@ -145,7 +145,7 @@ export default {
         minimumHint()
         {
             return this.$translate(
-                "Frontend::Template.singleItemQuantityMin",
+                "Ceres::Template.singleItemQuantityMin",
                 {
                     min: this.$options.filters.numberFormat(this.compMin)
                 }
@@ -155,7 +155,7 @@ export default {
         maximumHint()
         {
             return this.$translate(
-                "Frontend::Template.singleItemQuantityMax",
+                "Ceres::Template.singleItemQuantityMax",
                 {
                     max: this.$options.filters.numberFormat(this.max)
                 }

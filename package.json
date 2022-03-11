@@ -1,7 +1,7 @@
 {
   "name": "Frontend",
   "license": "AGPL-3.0",
-  "version": "5.0.99",
+  "version": "5.0.47",
   "repository": {
     "type": "git",
     "url": "https://github.com/airbrushcity/plugin-frontend.git"

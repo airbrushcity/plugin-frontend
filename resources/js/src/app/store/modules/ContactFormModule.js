@@ -137,7 +137,7 @@ const actions =
 
             if (App.config.global.googleRecaptchaApiKey && (!window.grecaptcha || !recaptchaEl))
             {
-                NotificationService.error(TranslationService.translate("Frontend::Template.contactAcceptRecaptchaCookie"));
+                NotificationService.error(TranslationService.translate("Ceres::Template.contactAcceptRecaptchaCookie"));
                 return;
             }
 
@@ -176,7 +176,7 @@ const actions =
                                             event.target.reset();
                                             disableForm(event.target, false);
                                             NotificationService.success(
-                                                TranslationService.translate("Frontend::Template.contactSendSuccess")
+                                                TranslationService.translate("Ceres::Template.contactSendSuccess")
                                             ).closeAfter(3000);
                                             document.dispatchEvent(
                                                 new CustomEvent(
@@ -191,7 +191,7 @@ const actions =
                                         {
                                             resetRecaptcha(recaptchaEl);
                                             disableForm(event.target, false);
-                                            NotificationService.error(TranslationService.translate("Frontend::Template.contactSendFail"));
+                                            NotificationService.error(TranslationService.translate("Ceres::Template.contactSendFail"));
                                         });
                                 });
                             },
@@ -199,7 +199,7 @@ const actions =
                             {
                                 resetRecaptcha(recaptchaEl);
                                 disableForm(event.target, false);
-                                response.error.message = response.error.message || TranslationService.translate("Frontend::Template.contactFileUploadFail");
+                                response.error.message = response.error.message || TranslationService.translate("Ceres::Template.contactFileUploadFail");
                                 NotificationService.error(response.error);
                             });
                         })
@@ -216,14 +216,14 @@ const actions =
 
                             ValidationService.markInvalidFields(invalidFields, "error");
                             NotificationService.error(
-                                TranslationService.translate("Frontend::Template.checkoutCheckAddressFormFields", { fields: fieldNames.join(", ") })
+                                TranslationService.translate("Ceres::Template.checkoutCheckAddressFormFields", { fields: fieldNames.join(", ") })
                             );
                         });
                 })
                 .catch((error) =>
                 {
                     NotificationService.error(
-                        TranslationService.translate("Frontend::Template.contactReCaptchaFailed")
+                        TranslationService.translate("Ceres::Template.contactReCaptchaFailed")
                     );
                 });
         }

@@ -5,7 +5,7 @@
         </span>
 
         <span :class="'bg-appearance selected-filter reset-all' + ' '+ marginClasses" :style="marginInlineStyles" v-if="tagList.length >= 2" @click="resetAllTags()">
-            {{ $translate("Frontend::Template.itemFilterReset") }}
+            {{ $translate("Ceres::Template.itemFilterReset") }}
         </span>
     </div>
 </template>

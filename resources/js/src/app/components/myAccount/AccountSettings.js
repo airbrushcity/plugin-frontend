@@ -112,7 +112,7 @@ export default Vue.component("account-settings", {
                 {
                     ValidationService.markInvalidFields(invalidFields, "error");
                     NotificationService.error(
-                        TranslationService.translate("Frontend::Template.resetPwInvalidPassword")
+                        TranslationService.translate("Ceres::Template.resetPwInvalidPassword")
                     ).closeAfter(5000);
                     this.$refs.passwordHint.showPopper();
                 });
@@ -131,12 +131,12 @@ export default Vue.component("account-settings", {
                     {
                         this.clearFieldsAndClose();
                         NotificationService.success(
-                            TranslationService.translate("Frontend::Template.myAccountChangePasswordSuccessful")
+                            TranslationService.translate("Ceres::Template.myAccountChangePasswordSuccessful")
                         ).closeAfter(3000);
                     }).fail(response =>
                     {
                         NotificationService.error(
-                            TranslationService.translate("Frontend::Template.myAccountChangePasswordFailed")
+                            TranslationService.translate("Ceres::Template.myAccountChangePasswordFailed")
                         ).closeAfter(5000);
                     })
                     .always(() =>
@@ -158,16 +158,16 @@ export default Vue.component("account-settings", {
                     {
                         this.clearFieldsAndClose();
                         NotificationService.success(
-                            TranslationService.translate("Frontend::Template.myAccountChangeEmailConfirmationSent")
+                            TranslationService.translate("Ceres::Template.myAccountChangeEmailConfirmationSent")
                         ).closeAfter(3000);
 
                     }).fail((response, status) =>
                     {
-                        let message = TranslationService.translate("Frontend::Template.myAccountChangeEmailFailed");
+                        let message = TranslationService.translate("Ceres::Template.myAccountChangeEmailFailed");
 
                         if (status === 400)
                         {
-                            message = TranslationService.translate("Frontend::Template.regError");
+                            message = TranslationService.translate("Ceres::Template.regError");
                         }
 
                         NotificationService.error(message).closeAfter(5000);

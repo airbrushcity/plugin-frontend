@@ -14,7 +14,7 @@ export default Vue.component("order-history-list-item", {
         orderDetailsTemplate:
         {
             type: String,
-            default: "Frontend::MyAccount.Partials.OrderHistoryListItemDetails"
+            default: "Ceres::MyAccount.Partials.OrderHistoryListItemDetails"
         },
         order:
         {
@@ -81,7 +81,7 @@ export default Vue.component("order-history-list-item", {
 
         getWarrantyTooltip(referenceOrderId)
         {
-            return TranslationService.translate("Frontend::Template.orderHistoryWarranty", { id: referenceOrderId });
+            return TranslationService.translate("Ceres::Template.orderHistoryWarranty", { id: referenceOrderId });
         }
     }
 });

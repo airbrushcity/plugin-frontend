@@ -53,7 +53,7 @@ const actions =
             const newRequest = ApiService.get(
                 "/rest/io/item/search/autocomplete",
                 {
-                    template: "Frontend::ItemList.Components.ItemSearch",
+                    template: "Ceres::ItemList.Components.ItemSearch",
                     query: searchString,
                     types: [...new Set(state.autocompleteTypes)]
                 }

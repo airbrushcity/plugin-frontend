@@ -15,7 +15,7 @@ export default Vue.component("order-history", {
         orderDetailsTemplate:
         {
             type: String,
-            default: "Frontend::Checkout.OrderDetails"
+            default: "Ceres::Checkout.OrderDetails"
         }
     },
 

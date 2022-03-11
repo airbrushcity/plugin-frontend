@@ -7,7 +7,7 @@
         v-tooltip
         :title="tooltipText">
         <icon icon="heart" class="default-float" :class="{'text-appearance text-danger': isVariationInWishList}" :loading="isLoading"></icon>
-        {{ $translate("Frontend::Template.singleItemWishList") }}
+        {{ $translate("Ceres::Template.singleItemWishList") }}
     </button>
 </template>
 
@@ -65,7 +65,7 @@ export default {
         tooltipText()
         {
             const tooltipText = this.$translate(
-                "Frontend::Template." + (this.isVariationInWishList ? "singleItemWishListRemove" : "singleItemWishListAdd")
+                "Ceres::Template." + (this.isVariationInWishList ? "singleItemWishListRemove" : "singleItemWishListAdd")
             );
 
 
@@ -102,7 +102,7 @@ export default {
                         this.isLoading = false;
 
                         NotificationService.success(
-                            this.$translate("Frontend::Template.singleItemWishListAdded")
+                            this.$translate("Ceres::Template.singleItemWishListAdded")
                         ).closeAfter(3000);
                     },
                     error =>
@@ -122,7 +122,7 @@ export default {
                         this.isLoading = false;
 
                         NotificationService.success(
-                            this.$translate("Frontend::Template.singleItemWishListRemoved")
+                            this.$translate("Ceres::Template.singleItemWishListRemoved")
                         ).closeAfter(3000);
                     },
                     error =>

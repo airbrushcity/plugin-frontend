@@ -319,34 +319,34 @@ export default Vue.component("address-select", {
 
             if (this.modalType === "initial")
             {
-                headline = TranslationService.translate("Frontend::Template.addressInvoiceAddressInitial");
+                headline = TranslationService.translate("Ceres::Template.addressInvoiceAddressInitial");
             }
             else if (this.addressType === "2")
             {
                 if (this.modalType === "update")
                 {
-                    headline = TranslationService.translate("Frontend::Template.addressShippingAddressEdit");
+                    headline = TranslationService.translate("Ceres::Template.addressShippingAddressEdit");
                 }
                 else if (this.modalType === "create")
                 {
-                    headline = TranslationService.translate("Frontend::Template.addressShippingAddressCreate");
+                    headline = TranslationService.translate("Ceres::Template.addressShippingAddressCreate");
                 }
                 else
                 {
-                    headline = TranslationService.translate("Frontend::Template.addressShippingAddressDelete");
+                    headline = TranslationService.translate("Ceres::Template.addressShippingAddressDelete");
                 }
             }
             else if (this.modalType === "update")
             {
-                headline = TranslationService.translate("Frontend::Template.addressInvoiceAddressEdit");
+                headline = TranslationService.translate("Ceres::Template.addressInvoiceAddressEdit");
             }
             else if (this.modalType === "create")
             {
-                headline = TranslationService.translate("Frontend::Template.addressInvoiceAddressCreate");
+                headline = TranslationService.translate("Ceres::Template.addressInvoiceAddressCreate");
             }
             else
             {
-                headline = TranslationService.translate("Frontend::Template.addressInvoiceAddressDelete");
+                headline = TranslationService.translate("Ceres::Template.addressInvoiceAddressDelete");
             }
 
             this.headline = headline;

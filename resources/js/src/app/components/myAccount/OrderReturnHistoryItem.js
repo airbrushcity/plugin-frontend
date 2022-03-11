@@ -35,15 +35,15 @@ export default Vue.component("order-return-history-item", {
     {
         toggleNaming(element)
         {
-            if (document.getElementById(element).innerText === TranslationService.translate("Frontend::Template.returnHistoryReturnShowMore"))
+            if (document.getElementById(element).innerText === TranslationService.translate("Ceres::Template.returnHistoryReturnShowMore"))
             {
                 this.itemsToRender = this.returnOrder.order.orderItems;
-                document.getElementById(element).innerText = TranslationService.translate("Frontend::Template.returnHistoryReturnShowLess");
+                document.getElementById(element).innerText = TranslationService.translate("Ceres::Template.returnHistoryReturnShowLess");
             }
             else
             {
                 this.itemsToRender = this.returnOrder.order.orderItems.slice(0, 4);
-                document.getElementById(element).innerText = TranslationService.translate("Frontend::Template.returnHistoryReturnShowMore");
+                document.getElementById(element).innerText = TranslationService.translate("Ceres::Template.returnHistoryReturnShowMore");
             }
         },
 

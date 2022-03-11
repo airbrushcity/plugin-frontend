@@ -56,7 +56,7 @@
                 data-toggle="tooltip"
                 :title="property.names.description">
                 <select id="order-property-input-select" v-model="selectionValue" @change="onInputValueChanged($event.target.value)" class="custom-select" data-testing="order-property-selection">
-                    <option :selected="true" :value="null">{{ $translate("Frontend::Template.singleItemPleaseSelect") }}</option>
+                    <option :selected="true" :value="null">{{ $translate("Ceres::Template.singleItemPleaseSelect") }}</option>
                     <option :selected="property.id === id" :value="id" v-for="(value, id) in property.selectionValues" :key="id" data-testing="order-property-selection-option">{{ value.name }}</option>
                 </select>
                 <label class="d-flex w-100" for="order-property-input-select">
@@ -166,7 +166,7 @@ export default {
                     if (this.property.value && this.property.value.length)
                     {
                         NotificationService.warn(
-                            TranslationService.translate("Frontend::Template.singleItemOrderPropertyFileHasReset",
+                            TranslationService.translate("Ceres::Template.singleItemOrderPropertyFileHasReset",
                                 { propertyName: this.property.names.name })
                         ).closeAfter(5000);
                     }
@@ -231,13 +231,13 @@ export default {
         footnotes()
         {
             if(this.surcharge > 0 && this.property.isRequired){
-                return this.$translate("Frontend::Template.singleItemFootnote12");
+                return this.$translate("Ceres::Template.singleItemFootnote12");
             }
             if(this.surcharge <= 0 && this.property.isRequired){
-                return this.$translate("Frontend::Template.singleItemFootnote2");
+                return this.$translate("Ceres::Template.singleItemFootnote2");
             }
             if(this.surcharge > 0 && !this.property.isRequired){
-                return this.$translate("Frontend::Template.singleItemFootnote1");
+                return this.$translate("Ceres::Template.singleItemFootnote1");
             }
         },
 
@@ -416,7 +416,7 @@ export default {
             if (error.error.message && error.error.message === "Post too large")
             {
                 NotificationService.error(
-                    this.$translate("Frontend::Template.errorPostTooLarge" , { maxSize: error.error.maxSize })
+                    this.$translate("Ceres::Template.errorPostTooLarge" , { maxSize: error.error.maxSize })
                 );
             }
         },

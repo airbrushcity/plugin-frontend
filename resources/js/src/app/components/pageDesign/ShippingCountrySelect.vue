@@ -8,8 +8,8 @@
                 :disabled="isDisabled"
                 v-tooltip="isDisabled"
                 data-boundary="window"
-                :data-title="$translate('Frontend::Template.headerChangeDeliveryCountry')"
-                :aria-label="$translate('Frontend::Template.headerChangeDeliveryCountry')">
+                :data-title="$translate('Ceres::Template.headerChangeDeliveryCountry')"
+                :aria-label="$translate('Ceres::Template.headerChangeDeliveryCountry')">
 
                 <i :class="'flag-icon flag-icon-' + shippingCountry.isoCode2.toLowerCase()"></i>
                 {{ shippingCountry.currLangName }}
@@ -17,7 +17,7 @@
         </li>
     </ul>
     <div v-else>
-        <div class="h3">{{ $translate('Frontend::Template.headerSelectShippingCountry') }}</div>
+        <div class="h3">{{ $translate('Ceres::Template.headerSelectShippingCountry') }}</div>
         <select v-if="localization.shippingCountries.length > 1" class="form-control" @change="setShippingCountry($event.target.value)">
             <option v-for="shippingCountry in localization.shippingCountries"
                     :value="shippingCountry.id"

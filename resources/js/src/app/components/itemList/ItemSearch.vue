@@ -3,10 +3,10 @@
         <div class="position-relative">
             <div class="d-flex flex-grow-1 position-relative my-2">
                 <input type="search" class="search-input flex-grow-1 px-3 py-2" ref="searchInput" v-model="searchString" @input="onValueChanged($event.target.value)"
-                    @keyup.enter="search()" @focus="isSearchFocused = true" @blur="onBlurSearchField($event)" :autofocus="isShopBuilder" :placeholder="$translate('Frontend::Template.headerSearchPlaceholder')" :aria-label="$translate('Frontend::Template.headerSearchTerm')">
+                    @keyup.enter="search()" @focus="isSearchFocused = true" @blur="onBlurSearchField($event)" :autofocus="isShopBuilder" :placeholder="$translate('Ceres::Template.headerSearchPlaceholder')" :aria-label="$translate('Ceres::Template.headerSearchTerm')">
 
                 <slot name="search-button">
-                    <button class="search-submit px-3" type="submit" @click="search()" :aria-label="$translate('Frontend::Template.headerSearch')">
+                    <button class="search-submit px-3" type="submit" @click="search()" :aria-label="$translate('Ceres::Template.headerSearch')">
                         <icon class="fa-fw" icon="search" :loading="autocompleteIsLoading"></icon>
                     </button>
                 </slot>

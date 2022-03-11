@@ -70,7 +70,7 @@ export default Vue.component("accept-gtc-check", {
             if (showError)
             {
                 NotificationService.error(
-                    TranslationService.translate("Frontend::Template.checkoutCheckAcceptGtc")
+                    TranslationService.translate("Ceres::Template.checkoutCheckAcceptGtc")
                 );
             }
         }

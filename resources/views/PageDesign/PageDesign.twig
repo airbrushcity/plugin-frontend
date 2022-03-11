@@ -1,60 +1,60 @@
+{% spaceless %}
 {% import "Frontend::PageDesign.Macros.IncludeComponents" as Loader %}
 {% import "Frontend::PageDesign.Macros.LayoutContainer" as LayoutContainer %}
 {% import "Frontend::PageDesign.Macros.Translations" as Translations %}
-{{ component( "Ceres::PageDesign.Components.Notifications" ) }}
-{{ component( "Ceres::PageDesign.Components.Popper" ) }}
-{{ component( "Ceres::Customer.Components.ForgotPassword" ) }}
+{{ component( "Frontend::PageDesign.Components.Notifications" ) }}
+{{ component( "Frontend::PageDesign.Components.Popper" ) }}
+{{ component( "Frontend::Customer.Components.ForgotPassword" ) }}
 
-{% if isShopBuilder %}{% include "Ceres::Widgets.WidgetComponents" %}{% endif %}
+{% if isShopBuilder %}
+    {% include "Frontend::Widgets.WidgetComponents" %}
+{% endif %}
 
 {% set isItem = services.template.isItem() == "1" %}
 {% set currencyFormat = config("Ceres.currency.format") %}
 {% set defaultLanguage = webstoreConfig.defaultLanguage %}
 
-<!DOCTYPE html>
+{% endspaceless %}<!DOCTYPE html>
+
 <html lang="{{ lang }}" data-framework="vue" prefix="og: http://ogp.me/ns#" class="icons-loading">
+
 <head>
-<meta charset="utf-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="format-detection" content="telephone=no"> {# avoid DOM manipulation by Safari #}
+    {{ LayoutContainer.show("Frontend::PageDesign.AfterOpeningHeadTag") }}
 
-{% block PartialHead %}
-{% embed getPartial('page-metadata') %}{% endembed %}
-{% endblock %}
-{% include getPartial('head') %}
-{% set minSuffix = '.min' %}{% if ceresConfig.log.performanceLevel  == 'development' %}{% set minSuffix = '' %}{% endif %}
-{% if assetName == 'design-checkout' %}
-{% set checkoutCSS = config("Frontend.Settings.CdnPluginUrl") ~ "/css/design-checkout" ~ minSuffix ~ ".css?v=" ~ buildHash %}
-{% set checkoutSCSS = config("Frontend.Settings.CdnPluginUrl") ~ "/css/design-checkout" ~ minSuffix ~ ".scss?v=" ~ buildHash %}
-<link rel="stylesheet" href="{{ checkoutCSS }}"{% if isShopBuilder %} data-sass-root="{{ plugin_path("Frontend") }}" data-sass-original="{{ checkoutSCSS }}"{% endif %}>
-{% else %}
-{% set defaultCSS = config("Frontend.Settings.CdnPluginUrl") ~ "/css/design-base" ~ minSuffix ~ ".css?v=" ~ buildHash %}
-{% set defaultSCSS = config("Frontend.Settings.CdnPluginUrl") ~ "/css/design-base" ~ minSuffix ~ ".scss?v=" ~ buildHash %}
+    {{ get_consent_scripts(ceresConfig.global.blockCookies) }}
 
-<link rel="stylesheet" href="{{ defaultCSS }}"{% if isShopBuilder %} data-sass-root="{{ config("Frontend.Settings.CdnPluginUrl") }}" data-sass-original="{{ defaultSCSS }}"{% endif %}>
-{% endif %}
-{% if isItem %}
-{% set itemCSS = config("Frontend.Settings.CdnPluginUrl") ~ "/css/design-item.min.css?v=" ~ buildHash %}
-{% set itemSCSS = config("Frontend.Settings.CdnPluginUrl") ~ "/css/design-item.scss?v=" ~ buildHash %}
+    {% include getPartial('head') %}
 
-<link rel="stylesheet" href="{{ itemCSS }}"{% if isShopBuilder %} data-sass-root="{{ plugin_path('Frontend') }}" data-sass-original="{{ itemSCSS }}"{% endif %}>
-{{ LayoutContainer.show("Frontend::SingleItem.Styles") }}
-{% endif %}
+    {% block PartialHead %}
+        {% embed getPartial('page-metadata') %}{% endembed %}
+    {% endblock %}
 
-{% if isShopBuilder %}<link rel="stylesheet" href="{{ plugin_path("Frontend") }}/css/design-shopbuilder.css?v={{ buildHash }}">{% endif %}
-{{ LayoutContainer.show("Ceres::Template.StyleOverwrite") }}
-<!-- Extend the existing style with a template -->
-{{ LayoutContainer.show("Ceres::Template.Style") }}
-{{ get_shop_builder_styles() }}
+    {% for styleTemplate in get_additional_styles() %}
+        {% include styleTemplate.path ignore missing with styleTemplate.params %}
+    {% endfor %}
 
-{% for styleTemplate in get_additional_styles() %}
-{% include styleTemplate.path ignore missing with styleTemplate.params %}
-{% endfor %}
+    {% if assetName == 'ceres-checkout' %}
+        {{ LayoutContainer.show("Frontend::Checkout.Styles") }}
+    {% endif %}
+    {% if isItem %}
+        {{ LayoutContainer.show("Frontend::SingleItem.Styles") }}
+    {% endif %}
 </head>
+
 <body class="{{ bodyClasses | join(' ') }} {% if request.get('openBasketPreview') == 1 %} basket-open{% endif %}">
+
 {{ LayoutContainer.show("Frontend::PageDesign.AfterOpeningBodyTag") }}
-<script>if('ontouchstart' in document.documentElement){document.body.classList.add("touch");}else{document.body.classList.add("no-touch");}</script>
+
+<script>
+    if('ontouchstart' in document.documentElement)
+    {
+        document.body.classList.add("touch");
+    }
+    else
+    {
+        document.body.classList.add("no-touch");
+    }
+</script>
 
 <!-- SSR:app() -->
 <div id="vue-app" class="app">
@@ -62,6 +62,7 @@
     <lazy-hydrate when-idle>
         <notifications template="#vue-notifications" :initial-notifications="{{ notifications | json_encode() }}"></notifications>
     </lazy-hydrate>
+
     {% include getPartial('header') %}
 
     <div id="page-body" class="main">
@@ -106,7 +107,7 @@
                                 {{ trans("Frontend::Template.regCreateAccount") }}
 
                             </div>
-                            
+
                             <popper v-cloak class="ml-auto">
                                 <template #handle>
                                     <button class="btn btn-icon btn-secondary btn-sm">
@@ -165,6 +166,30 @@
     </lazy-load>
     <!-- ./PASSWORD RESET MODAL -->
 
+    <!-- SHIPPINGCOSTS MODAL -->
+    {% if ceresConfig.global.shippingCostsCategoryId > 0 %}
+        <div id="shippingscosts-modal-wrapper">
+            <div class="modal fade" id="shippingscosts" tabindex="-1" role="dialog">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <div class="modal-title h3">{{ trans('Frontend::Template.shippingInfoCosts') }}</div>
+                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true" aria-label="{{ trans("Frontend::Template.closeIcon") }}">&times;</button>
+                        </div>
+                        <div class="modal-body">
+                            {% set shopBuilderShippingTemplate = shop_builder_category_template(ceresConfig.global.shippingCostsCategoryId) %}
+                            {% if shopBuilderShippingTemplate | trim is not empty %}
+                                {{ shopBuilderShippingTemplate | raw }}
+                            {% else %}
+                                {% include category_template(ceresConfig.global.shippingCostsCategoryId, lang, webstoreConfig.webstoreId) ignore missing %}
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    {% endif %}
+    <!-- ./SHIPPINGCOSTS MODAL -->
 </div>
 <!-- /SSR -->
 
@@ -216,16 +241,21 @@
 
 {{ LayoutContainer.show("Frontend::Script.Loader") }}
 
-{{ Translations.add( "Frontend", "Template" ) }}
+{{ Translations.add( "Ceres", "Template" ) }}
 
 {{ get_json_data() }}
 
-<!-- SSR:entry({{ ssr_entry('Frontend', 'resources/js/dist/logic-server' ~ minSuffix ~ '.js') }}) -->
+{% set minSuffix = '.min' %}
+{% if ceresConfig.log.performanceLevel  == 'development' %}
+    {% set minSuffix = '' %}
+{% endif %}
+
+<!-- SSR:entry({{ ssr_entry('Frontend', 'resources/js/dist/ceres-server' ~ minSuffix ~ '.js') }}) -->
 <!-- SSR:on() -->
-<script src="{{ config("Frontend.Settings.CdnPluginUrl") }}/js/dist/logic-client{{ minSuffix }}.js?v={{ buildHash }}"></script>
+<script src="{{ plugin_path('Frontend') }}/js/dist/ceres-client{{ minSuffix }}.js?v={{ buildHash }}"></script>
 <!-- /SSR -->
 <!-- SSR:off() -->
-<script src="{{ config("Frontend.Settings.CdnPluginUrl") }}/js/dist/{{ jsName }}{{ minSuffix }}.js?v={{ buildHash }}"></script>
+<script src="{{ plugin_path('Frontend') }}/js/dist/{{ assetName }}{{ minSuffix }}.js?v={{ buildHash }}"></script>
 <!-- /SSR -->
 
 {% for scriptTemplate in get_additional_scripts() %}
@@ -234,7 +264,7 @@
 
 {{ LayoutContainer.show("Frontend::Script.AfterScriptsLoaded") }}
 
-{% if jsName == 'frontend-checkout' %}
+{% if assetName == 'ceres-checkout' %}
     {{ LayoutContainer.show("Frontend::Checkout.AfterScriptsLoaded") }}
 {% endif %}
 
@@ -275,13 +305,22 @@
 </script>
 <!-- /SSR -->
 
-{% if isShopBuilder %}{% include "Frontend::Widgets.ShopBuilderDataStore" %}{% endif %}
+{% if isShopBuilder %}
+    {% include "Frontend::Widgets.ShopBuilderDataStore" %}
+{% endif %}
+
 <script>
     {% if request.get("openBasketPreview") == 1 %}window.ceresStore.dispatch("loadComponent", "basket-preview"){% endif %}
     {% if request.get("show") == "forgotPassword" %}window.ceresStore.dispatch("loadComponent", "forgot-password-modal"){% endif %}
 </script>
+
 {{ get_filtered_tags() }}
+
 {{ get_shop_builder_scripts( "latest", ceresConfig.log.performanceLevel == 'live') }}
-{% if not services.template.shouldBeCached() %}<input type="hidden" id="csrf-token" value="{{ csrf_token() }}">{% endif %}
+
+{% if not services.template.shouldBeCached() %}
+    <input type="hidden" id="csrf-token" value="{{ csrf_token() }}">
+{% endif %}
+
 </body>
 </html>

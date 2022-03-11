@@ -9,10 +9,10 @@ Vue.filter("inputUnit", function(basketItem, shortString = false)
     {
         if (basketItem.inputWidth > 0)
         {
-            result = "(" + TranslationService.translate("Frontend::Template.itemInputWidth");
+            result = "(" + TranslationService.translate("Ceres::Template.itemInputWidth");
             if (basketItem.inputLength > 0)
             {
-                result += "/" + TranslationService.translate("Frontend::Template.itemInputLength") + ")";
+                result += "/" + TranslationService.translate("Ceres::Template.itemInputLength") + ")";
             }
             else
             {
@@ -21,7 +21,7 @@ Vue.filter("inputUnit", function(basketItem, shortString = false)
         }
         else if (basketItem.inputLength > 0)
         {
-            result = "(" + TranslationService.translate("Frontend::Template.Length") + ")";
+            result = "(" + TranslationService.translate("Ceres::Template.Length") + ")";
         }
     }
     else

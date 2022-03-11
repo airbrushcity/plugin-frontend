@@ -1,6 +1,6 @@
 <template>
     <div v-if="setComponents.length > 0" class="set-data small">
-        <div class="mb-2"><strong>{{ $translate("Frontend::Template.itemSetContent") }}</strong></div>
+        <div class="mb-2"><strong>{{ $translate("Ceres::Template.itemSetContent") }}</strong></div>
         <template v-for="setComponent in setComponents">
             <set-component-item :variation="variations[setComponent.itemVariationId]" :quantity="setComponent.quantity" :order-properties="setComponent.orderProperties"></set-component-item>
         </template>

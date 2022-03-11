@@ -3,7 +3,7 @@
         <div class="row">
             <div class="col-12 col-sm-6">
                 <button type="button" class="btn btn-primary btn-appearance btn-block coupon-edit" data-toggle="modal" :data-target="'#edit-coupon-overlay-' + _uid">
-                    <span>{{ $translate("Frontend::Template.couponEdit") }}</span>
+                    <span>{{ $translate("Ceres::Template.couponEdit") }}</span>
                     <i class="fa fa-gift default-float" aria-hidden="true"></i> 
                 </button>
             </div>
@@ -14,17 +14,17 @@
                         :class="{ 'disabled': isLoading || !isPaid }"
                         v-tooltip="!isPaid"
                         data-placement="top"
-                        :title="$translate('Frontend::Template.couponNotPaid')"
+                        :title="$translate('Ceres::Template.couponNotPaid')"
                         @click="openConfirmModal()">
-                    <span>{{ $translate("Frontend::Template.couponFinalize") }}</span>
+                    <span>{{ $translate("Ceres::Template.couponFinalize") }}</span>
                     <i class="fa fa-check default-float" aria-hidden="true"></i> 
                 </button>
                 <a v-if="isFinalized && isPaid" 
                     :href="pdfLink"
                     class="btn btn-primary btn-appearance btn-block coupon-download"
                     target="_blank"
-                    :title="$translate('Frontend::Template.couponDownload')">
-                    <span>{{ $translate("Frontend::Template.couponDownload") }}</span>
+                    :title="$translate('Ceres::Template.couponDownload')">
+                    <span>{{ $translate("Ceres::Template.couponDownload") }}</span>
                     <i class="fa fa-download default-float" aria-hidden="true"></i> 
                 </a>
             </div>
@@ -36,8 +36,8 @@
                         
                         <!-- MODAL HEADER -->
                         <div class="modal-header">
-                            <div class="modal-title h4">{{ $translate("Frontend::Template.couponEdit") }}</div>
-                            <button type="button" class="close" data-dismiss="modal" :aria-label="$translate('Frontend::Template.closeIcon')" @click="closeEditModal()">
+                            <div class="modal-title h4">{{ $translate("Ceres::Template.couponEdit") }}</div>
+                            <button type="button" class="close" data-dismiss="modal" :aria-label="$translate('Ceres::Template.closeIcon')" @click="closeEditModal()">
                                 <span aria-hidden="true">&times;</span>
                             </button>
                         </div>
@@ -47,21 +47,21 @@
                         <div class="modal-body overflow-x-hidden modal-multi-row">
                             <template v-for="coupon in couponData">
                                 <div class="row">
-                                    <div class="col-12 h5">{{ $translate("Frontend::Template.couponLabel") }}</div>
+                                    <div class="col-12 h5">{{ $translate("Ceres::Template.couponLabel") }}</div>
                                     <div class="col-12 col-sm-6">
                                         <div class="input-unit">
                                             <input :class="{ 'disabled': isLoading || isFinalized }"
                                                     :readonly="isFinalized"
                                                     v-tooltip="isFinalized"
                                                     data-placement="top"
-                                                    :title="$translate('Frontend::Template.couponAlreadyFinalized')"
+                                                    :title="$translate('Ceres::Template.couponAlreadyFinalized')"
                                                     type="text"
                                                     name="sender"
                                                     autocomplete="off"
                                                     data-validate="text"
                                                     data-autofocus
                                                     v-model="coupon.sender">
-                                            <label for="sender">{{ $translate("Frontend::Template.couponSender") }}*</label>
+                                            <label for="sender">{{ $translate("Ceres::Template.couponSender") }}*</label>
                                         </div>
                                     </div>
                                     <div class="col-12 col-sm-6">
@@ -70,13 +70,13 @@
                                                     :readonly="isFinalized"
                                                     v-tooltip="isFinalized"
                                                     data-placement="top"
-                                                    :title="$translate('Frontend::Template.couponAlreadyFinalized')"
+                                                    :title="$translate('Ceres::Template.couponAlreadyFinalized')"
                                                     type="text"
                                                     name="recipient"
                                                     autocomplete="off"
                                                     data-validate="text"
                                                     v-model="coupon.recipient">
-                                            <label for="recipient">{{ $translate("Frontend::Template.couponRecipient") }}*</label>
+                                            <label for="recipient">{{ $translate("Ceres::Template.couponRecipient") }}*</label>
                                         </div>
                                     </div>
                                     <div class="col-12">
@@ -85,13 +85,13 @@
                                                     :readonly="isFinalized"
                                                     v-tooltip="isFinalized"
                                                     data-placement="top"
-                                                    :title="$translate('Frontend::Template.couponAlreadyFinalized')"
+                                                    :title="$translate('Ceres::Template.couponAlreadyFinalized')"
                                                     name="content"
                                                     rows="3"
                                                     autocomplete="off"
                                                     v-model="coupon.content">
                                             </textarea>
-                                            <label for="content">{{ $translate("Frontend::Template.couponContent") }}</label>
+                                            <label for="content">{{ $translate("Ceres::Template.couponContent") }}</label>
                                         </div>
                                     </div>
                                 </div>
@@ -105,9 +105,9 @@
                                     class="btn btn-danger"
                                     :disabled="isLoading"
                                     data-dismiss="modal"
-                                    :aria-label="$translate('Frontend::Template.closeIcon')"
+                                    :aria-label="$translate('Ceres::Template.closeIcon')"
                                     @click="closeEditModal()">
-                                <span>{{ $translate("Frontend::Template.couponCancel") }}</span>
+                                <span>{{ $translate("Ceres::Template.couponCancel") }}</span>
                                 <i class="fa fa-times default-float" aria-hidden="true"></i> 
                             </button>
                             <button type="submit"
@@ -115,8 +115,8 @@
                                     :class="{ 'disabled': isLoading || isFinalized }"
                                     v-tooltip="isFinalized"
                                     data-placement="top"
-                                    :title="$translate('Frontend::Template.couponAlreadyFinalized')">
-                                <span>{{ $translate("Frontend::Template.couponSave") }}</span>
+                                    :title="$translate('Ceres::Template.couponAlreadyFinalized')">
+                                <span>{{ $translate("Ceres::Template.couponSave") }}</span>
                                 <icon icon="check" class="default-float" :loading="isLoading"></icon>
                             </button>
                         </div>
@@ -133,8 +133,8 @@
                     
                     <!-- MODAL HEADER -->
                     <div class="modal-header">
-                        <div class="modal-title h4">{{ $translate("Frontend::Template.couponFinalize") }}</div>
-                        <button type="button" class="close" data-dismiss="modal" :aria-label="$translate('Frontend::Template.closeIcon')" @click="closeConfirmModal()">
+                        <div class="modal-title h4">{{ $translate("Ceres::Template.couponFinalize") }}</div>
+                        <button type="button" class="close" data-dismiss="modal" :aria-label="$translate('Ceres::Template.closeIcon')" @click="closeConfirmModal()">
                             <span aria-hidden="true">&times;</span>
                         </button>
                     </div>
@@ -142,7 +142,7 @@
 
                     <!-- MODAL BODY -->
                     <div class="modal-body">
-                        <div class="my-2">{{ $translate("Frontend::Template.couponFinalizeConfirm") }}</div>
+                        <div class="my-2">{{ $translate("Ceres::Template.couponFinalizeConfirm") }}</div>
                     </div>
                     <!-- ./MODAL BODY -->
 
@@ -152,16 +152,16 @@
                                 class="btn btn-danger"
                                 :disabled="isFinalizing"
                                 data-dismiss="modal"
-                                :aria-label="$translate('Frontend::Template.closeIcon')"
+                                :aria-label="$translate('Ceres::Template.closeIcon')"
                                 @click="closeConfirmModal()">
-                            <span>{{ $translate("Frontend::Template.couponFinalizeConfirmNo") }}</span>
+                            <span>{{ $translate("Ceres::Template.couponFinalizeConfirmNo") }}</span>
                             <i class="fa fa-times default-float" aria-hidden="true"></i> 
                         </button>
                         <button type="button"
                                 class="btn btn-primary"
                                 :class="{ 'disabled': isFinalizing }"
                                 @click="finalize()">
-                            <span>{{ $translate("Frontend::Template.couponFinalizeConfirmYes") }}</span>
+                            <span>{{ $translate("Ceres::Template.couponFinalizeConfirmYes") }}</span>
                             <icon icon="check" class="default-float" :loading="isFinalizing"></icon>
                         </button>
                     </div>
@@ -254,13 +254,13 @@ export default {
                 .done(response =>
                 {
                     NotificationService.success(
-                        this.$translate("Frontend::Template.couponChangeSuccess")
+                        this.$translate("Ceres::Template.couponChangeSuccess")
                     ).closeAfter(3000);
                 })
                 .fail(() =>
                 {
                     NotificationService.error(
-                        this.$translate("Frontend::Template.couponChangeFailure")
+                        this.$translate("Ceres::Template.couponChangeFailure")
                     ).closeAfter(10000);
                 })
                 .always(() =>
@@ -283,7 +283,7 @@ export default {
                 .done(response =>
                 {
                     NotificationService.success(
-                        this.$translate("Frontend::Template.couponFinalizeSuccess")
+                        this.$translate("Ceres::Template.couponFinalizeSuccess")
                     ).closeAfter(3000);
                     
                     window.open(this.pdfLink, '_blank');
@@ -293,7 +293,7 @@ export default {
                 .fail(() =>
                 {
                     NotificationService.error(
-                        this.$translate("Frontend::Template.couponFinalizeFailure")
+                        this.$translate("Ceres::Template.couponFinalizeFailure")
                     ).closeAfter(10000);
                 })
                 .always(() =>

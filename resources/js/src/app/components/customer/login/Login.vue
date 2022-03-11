@@ -6,27 +6,27 @@
                     <div class="col-12">
                         <div class="input-unit" data-validate="mail">
                             <input data-testing="email-login" type="email" name="email" autocomplete="email" :id="'email' + _uid" v-model="username" data-autofocus>
-                            <label :for="'email' + _uid">{{ $translate("Frontend::Template.loginEmail") }}*</label>
+                            <label :for="'email' + _uid">{{ $translate("Ceres::Template.loginEmail") }}*</label>
                         </div>
-                        <span class="error-msg">{{ $translate("Frontend::Template.loginEnterConfirmEmail") }}</span>
+                        <span class="error-msg">{{ $translate("Ceres::Template.loginEnterConfirmEmail") }}</span>
                     </div>
                     <div class="col-12">
                         <div class="input-unit" :class="{'no-bottom': modalElement}" data-validate="text">
                             <input data-testing="password-login" type="password" name="password" autocomplete="current-password" :id="'password' + _uid" v-model="password">
-                            <label :for="'password' + _uid">{{ $translate("Frontend::Template.loginPassword") }}*</label>
+                            <label :for="'password' + _uid">{{ $translate("Ceres::Template.loginPassword") }}*</label>
                         </div>
-                        <span class="error-msg">{{ $translate("Frontend::Template.loginEmptyPassword") }}</span>
+                        <span class="error-msg">{{ $translate("Ceres::Template.loginEmptyPassword") }}</span>
                     </div>
                 </div>
             </div>
             <div :class="{'modal-footer justify-content-between': modalElement, 'row': !modalElement}">
                 <div :class="{'col-7 col-sm-4': !modalElement}">
-                    <a href="javascript:void(0)" @click="showResetPwdView" class="small text-appearance">{{ $translate("Frontend::Template.loginForgotPassword") }}?</a>
+                    <a href="javascript:void(0)" @click="showResetPwdView" class="small text-appearance">{{ $translate("Ceres::Template.loginForgotPassword") }}?</a>
                 </div>
                 <div :class="{'col-5 col-sm-8 text-sm-right': !modalElement}">
                     <slot name="extend-overlay-buttons"></slot>
                     <button data-testing="submit-login" @click.prevent="validateLogin" :disabled="isDisabled" class="btn btn-primary btn-appearance btn-medium" :class="[{'float-right': !modalElement}, buttonSizeClass]">
-                        {{ $translate("Frontend::Template.login") }}
+                        {{ $translate("Ceres::Template.login") }}
                         <icon icon="user" :loading="isDisabled"></icon>
                     </button>
                 </div>
@@ -131,7 +131,7 @@ export default {
                     ApiService.setToken(response);
 
                     NotificationService.success(
-                        this.$translate("Frontend::Template.loginSuccessful")
+                        this.$translate("Ceres::Template.loginSuccessful")
                     ).closeAfter(3000);
 
                     if (this.backlink !== null && this.backlink)
@@ -156,11 +156,11 @@ export default {
                         case 401:
                             this.loginFields.forEach(element => element.classList.add("has-login-error"));
 
-                            let translationKey = "Frontend::Template.loginFailed";
+                            let translationKey = "Ceres::Template.loginFailed";
 
                             if (response.error.message.length > 0 && response.error.message === "user is blocked")
                             {
-                                translationKey = "Frontend::Template.loginBlocked";
+                                translationKey = "Ceres::Template.loginBlocked";
                             }
                             NotificationService.error(
                                 this.$translate(translationKey)

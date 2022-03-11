@@ -277,11 +277,11 @@ function _getPriceFacetName(priceMin, priceMax)
     }
     else if (priceMin)
     {
-        priceFacetName = TranslationService.translate("Frontend::Template.itemFrom") + priceMinFormatted;
+        priceFacetName = TranslationService.translate("Ceres::Template.itemFrom") + priceMinFormatted;
     }
     else if (priceMax)
     {
-        priceFacetName = TranslationService.translate("Frontend::Template.itemTo") + priceMaxFormatted;
+        priceFacetName = TranslationService.translate("Ceres::Template.itemTo") + priceMaxFormatted;
     }
 
     return priceFacetName;

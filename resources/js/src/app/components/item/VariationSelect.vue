@@ -5,10 +5,10 @@
                 <!-- dropdown -->
                 <div class="input-unit" ref="attributesContaner" v-if="attribute.type === 'dropdown'">
                     <select :id="'custom-select_' + attribute.name" class="custom-select" @change="selectAttribute(attribute.attributeId, $event.target.value)" data-testing="variation-select-dropdown">
-                        <option :value="-1" v-if="addPleaseSelectOption || !hasSelection">{{ $translate("Frontend::Template.singleItemPleaseSelect") }}</option>
+                        <option :value="-1" v-if="addPleaseSelectOption || !hasSelection">{{ $translate("Ceres::Template.singleItemPleaseSelect") }}</option>
                         <option
                                 :value="null" v-if="hasEmptyOption || selectedAttributes[attribute.attributeId] === null"
-                                :selected="selectedAttributes[attribute.attributeId] === null">{{ $translate("Frontend::Template.singleItemNoSelection") }}</option>
+                                :selected="selectedAttributes[attribute.attributeId] === null">{{ $translate("Ceres::Template.singleItemNoSelection") }}</option>
                         <option
                                 v-for="value in attribute.values"
                                 :value="value.attributeValueId"
@@ -18,10 +18,10 @@
                                 {{ value.name }}
                             </template>
                             <template v-else-if="isAttributeSelectionValid(attribute.attributeId, value.attributeValueId, false)">
-                                {{ $translate("Frontend::Template.singleItemNotSalableAttribute", { "name": value.name }) }}
+                                {{ $translate("Ceres::Template.singleItemNotSalableAttribute", { "name": value.name }) }}
                             </template>
                             <template v-else>
-                                {{ $translate("Frontend::Template.singleItemInvalidAttribute", { "name": value.name }) }}
+                                {{ $translate("Ceres::Template.singleItemInvalidAttribute", { "name": value.name }) }}
                             </template>
                         </option>
                     </select>
@@ -38,14 +38,14 @@
                              v-if="addPleaseSelectOption"
                              @click="selectAttribute(attribute.attributeId, -1)"
                              :class="{ 'active': selectedAttributes[attribute.attributeId] === -1, 'invalid': !isAttributeSelectionValid(attribute.attributeId, -1) }">
-                            <span class="mx-3">{{ $translate("Frontend::Template.singleItemPleaseSelect") }}</span>
+                            <span class="mx-3">{{ $translate("Ceres::Template.singleItemPleaseSelect") }}</span>
                         </div>
                         <div class="v-s-box bg-white empty-option"
                              data-testing="variation-select-box"
                              v-if="hasEmptyOption"
                              @click="selectAttribute(attribute.attributeId, null)"
                              :class="{ 'active': selectedAttributes[attribute.attributeId] === null, 'invalid': !isAttributeSelectionValid(attribute.attributeId, null, true) }">
-                            <span class="mx-3">{{ $translate("Frontend::Template.singleItemNoSelection") }}</span>
+                            <span class="mx-3">{{ $translate("Ceres::Template.singleItemNoSelection") }}</span>
                         </div>
 
                         <div class="v-s-box bg-white"
@@ -76,11 +76,11 @@
                                 {{ possibleUnits[unitCombinationId] }}
                             </template>
                             <template v-else>
-                                {{ $translate("Frontend::Template.singleItemInvalidAttribute", { "name": possibleUnits[unitCombinationId] }) }}
+                                {{ $translate("Ceres::Template.singleItemInvalidAttribute", { "name": possibleUnits[unitCombinationId] }) }}
                             </template>
                         </option>
                     </select>
-                    <label for="unit-combination-ids-select" data-testing="variation-select-unit-label">{{ $translate("Frontend::Template.singleItemContent") }}</label>
+                    <label for="unit-combination-ids-select" data-testing="variation-select-unit-label">{{ $translate("Ceres::Template.singleItemContent") }}</label>
                 </div>
             </div>
             <!-- /units -->
@@ -299,7 +299,7 @@ export default {
             }
             else if(attribute.type === "image")
             {
-                return this.$translate("Frontend::Template.singleItemAttributeTooltip", {
+                return this.$translate("Ceres::Template.singleItemAttributeTooltip", {
                     attribute: attribute.name,
                     value: attributeValue.name
                 });
@@ -333,7 +333,7 @@ export default {
                 && invalidSelections[0].attributesToReset.length > invalidSelections[1].attributesToReset.length)
             {
                 // there is a non-salable variation with less changes
-                return this.$translate("Frontend::Template.singleItemNotSalable");
+                return this.$translate("Ceres::Template.singleItemNotSalable");
             }
 
             const invalidSelection = invalidSelections[0] || invalidSelections[1];
@@ -349,7 +349,7 @@ export default {
             if (invalidSelection.newUnit)
             {
                 names.push(
-                    "<b>" + this.$translate("Frontend::Template.singleItemContent") + "</b>"
+                    "<b>" + this.$translate("Ceres::Template.singleItemContent") + "</b>"
                 );
             }
 
@@ -358,7 +358,7 @@ export default {
                 return null;
             }
 
-            return this.$translate("Frontend::Template.singleItemNotAvailableInSelection", { name: names.join(", ") });
+            return this.$translate("Ceres::Template.singleItemNotAvailableInSelection", { name: names.join(", ") });
         },
 
         /**
@@ -474,7 +474,7 @@ export default {
             for (const attributeToReset of invalidSelection.attributesToReset)
             {
                 messages.push(
-                    this.$translate("Frontend::Template.singleItemNotAvailable", { name: attributeToReset.name })
+                    this.$translate("Ceres::Template.singleItemNotAvailable", { name: attributeToReset.name })
                 );
 
                 attributes[attributeToReset.attributeId] = (!this.hasEmptyOption && App.config.item.showPleaseSelect) ? -1 : null;
@@ -485,8 +485,8 @@ export default {
                 if (this.lastContentCount > 1 && this.possibleUnitCombinationIds.length > 1 && !isNull(this.selectedUnit))
                 {
                     messages.push(
-                        this.$translate("Frontend::Template.singleItemNotAvailable", { name:
-                                this.$translate("Frontend::Template.singleItemContent")
+                        this.$translate("Ceres::Template.singleItemNotAvailable", { name:
+                                this.$translate("Ceres::Template.singleItemContent")
                         })
                     );
                 }
@@ -661,9 +661,9 @@ export default {
             }
             else if (App.config.item.showPleaseSelect && selectedAttributeValueId === -1)
             {
-                return this.$translate("Frontend::Template.singleItemPleaseSelect");
+                return this.$translate("Ceres::Template.singleItemPleaseSelect");
             }
-            return this.$translate("Frontend::Template.singleItemNoSelection");
+            return this.$translate("Ceres::Template.singleItemNoSelection");
         },
 
         transformPossibleUnits(possibleUnits)

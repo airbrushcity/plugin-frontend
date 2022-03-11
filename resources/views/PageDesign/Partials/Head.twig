@@ -20,11 +20,11 @@
 {% if customFont.italic %}{{ add_asset(customFont.italic, 'font', 'preload', {'crossorigin': true}) }}@font-face {font-family: "Custom-Font";src: url("{{ customFont.italic }}");font-display: optional;font-style: italic;}{% endif %}
 {% if customFont.boldItalic %}{{ add_asset(customFont.boldItalic, 'font', 'preload', {'crossorigin': true}) }}@font-face {font-family: "Custom-Font";src: url("{{ customFont.boldItalic }}");font-display: optional;font-weight: bold;font-style: italic;}{% endif %}
 </style>
-{% set iconCSS = config("Frontend.Settings.CdnPluginUrl") ~ "/css/design-icons.css" %}
-{% set checkoutCSS = config("Frontend.Settings.CdnPluginUrl") ~ "/css/design-checkout" ~ min2Suffix ~ ".css?v=" ~ buildHash %}
-{% set checkoutSCSS = config("Frontend.Settings.CdnPluginUrl") ~ "/css/design-checkout" ~ min2Suffix ~ ".scss?v=" ~ buildHash %}
-{% set defaultCSS = config("Frontend.Settings.CdnPluginUrl") ~ "/css/design-base" ~ min2Suffix ~ ".css?v=" ~ buildHash %}
-{% set defaultSCSS = config("Frontend.Settings.CdnPluginUrl") ~ "/css/design-base" ~ min2Suffix ~ ".scss?v=" ~ buildHash %}
+{% set iconCSS = config("Frontend.Settings.CdnPluginUrl") ~ "/css/style-icons.css" %}
+{% set checkoutCSS = config("Frontend.Settings.CdnPluginUrl") ~ "/css/style-checkout" ~ min2Suffix ~ ".css?v=" ~ buildHash %}
+{% set checkoutSCSS = config("Frontend.Settings.CdnPluginUrl") ~ "/css/style-checkout" ~ min2Suffix ~ ".scss?v=" ~ buildHash %}
+{% set defaultCSS = config("Frontend.Settings.CdnPluginUrl") ~ "/css/style-base" ~ min2Suffix ~ ".css?v=" ~ buildHash %}
+{% set defaultSCSS = config("Frontend.Settings.CdnPluginUrl") ~ "/css/style-base" ~ min2Suffix ~ ".scss?v=" ~ buildHash %}
 {% endspaceless %}
 
 <link rel="preload" href="{{ iconCSS }}" as="style" onload="this.onload=null;this.rel='stylesheet';">

@@ -164,15 +164,15 @@ export default {
 
                 if (offerTime === TimeEnum.past)
                 {
-                    name = this.$translate("Frontend::Template.liveShoppingOfferClosed");
+                    name = this.$translate("Ceres::Template.liveShoppingOfferClosed");
                 }
                 else if (offerTime === TimeEnum.future)
                 {
-                    name = this.$translate("Frontend::Template.liveShoppingNextOffer");
+                    name = this.$translate("Ceres::Template.liveShoppingNextOffer");
                 }
                 else if (offerTime === TimeEnum.now)
                 {
-                    name = this.$translate("Frontend::Template.liveShoppingOfferSoldOut");
+                    name = this.$translate("Ceres::Template.liveShoppingOfferSoldOut");
                 }
 
                 return { id: -1, names: { name } };

@@ -1,12 +1,12 @@
 <template>
     <div>
         <div :class="{'no-pointer-events': isLoading}" class="add-to-basket-lg-container d-none d-lg-block" v-if="!showQuantity && useLargeScale && canBeAddedToBasket"
-             v-tooltip data-toggle="tooltip" data-placement="top" :title="$translate('Frontend::Template.singleItemAddToBasket')" @click="addToBasket()">
+             v-tooltip data-toggle="tooltip" data-placement="top" :title="$translate('Ceres::Template.singleItemAddToBasket')" @click="addToBasket()">
             <icon icon="cart-plus" class="fa-lg mobile-icon-right" :loading="isLoading"></icon>
         </div>
 
         <div class="add-to-basket-lg-container d-none d-lg-block" v-if="!showQuantity && useLargeScale && !canBeAddedToBasket"
-             v-tooltip data-toggle="tooltip" data-placement="top" :title="$translate('Frontend::Template.itemShowItem')" @click="directToItem()">
+             v-tooltip data-toggle="tooltip" data-placement="top" :title="$translate('Ceres::Template.itemShowItem')" @click="directToItem()">
             <i class="fa fa-arrow-right fa-lg d-none d-sm-block"></i>
         </div>
 
@@ -35,7 +35,7 @@
                         :class="buttonClasses"
                         :style="paddingInlineStyles">
                     <i class="fa fa-shopping-cart" aria-hidden="true"></i>
-                    {{ $translate("Frontend::Template.singleItemAddToBasket") }}
+                    {{ $translate("Ceres::Template.singleItemAddToBasket") }}
                 </button>
                 <button
                         v-else-if="!buttonLockState"
@@ -45,18 +45,18 @@
                         :class="buttonClasses"
                         :style="paddingInlineStyles">
                     <icon icon="shopping-cart" :loading="isLoading"></icon>
-                    {{ $translate("Frontend::Template.singleItemAddToBasket") }}
+                    {{ $translate("Ceres::Template.singleItemAddToBasket") }}
                 </button>
                 <button v-else
                         class="btn btn-block btn-primary btn-appearance disabled"
                         v-tooltip
                         data-toggle="tooltip"
                         data-placement="top"
-                        :title="'Frontend::Template.singleItemQuantityMax' | translate({ max: maximumQuantity })"
+                        :title="'Ceres::Template.singleItemQuantityMax' | translate({ max: maximumQuantity })"
                         :class="buttonClasses"
                         :style="paddingInlineStyles">
                     <icon icon="shopping-cart" :waiting="isLoading"></icon>
-                    {{ $translate("Frontend::Template.singleItemAddToBasket") }}
+                    {{ $translate("Ceres::Template.singleItemAddToBasket") }}
                 </button>
             </div>
         </div>
@@ -65,11 +65,11 @@
             <div class="btn-group" role="group" aria-label="Thumb Control">
                 <button type="button" :class="{'no-pointer-events': isLoading}" v-if="canBeAddedToBasket" class="btn btn-primary btn-appearance mobile-width-button" @click="addToBasket()">
                     <icon icon="shopping-cart" class="fa-lg mobile-icon-right" :loading="isLoading"></icon>
-                    {{ $translate("Frontend::Template.singleItemAddToBasket") }}
+                    {{ $translate("Ceres::Template.singleItemAddToBasket") }}
                 </button>
                 <button type="button" v-else class="btn btn-primary btn-appearance mobile-width-button" @click="directToItem()">
                     <i class="fa fa-arrow-right fa-lg d-none d-sm-block" aria-hidden="true"></i>
-                    {{ $translate("Frontend::Template.itemShowItem") }}
+                    {{ $translate("Ceres::Template.itemShowItem") }}
                 </button>
             </div>
         </div>
@@ -246,11 +246,11 @@ export default {
         {
             if (this.hasAvailableVariations)
             {
-                return this.$translate("Frontend::Template.singleItemPleaseSelectValidVariation");
+                return this.$translate("Ceres::Template.singleItemPleaseSelectValidVariation");
             }
             else
             {
-                return this.$translate("Frontend::Template.singleItemPleaseSelectNotAvailable");
+                return this.$translate("Ceres::Template.singleItemPleaseSelectNotAvailable");
             }
         },
 
@@ -372,7 +372,7 @@ export default {
                         {
                             NotificationService.error(
                                 this.$translate(
-                                    "Frontend::Template." + ExceptionMap.get(error.data.exceptionCode.toString()),
+                                    "Ceres::Template." + ExceptionMap.get(error.data.exceptionCode.toString()),
                                     error.data.placeholder
                                 )
                             ).closeAfter(5000);
@@ -392,7 +392,7 @@ export default {
                 errorMsgContent += name + "<br>";
             }
 
-            NotificationService.error(this.$translate("Frontend::Template.singleItemMissingOrderPropertiesError").replace("<properties>", errorMsgContent));
+            NotificationService.error(this.$translate("Ceres::Template.singleItemMissingOrderPropertiesError").replace("<properties>", errorMsgContent));
         },
 
         directToItem()

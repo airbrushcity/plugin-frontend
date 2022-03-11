@@ -6,11 +6,11 @@
         </span>
 
         <span v-else-if="isBundle" :class="tagClasses.itemBundle">
-            {{ $translate("Frontend::Template.itemBundle") }}
+            {{ $translate("Ceres::Template.itemBundle") }}
         </span>
 
         <span v-else-if="isSet" :class="tagClasses.itemSet">
-            {{ $translate("Frontend::Template.itemSet") }}
+            {{ $translate("Ceres::Template.itemSet") }}
         </span>
 
     </div>
@@ -49,9 +49,9 @@ export default {
             },
             labels:
             {
-                1: this.$translate("Frontend::Template.storeSpecialOffer"),
-                2: this.$translate("Frontend::Template.storeSpecialNew"),
-                3: this.$translate("Frontend::Template.storeSpecialTop")
+                1: this.$translate("Ceres::Template.storeSpecialOffer"),
+                2: this.$translate("Ceres::Template.storeSpecialNew"),
+                3: this.$translate("Ceres::Template.storeSpecialTop")
             }
         };
     },

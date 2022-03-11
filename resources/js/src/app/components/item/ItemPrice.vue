@@ -14,7 +14,7 @@
         <span class="price h1" :class="{ 'is-special-offer': hasSpecialOffer }">
             <span>
                 <template v-if="showDynamicPrice">
-                    {{ $translate("Frontend::Template.dynamicVariationPrice",
+                    {{ $translate("Ceres::Template.dynamicVariationPrice",
                         {
                             price: $options.filters.currency(variationTotalPrice, currentVariation.prices.default.currency)
                         }
@@ -25,7 +25,7 @@
                     {{ variationTotalPrice | currency(currentVariation.prices.default.currency) }}
                 </template>
             </span>
-            <sup>{{ $translate("Frontend::Template.singleItemFootnote1") }}</sup>
+            <sup>{{ $translate("Ceres::Template.singleItemFootnote1") }}</sup>
         </span>
 
         <!-- class .is-single-piece is added for customers to hide the unit if it is C62 -->
@@ -33,12 +33,12 @@
             v-if="currentVariation.unit"
             :class="{ 'is-single-piece': currentVariation.unit && currentVariation.unit.content === 1 && currentVariation.unit.unitOfMeasurement === 'C62' }">
             <div>
-                {{ $translate("Frontend::Template.singleItemContent") }}
+                {{ $translate("Ceres::Template.singleItemContent") }}
                 <span>{{ currentVariation.unit.content | numberFormat }} </span>
                 <span>{{ currentVariation.unit.names.name }}</span>
             </div>
             <div v-if="currentVariation.variation.mayShowUnitPrice">
-                {{ $translate("Frontend::Template.singleItemUnitPrice") }}
+                {{ $translate("Ceres::Template.singleItemUnitPrice") }}
                 <span class="base-price-value">
                     {{ variationGraduatedPrice.basePrice | specialOffer(currentVariation.prices, "basePrice") }}
                 </span>

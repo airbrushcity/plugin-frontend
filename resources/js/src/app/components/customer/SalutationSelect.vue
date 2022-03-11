@@ -76,7 +76,7 @@ export default {
             {
                 return {
                     key: salutation.key,
-                    name: this.$translate("Frontend::Template." + salutation.name)
+                    name: this.$translate("Ceres::Template." + salutation.name)
                 };
             });
 

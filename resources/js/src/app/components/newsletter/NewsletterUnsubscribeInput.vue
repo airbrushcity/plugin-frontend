@@ -3,16 +3,16 @@
         <div class="row">
             <div class="col-12">
                 <div class="input-unit mt-3" data-validate="mail">
-                    <label for="email-input-id">{{ $translate("Frontend::Template.newsletterEmail") }}</label>
-                    <input type="email" name="email" autocomplete="email" class="form-control" id="email-input-id" v-model="email">
+                    <label for="email-input-id">{{ $translate("Ceres::Template.newsletterEmail") }}</label>
+                    <input type="email" name="email" autocomplete="email" class="form-control" id="email-input-id" v-model="email" data-testing="unsub-nl-mail">
                 </div>
 
                 <input class="honey" type="text" name="username" autocomplete="new-password" tabindex="-1" v-model="honeypot">
 
                 <span class="input-group-btn">
-                    <button type="submit" class="btn btn-primary btn-appearance float-right btn-medium btn-xs-max-width" @click="validateData" :disabled="isDisabled" :class="buttonSizeClass">
+                    <button type="submit" class="btn btn-primary btn-appearance float-right btn-medium btn-xs-max-width" @click="validateData" :disabled="isDisabled" :class="buttonSizeClass" data-testing="unsub-nl-send">
                         <icon icon="paper-plane-o" :loading="isDisabled"></icon>
-                        <span>{{ $translate("Frontend::Template.newsletterUnsubscribeButtonLabel") }}</span>
+                        <span>{{ $translate("Ceres::Template.newsletterUnsubscribeButtonLabel") }}</span>
                     </button>
                 </span>
             </div>
@@ -73,14 +73,14 @@ export default {
                 .done(() =>
                 {
                     NotificationService.success(
-                        this.$translate("Frontend::Template.newsletterOptOutSuccessMessage")
+                        this.$translate("Ceres::Template.newsletterOptOutSuccessMessage")
                     ).closeAfter(3000);
                     this.resetInputs();
                 })
                 .fail(() =>
                 {
                     NotificationService.error(
-                        this.$translate("Frontend::Template.newsletterOptOutErrorMessage")
+                        this.$translate("Ceres::Template.newsletterOptOutErrorMessage")
                     ).closeAfter(5000);
                 })
                 .always(() =>

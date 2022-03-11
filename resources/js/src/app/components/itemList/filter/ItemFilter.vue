@@ -62,7 +62,7 @@ export default {
         {
             if (this.facet.translationKey && this.facet.translationKey.length > 0)
             {
-                return this.$translate("Frontend::Template." + this.facet.translationKey);
+                return this.$translate("Ceres::Template." + this.facet.translationKey);
             }
 
             return this.facet.name;

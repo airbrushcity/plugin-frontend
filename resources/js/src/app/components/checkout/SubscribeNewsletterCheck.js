@@ -82,7 +82,7 @@ export default Vue.component("subscribe-newsletter-check", {
             if (showError)
             {
                 NotificationService.error(
-                    TranslationService.translate("Frontend::Template.checkoutCheckAcceptNewsletterSubscription")
+                    TranslationService.translate("Ceres::Template.checkoutCheckAcceptNewsletterSubscription")
                 );
             }
         }

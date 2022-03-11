@@ -4,7 +4,7 @@
             <div class="col-sm-12">
                 <div class="input-unit" data-validate="mail">
                     <input data-testing="mail-register" type="email" name="email" autocomplete="email" :id="'email'+_uid" v-model="username" data-autofocus>
-                    <label :for="'email'+_uid">{{ $translate("Frontend::Template.regEmail") }}*</label>
+                    <label :for="'email'+_uid">{{ $translate("Ceres::Template.regEmail") }}*</label>
                 </div>
             </div>
 
@@ -17,27 +17,27 @@
 
                         <template #title>
                             <div>
-                                {{ $translate("Frontend::Template.regPasswordHintTitle") }}
+                                {{ $translate("Ceres::Template.regPasswordHintTitle") }}
                             </div>
                         </template>
 
                         <template #content>
                             <ul class="pl-3">
-                                <li>{{ $translate("Frontend::Template.regPasswordHintLength") }}</li>
-                                <li>{{ $translate("Frontend::Template.regPasswordHintDigit") }}</li>
-                                <li>{{ $translate("Frontend::Template.regPasswordHintChar") }}</li>
+                                <li>{{ $translate("Ceres::Template.regPasswordHintLength") }}</li>
+                                <li>{{ $translate("Ceres::Template.regPasswordHintDigit") }}</li>
+                                <li>{{ $translate("Ceres::Template.regPasswordHintChar") }}</li>
                             </ul>
                         </template>
                     </popper>
 
-                    <label :for="'new-password-' + _uid">{{ $translate("Frontend::Template.regPassword") }}*</label>
+                    <label :for="'new-password-' + _uid">{{ $translate("Ceres::Template.regPassword") }}*</label>
                 </div>
             </div>
 
             <div class="col-sm-6 input-unit-group" v-if="!guestMode">
                 <div class="input-unit" :class="{'no-bottom': modalElement}" data-validate="ref">
                     <input type="password" name="password-repeat" autocomplete="new-password" :id="'new-password-repeat-' + _uid" v-model="passwordRepeat" :data-validate-ref="'#new-password-' + _uid" data-testing="repeat-password-register">
-                    <label :for="'new-password-repeat-' + _uid">{{ $translate("Frontend::Template.regRepeatPassword") }}*</label>
+                    <label :for="'new-password-repeat-' + _uid">{{ $translate("Ceres::Template.regRepeatPassword") }}*</label>
                 </div>
             </div>
 
@@ -72,7 +72,7 @@
             <slot name="extend-overlay-buttons"></slot>
 
             <button :disabled="isDisabled" class="btn btn-appearance btn-primary btn-medium mt-3" :class="buttonSizeClass" data-testing="register-submit">
-                {{ $translate("Frontend::Template.regRegister") }}
+                {{ $translate("Ceres::Template.regRegister") }}
                 <icon icon="user-plus" class="default-float" :loading="isDisabled"></icon>
             </button>
         </div>
@@ -172,7 +172,7 @@ export default {
                                 this.privacyPolicyShowError = true;
 
                                 NotificationService.error(
-                                    this.$translate("Frontend::Template.contactAcceptFormPrivacyPolicy", { hyphen: "&shy;" })
+                                    this.$translate("Ceres::Template.contactAcceptFormPrivacyPolicy", { hyphen: "&shy;" })
                                 );
                                 this.resetRecaptcha();
                             }
@@ -191,7 +191,7 @@ export default {
                             if (invalidFieldNames.length > 0)
                             {
                                 NotificationService.error(
-                                    this.$translate("Frontend::Template.checkoutCheckAddressFormFields", { fields: invalidFieldNames.join(", ") })
+                                    this.$translate("Ceres::Template.checkoutCheckAddressFormFields", { fields: invalidFieldNames.join(", ") })
                                 );
                             }
 
@@ -202,7 +202,7 @@ export default {
                                 this.privacyPolicyShowError = true;
 
                                 NotificationService.error(
-                                    this.$translate("Frontend::Template.contactAcceptFormPrivacyPolicy", { hyphen: "&shy;" })
+                                    this.$translate("Ceres::Template.contactAcceptFormPrivacyPolicy", { hyphen: "&shy;" })
                                 );
                             }
                         });
@@ -245,7 +245,7 @@ export default {
                         document.dispatchEvent(new CustomEvent("onSignUpSuccess", { detail: userObject }));
 
                         NotificationService.success(
-                            this.$translate("Frontend::Template.regSuccessful")
+                            this.$translate("Ceres::Template.regSuccessful")
                         ).closeAfter(3000);
 
                         if (document.getElementById(this.modalElement) !== null)
@@ -265,7 +265,7 @@ export default {
                     else
                     {
                         NotificationService.error(
-                            this.$translate("Frontend::Template.regError")
+                            this.$translate("Ceres::Template.regError")
                         ).closeAfter(10000);
 
                         this.resetRecaptcha();

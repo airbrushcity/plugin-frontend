@@ -69,7 +69,7 @@ export default Vue.component("payment-provider-select", {
             if (showError)
             {
                 NotificationService.error(
-                    TranslationService.translate("Frontend::Template.checkoutCheckPaymentProvider")
+                    TranslationService.translate("Ceres::Template.checkoutCheckPaymentProvider")
                 );
             }
         },

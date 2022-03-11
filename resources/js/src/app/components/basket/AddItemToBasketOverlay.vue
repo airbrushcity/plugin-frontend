@@ -6,9 +6,9 @@
 
                     <!-- MODAL HEADER -->
                     <div class="modal-header">
-                        <div class="modal-title h5">{{ $translate("Frontend::Template.singleItemAdded") }}</div>
+                        <div class="modal-title h5">{{ $translate("Ceres::Template.singleItemAdded") }}</div>
                         <span class="text-muted ml-auto"><span class="timer"></span>s</span>
-                        <button type="button" class="close ml-0 pl-1" data-dismiss="modal" :aria-label="$translate('Frontend::Template.closeIcon')">
+                        <button type="button" class="close ml-0 pl-1" data-dismiss="modal" :aria-label="$translate('Ceres::Template.closeIcon')">
                             <span aria-hidden="true">&times;</span>
                         </button>
                     </div>
@@ -24,7 +24,7 @@
                                 <p>
                                     <strong>{{ itemName }}</strong>
                                     <br>
-                                    <span v-if="countAdditionalBasketItems > 0">{{ $translate("Frontend::Template.basketItemOverlayAdditionalCount", {"count": countAdditionalBasketItems }) }}</span>
+                                    <span v-if="countAdditionalBasketItems > 0">{{ $translate("Ceres::Template.basketItemOverlayAdditionalCount", {"count": countAdditionalBasketItems }) }}</span>
                                 </p>
 
                                 <p class="small">
@@ -43,11 +43,11 @@
                                 </p>
 
                                 <div class="small" v-if="shownOrderProperties.length">
-                                    <div class="font-weight-bold my-1">{{ $translate("Frontend::Template.singleItemAdditionalOptions") }}:</div>
+                                    <div class="font-weight-bold my-1">{{ $translate("Ceres::Template.singleItemAdditionalOptions") }}:</div>
                                     <ul class="ml-1 pl-3">
                                         <li v-for="property in shownOrderProperties" :key="property.propertyId">
                                             <span class="d-block">
-                                              <strong :class="{ 'colon': property.type.length > 0 }">{{ property.name }} <template v-if="$options.filters.propertySurcharge(basketItem.variation.data.properties, property.propertyId) > 0">({{ $translate("Frontend::Template.singleItemIncludeAbbr") }} {{ basketItem.variation.data.properties | propertySurcharge(property.propertyId) | currency }}) </template></strong>
+                                              <strong :class="{ 'colon': property.type.length > 0 }">{{ property.name }} <template v-if="$options.filters.propertySurcharge(basketItem.variation.data.properties, property.propertyId) > 0">({{ $translate("Ceres::Template.singleItemIncludeAbbr") }} {{ basketItem.variation.data.properties | propertySurcharge(property.propertyId) | currency }}) </template></strong>
                                                 <span>
                                                     <order-property-value :property="property"></order-property-value>
                                                 </span>
@@ -65,11 +65,11 @@
                     <div class="modal-footer">
                         <a v-waiting-animation-infinite :href="urls.basket" rel="nofollow" class="btn btn-outline-primary btn-medium mr-2">
                             <i class="fa fa-shopping-cart" aria-hidden="true"></i>
-                            {{ $translate("Frontend::Template.singleItemBasket") }}
+                            {{ $translate("Ceres::Template.singleItemBasket") }}
                         </a>
                         <a v-waiting-animation-infinite :href="urls.checkout" rel="nofollow" class="btn btn-primary btn-medium">
                             <i class="fa fa-arrow-right" aria-hidden="true"></i>
-                            {{ $translate("Frontend::Template.singleItemCheckout") }}
+                            {{ $translate("Ceres::Template.singleItemCheckout") }}
                         </a>
                     </div>
                     <slot name="extendOverlayButtons"></slot>

@@ -33,7 +33,7 @@ export default Vue.component("shipping-privacy-hint-check", {
 
         privacyHintContent()
         {
-            const andTranslation = TranslationService.translate("Frontend::Template.checkoutShippingPrivacyHintAnd");
+            const andTranslation = TranslationService.translate("Ceres::Template.checkoutShippingPrivacyHintAnd");
 
             let parcelServiceInformation = "";
 
@@ -47,7 +47,7 @@ export default Vue.component("shipping-privacy-hint-check", {
                 parcelServiceInformation += `<strong>${hint.parcelServiceName}, ${hint.parcelServiceAddress}</strong>`;
             }
 
-            return TranslationService.translate("Frontend::Template.checkoutShippingPrivacyHint", { parcelServiceInformation });
+            return TranslationService.translate("Ceres::Template.checkoutShippingPrivacyHint", { parcelServiceInformation });
         },
 
         ...mapState({
@@ -75,7 +75,7 @@ export default Vue.component("shipping-privacy-hint-check", {
 
                 $(this.$refs.formCheck).fadeTo(100, 0.1).fadeTo(400, 1.0);
 
-                NotificationService.error(TranslationService.translate("Frontend::Template.checkoutShippingPrivacyReseted"));
+                NotificationService.error(TranslationService.translate("Ceres::Template.checkoutShippingPrivacyReseted"));
             }
             else if (!value.shippingPrivacyInformation[0].showDataPrivacyAgreementHint)
             {

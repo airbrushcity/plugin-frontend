@@ -29,7 +29,7 @@
                       v-tooltip
                       data-toggle="tooltip"
                       data-placement="top"
-                      :title="propertyGroup.group ? propertyGroup.group.names.name : $translate('Frontend::Template.singleItemPropertiesWithoutGroup')">
+                      :title="propertyGroup.group ? propertyGroup.group.names.name : $translate('Ceres::Template.singleItemPropertiesWithoutGroup')">
                 </span>
             </div>
 

@@ -160,7 +160,7 @@ const actions =
             {
                 commit("setIsBasketLoading", true);
 
-                basketItem.template = "Frontend::Basket.Basket";
+                basketItem.template = "Ceres::Basket.Basket";
                 ApiService.post("/rest/io/basket/items/", basketItem)
                     .done(response =>
                     {
@@ -183,7 +183,7 @@ const actions =
                 commit("setIsBasketItemQuantityUpdate", true);
                 commit("setIsBasketLoading", true);
 
-                basketItem.template = "Frontend::Basket.Basket";
+                basketItem.template = "Ceres::Basket.Basket";
                 ApiService.put("/rest/io/basket/items/" + basketItem.id, basketItem)
                     .done(response =>
                     {
@@ -204,7 +204,7 @@ const actions =
             {
                 commit("setIsBasketLoading", true);
 
-                ApiService.del("/rest/io/basket/items/" + basketItemId, { template: "Frontend::Basket.Basket" })
+                ApiService.del("/rest/io/basket/items/" + basketItemId, { template: "Ceres::Basket.Basket" })
                     .done(response =>
                     {
                         commit("setIsBasketLoading", false);

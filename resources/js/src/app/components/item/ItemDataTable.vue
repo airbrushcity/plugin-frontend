@@ -119,7 +119,7 @@ export default {
         getTranslation(path)
         {
             return this.$translate(
-                "Frontend::Template." + this.translationMap[path]
+                "Ceres::Template." + this.translationMap[path]
             );
         },
 

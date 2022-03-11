@@ -127,7 +127,7 @@ const actions =
                     commit("setIsAddToBasketLoading", addToBasketLoadingId, { root: true });
 
                     ApiService
-                        .get(`/rest/io/variations/${variationId}`, { template: "Frontend::Item.SingleItem", setPriceOnly: rootState.items.isItemSet })
+                        .get(`/rest/io/variations/${variationId}`, { template: "Ceres::Item.SingleItem", setPriceOnly: rootState.items.isItemSet })
                         .done(response =>
                         {
                             // check if set component and replace relevant data

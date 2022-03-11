@@ -81,7 +81,7 @@ export default Vue.component("create-update-address", {
                 });
 
                 NotificationService.warn(
-                    TranslationService.translate("Frontend::Template.checkoutAddressNoValidBirthdate")
+                    TranslationService.translate("Ceres::Template.checkoutAddressNoValidBirthdate")
                 );
             }
 
@@ -106,7 +106,7 @@ export default Vue.component("create-update-address", {
 
                         ValidationService.markInvalidFields(invalidFields, "error");
                         NotificationService.error(
-                            TranslationService.translate("Frontend::Template.checkoutCheckAddressFormFields", { fields: fieldNames.join(", ") })
+                            TranslationService.translate("Ceres::Template.checkoutCheckAddressFormFields", { fields: fieldNames.join(", ") })
                         );
                     });
             });

@@ -78,7 +78,7 @@ export default Vue.component("shipping-profile-select", {
             if (showError)
             {
                 NotificationService.error(
-                    TranslationService.translate("Frontend::Template.checkoutCheckShippingProfile")
+                    TranslationService.translate("Ceres::Template.checkoutCheckShippingProfile")
                 );
             }
         },
@@ -97,12 +97,12 @@ export default Vue.component("shipping-profile-select", {
                 {
                     if (this.paymentContainerIsOverwritten)
                     {
-                        translationKey = "Frontend::Template.checkoutChangePaymentMethodToHint";
+                        translationKey = "Ceres::Template.checkoutChangePaymentMethodToHint";
                         params.paymentMethodNames = shippingProfile.allowedPaymentMethodNames.join(",");
                     }
                     else
                     {
-                        translationKey = "Frontend::Template.checkoutChangePaymentMethodHint";
+                        translationKey = "Ceres::Template.checkoutChangePaymentMethodHint";
                     }
                     break;
                 }

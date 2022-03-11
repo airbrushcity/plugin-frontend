@@ -50,7 +50,7 @@ module.exports = env =>
         plugins: [
             new FixStyleOnlyEntriesPlugin(),
             new MiniCssExtractPlugin({
-                filename: "../../css/design-[name]" + (env.prod ? ".min" : "") + ".css",
+                filename: "../../css/style-[name]" + (env.prod ? ".min" : "") + ".css",
             })
         ],
         output: {

@@ -38,14 +38,14 @@
                                     {{ basePrice }}
                                 </div>
                                 <div>
-                                    <strong>{{ $translate("Frontend::Template.basketContent") }}: </strong>
+                                    <strong>{{ $translate("Ceres::Template.basketContent") }}: </strong>
                                     {{ basketItem.variation.data.unit.content }} {{ basketItem.variation.data.unit.names.name }}
                                 </div>
                             </div>
 
                             <div class="small" v-if="basketItem.inputLength > 0 || basketItem.inputWidth > 0">
                                 <div>
-                                    <strong>{{ $translate("Frontend::Template.itemInput") }} {{ basketItem | inputUnit(true)}}: </strong>
+                                    <strong>{{ $translate("Ceres::Template.itemInput") }} {{ basketItem | inputUnit(true)}}: </strong>
                                     {{ basketItem | inputUnit }}
                                 </div>
                             </div>
@@ -97,7 +97,7 @@
                                 :class="{ 'disabled': waiting || isBasketLoading || isCheckoutReadonly || waitingForDelete }"
                                 @click="deleteItem"
                                 data-testing="basket-item-delete">
-                                {{ $translate("Frontend::Template.basketDelete") }}
+                                {{ $translate("Ceres::Template.basketDelete") }}
                                 <icon icon="trash-o" class="default-float" :loading="waitingForDelete"></icon>
                             </button>
                         </div>
@@ -107,11 +107,11 @@
                 <basket-set-component-list v-if="basketItem.setComponents" :set-components="basketItem.setComponents" :set-item="basketItem"></basket-set-component-list>
 
                 <div class="small" v-if="basketItem.basketItemOrderParams && basketItem.basketItemOrderParams.length">
-                    <div class="font-weight-bold my-1">{{ $translate("Frontend::Template.basketAdditionalOptions") }}:</div>
+                    <div class="font-weight-bold my-1">{{ $translate("Ceres::Template.basketAdditionalOptions") }}:</div>
                     <ul class="ml-1 pl-3">
                         <li v-for="property in basketItem.basketItemOrderParams" :key="property.propertyId" v-show="isPropertyVisible(property.propertyId)">
                             <span class="d-block">
-                              <strong :class="{ 'colon': property.type.length > 0 }">{{ property.name }} <template v-if="$options.filters.propertySurcharge(basketItem.variation.data.properties, property.propertyId) > 0">({{ $translate("Frontend::Template.basketIncludeAbbr") }} {{ basketItem.variation.data.properties | propertySurcharge(property.propertyId) | currency }})</template></strong>
+                              <strong :class="{ 'colon': property.type.length > 0 }">{{ property.name }} <template v-if="$options.filters.propertySurcharge(basketItem.variation.data.properties, property.propertyId) > 0">({{ $translate("Ceres::Template.basketIncludeAbbr") }} {{ basketItem.variation.data.properties | propertySurcharge(property.propertyId) | currency }})</template></strong>
                                 <span>
                                     <order-property-value :property="property"></order-property-value>
                                 </span>
@@ -123,21 +123,21 @@
                 <div class="small" v-if="showMoreInformation">
                     <template v-if="isDataFieldVisible('basket.item.item_id') && basketItem.variation.data.item.id">
                         <div class="mt-3">
-                            <strong>{{ $translate("Frontend::Template.basketItemId") }}:</strong>
+                            <strong>{{ $translate("Ceres::Template.basketItemId") }}:</strong>
                             <span>{{ basketItem.variation.data.item.id }}</span>
                         </div>
                     </template>
 
                     <template v-if="isDataFieldVisible('basket.item.customNumber')">
                         <div v-if="basketItem.variation.data.variation.number">
-                            <strong>{{ $translate("Frontend::Template.basketItemNumber") }}:</strong>
+                            <strong>{{ $translate("Ceres::Template.basketItemNumber") }}:</strong>
                             <span>{{ basketItem.variation.data.variation.number }}</span>
                         </div>
                     </template>
 
                     <template v-if="isDataFieldVisible('basket.item.availability')">
                         <div v-if="basketItem.variation.data.variation.availability && basketItem.variation.data.variation.availability.names.name">
-                            <strong>{{ $translate("Frontend::Template.basketAvailability") }}:</strong>
+                            <strong>{{ $translate("Ceres::Template.basketAvailability") }}:</strong>
                             <span>{{ basketItem.variation.data.variation.availability.names.name }}</span>
                         </div>
                     </template>
@@ -155,8 +155,8 @@
                     class="btn-collapse"
                     :class="{ 'collapsed': !showMoreInformation }"
                     @click="showMoreInformation = !showMoreInformation"
-                    :data-show-more="$translate('Frontend::Template.basketShowMore')"
-                    :data-show-less="$translate('Frontend::Template.basketShowLess')">
+                    :data-show-more="$translate('Ceres::Template.basketShowMore')"
+                    :data-show-less="$translate('Ceres::Template.basketShowLess')">
                 </label>
             </div>
         </div>
@@ -354,7 +354,7 @@ export default {
                                 {
                                     type: "error",
                                     message: TranslationService.translate(
-                                        "Frontend::Template." + ExceptionMap.get(error.data.exceptionCode.toString()),
+                                        "Ceres::Template." + ExceptionMap.get(error.data.exceptionCode.toString()),
                                         error.data.placeholder
                                     )
                                 }
@@ -364,7 +364,7 @@ export default {
                         {
                             NotificationService.error(
                                 TranslationService.translate(
-                                    "Frontend::Template." + ExceptionMap.get(error.data.exceptionCode.toString()),
+                                    "Ceres::Template." + ExceptionMap.get(error.data.exceptionCode.toString()),
                                     error.data.placeholder
                                 )
                             ).closeAfter(5000);

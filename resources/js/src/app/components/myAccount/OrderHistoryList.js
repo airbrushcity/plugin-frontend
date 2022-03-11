@@ -86,7 +86,7 @@ export default Vue.component("order-history-list", {
                         this.waiting = false;
                         this.orderList.page = lastPage;
                         NotificationService.error(
-                            TranslationService.translate("Frontend::Template.returnHistoryOops")
+                            TranslationService.translate("Ceres::Template.returnHistoryOops")
                         );
                     });
             }

@@ -11,11 +11,11 @@
 
         <div class="d-flex flex-wrap flex-column flex-sm-row justify-content-between mt-3">
             <button class="btn btn-primary btn-appearance mt-1" @click="selectAllItems()" :class="buttonSizeClass">
-                {{ $translate("Frontend::Template.returnSelectAll") }}
+                {{ $translate("Ceres::Template.returnSelectAll") }}
                 <i class="fa fa-check-square-o default-float" aria-hidden="true"></i>
             </button>
             <button class="btn btn-primary btn-appearance mt-1" :disabled="isDisabled || isLoading" @click="showConfirmationModal()" :class="buttonSizeClass">
-                {{ $translate("Frontend::Template.returnTrigger") }}
+                {{ $translate("Ceres::Template.returnTrigger") }}
                 <i class="fa fa-arrow-right default-float" aria-hidden="true"></i>
             </button>
         </div>
@@ -24,8 +24,8 @@
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h3 class="modal-title">{{ $translate("Frontend::Template.returnSendBack") }}</h3>
-                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true" :aria-label="$translate('Frontend::Template.closeIcon')">&times;</button>
+                        <h3 class="modal-title">{{ $translate("Ceres::Template.returnSendBack") }}</h3>
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true" :aria-label="$translate('Ceres::Template.closeIcon')">&times;</button>
                     </div>
                     <div class="modal-body">
                         <ul>
@@ -36,18 +36,18 @@
 
                         <div class="input-unit textarea cmp-contact mt-4">
                             <textarea id="contact_wish" class="no-resize" rows="5" @change="updateOrderReturnNote($event.target.value)"></textarea>
-                            <label for="contact_wish">{{ $translate("Frontend::Template.returnReason") }}</label>
+                            <label for="contact_wish">{{ $translate("Ceres::Template.returnReason") }}</label>
                         </div>
 
                     </div>
                     <div class="modal-footer">
                         <button type="button" data-dismiss="modal" class="btn btn-secondary btn-medium" :class="buttonSizeClass">
                             <i class="fa fa-times" aria-hidden="true"></i>
-                            {{ $translate("Frontend::Template.returnCancel") }}
+                            {{ $translate("Ceres::Template.returnCancel") }}
                         </button>
                         <button :disabled="isLoading" @click="sendReturnItems()" type="button" class="btn btn-primary btn-appearance btn-medium" :class="buttonSizeClass">
                             <icon icon="check" :loading="isLoading"></icon>
-                            {{ $translate("Frontend::Template.returnConfirm") }}
+                            {{ $translate("Ceres::Template.returnConfirm") }}
                         </button>
                     </div>
                 </div>
@@ -136,7 +136,7 @@ export default {
                 response =>
                 {
                     NotificationService.success(
-                        this.$translate("Frontend::Template.returnConfirmationInfo")
+                        this.$translate("Ceres::Template.returnConfirmationInfo")
                     ).closeAfter(3000);
 
                     $(this.$refs.orderReturnConfirmation).modal("hide");
