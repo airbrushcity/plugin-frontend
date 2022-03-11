@@ -8,10 +8,7 @@
 {% if services.url.isCanonical() or request.get('env') == "testing" %}{% for language, url in languageUrls %}
 <link rel="alternate" hreflang="{{language}}" href="{{url}}"/>
 {% endfor %}{% endif %}
-{% set min2Suffix = '.min' %}
-{% if ceresConfig.log.performanceLevel  == 'development' %}
-    {% set min2Suffix = '' %}
-{% endif %}
+{% set min2Suffix = '.min' %}{% if ceresConfig.log.performanceLevel  == 'development' %}{% set min2Suffix = '' %}{% endif %}
 
 <style data-font="Custom-Font">.icons-loading .fa { visibility: hidden !important; }{% spaceless %}
 {% set customFont = {regular: config('Frontend.custom-font-regular'),bold: config('Frontend.custom-font-bold'),italic: config('Frontend.custom-font-italic'),boldItalic: config('Frontend.custom-font-bold-italic')}%}

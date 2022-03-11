@@ -15,17 +15,13 @@
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-
-{% include getPartial('head') %}
-
 {% block PartialHead %}
 {% embed getPartial('page-metadata') %}{% endembed %}
 {% endblock %}
+{% include getPartial('head') %}
 
-{% set minSuffix = '.min' %}
-{% if ceresConfig.log.performanceLevel  == 'development' %}
-    {% set minSuffix = '' %}
-{% endif %}
+{% set minSuffix = '.min' %}{% if ceresConfig.log.performanceLevel  == 'development' %}{% set minSuffix = '' %}{% endif %}
+
 {% if assetName == 'ceres-checkout' %}
 {% set checkoutCSS = config("Frontend.Settings.CdnPluginUrl") ~ "/css/style-checkout" ~ minSuffix ~ ".css?v=" ~ buildHash %}
 {% set checkoutSCSS = config("Frontend.Settings.CdnPluginUrl") ~ "/css/style-checkout" ~ minSuffix ~ ".scss?v=" ~ buildHash %}
