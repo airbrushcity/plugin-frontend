@@ -5,27 +5,23 @@
 {{ component( "Frontend::PageDesign.Components.Notifications" ) }}
 {{ component( "Frontend::PageDesign.Components.Popper" ) }}
 {{ component( "Frontend::Customer.Components.ForgotPassword" ) }}
-
-{% if isShopBuilder %}
-    {% include "Frontend::Widgets.WidgetComponents" %}
-{% endif %}
-
+{% if isShopBuilder %}{% include "Frontend::Widgets.WidgetComponents" %}{% endif %}
 {% set isItem = services.template.isItem() == "1" %}
 {% set currencyFormat = config("Ceres.currency.format") %}
 {% set defaultLanguage = webstoreConfig.defaultLanguage %}
-
 {% endspaceless %}<!DOCTYPE html>
-
 <html lang="{{ lang }}" data-framework="vue" prefix="og: http://ogp.me/ns#" class="icons-loading">
-
 <head>
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+
+{% include getPartial('head') %}
+
 {% block PartialHead %}
 {% embed getPartial('page-metadata') %}{% endembed %}
 {% endblock %}
-{% include getPartial('head') %}
+
 {% set minSuffix = '.min' %}
 {% if ceresConfig.log.performanceLevel  == 'development' %}
     {% set minSuffix = '' %}
