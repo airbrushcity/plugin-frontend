@@ -2,7 +2,7 @@
 {% import "Frontend::PageDesign.Macros.LayoutContainer" as LayoutContainer %}
 {% import "Frontend::Category.Macros.CategoryTree" as Tree %}
 
-{% set overrideSearchFilters = LayoutContainer.show("Ceres::Search.Filter", facets ) %}
+{% set overrideSearchFilters = LayoutContainer.show("Frontend::Search.Filter", facets ) %}
 
 {% block PageBody %}
     {% set listType = isSearch ? "itemsearch" : "categoryitem" %}
@@ -104,7 +104,7 @@
                             {{ include('Frontend::PageDesign.Partials.Header.SideNavigation.twig') }}
                         </div>
 
-                        {{ LayoutContainer.show("Ceres::CategoryItem.SideNavBarBottom") }}
+                        {{ LayoutContainer.show("Frontend::CategoryItem.SideNavBarBottom") }}
                     </div>
 
                 {% endif %}
@@ -116,8 +116,8 @@
                                 {% cacheblock %}
                                     <li class="col-12 col-sm-6 col-md-4 col-lg-{% if category is defined and ceresConfig.header.showNavBars in ["side", "both"] %}4{% else %}3{% endif %}">
                                         <category-item :decimal-count="{{ ceresConfig.item.storeSpecial }}">
-                                            <template #before-prices>{{ LayoutContainer.show("Ceres::CategoryItem.BeforePrices", item.data) }}</template>
-                                            <template #after-prices>{{ LayoutContainer.show("Ceres::CategoryItem.AfterPrices", item.data) }}</template>
+                                            <template #before-prices>{{ LayoutContainer.show("Frontend::CategoryItem.BeforePrices", item.data) }}</template>
+                                            <template #after-prices>{{ LayoutContainer.show("Frontend::CategoryItem.AfterPrices", item.data) }}</template>
                                             <template #item-data>{{ item.data | json_encode | e }}</template>
 
                                             <a href="{{ item.data | itemURL }}" class="small">
@@ -174,7 +174,9 @@
     {% if currentPage + 1 <= pageMax %}
         <link rel="next" href="{{ canonicalUrl ~ queryString({'page': currentPage + 1}) }}" />
     {% endif %}
+{% endblock %}
 
+{% block PartialHead %}
     {% if category is null %}
         {% if '&' in queryString() %}
             {% set robotsValue = 'NOINDEX' %}
