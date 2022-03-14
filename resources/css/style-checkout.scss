@@ -14404,6 +14404,9 @@ header .widget {
         max-width: 1650px;
     }
 }
+
+/* comment out for a while
+
 body {
     background-color: #fafafa !important;
 }
@@ -14551,8 +14554,7 @@ div#beschreibung {
     }
     .mobile-navigation {
         position: relative !important;
-        -webkit-transform: translateX(0%) !important;
-                transform: translateX(0%) !important;
+        transform: translateX(0%) !important;
         opacity: 1;
         font-size: 1rem !important;
         border: 1px solid #f2f2f2;
@@ -14597,6 +14599,7 @@ div#beschreibung {
     }
 }
 
+*/ End Comment
 .checkout {
     .basket-items-list .item {
         padding-right: 0;
