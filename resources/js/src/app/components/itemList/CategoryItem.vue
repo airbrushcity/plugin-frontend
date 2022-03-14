@@ -72,19 +72,19 @@
 
                             <div class="price">
                                 <template v-if="item.item.itemType === 'set'">
-                                    {{ $translate("Frontend::Template.itemSetPrice", { price: itemSetPrice }) }} {{ $translate("Frontend::Template.categoryItemFootnote") }}
+                                    {{ $translate("Ceres::Template.itemSetPrice", { price: itemSetPrice }) }} {{ $translate("Ceres::Template.categoryItemFootnote") }}
                                 </template>
                                 <template v-else-if="itemGraduatedPriceisCheapestSorting">
-                                    {{ $translate("Frontend::Template.categoryItemFromPrice", { price: itemPriceGraduated }) }} {{ $translate("Frontend::Template.categoryItemFootnote") }}
+                                    {{ $translate("Ceres::Template.categoryItemFromPrice", { price: itemPriceGraduated }) }} {{ $translate("Ceres::Template.categoryItemFootnote") }}
                                 </template>
                                 <template v-else-if="!!item.item && item.item.salableVariationCount > 1">
-                                    {{ $translate("Frontend::Template.categoryItemFromPrice", { price: itemPrice }) }} {{ $translate("Frontend::Template.categoryItemFootnote") }}
+                                    {{ $translate("Ceres::Template.categoryItemFromPrice", { price: itemPrice }) }} {{ $translate("Ceres::Template.categoryItemFootnote") }}
                                 </template>
                                 <template v-else-if="itemGraduatedPricesalableVariationCount">
-                                    {{ $translate("Frontend::Template.categoryItemFromPrice", { price: itemPriceGraduated }) }} {{ $translate("Frontend::Template.categoryItemFootnote") }}
+                                    {{ $translate("Ceres::Template.categoryItemFromPrice", { price: itemPriceGraduated }) }} {{ $translate("Ceres::Template.categoryItemFootnote") }}
                                 </template>
                                 <template v-else>
-                                    {{ item.prices.default.unitPrice.formatted | specialOffer(item.prices, "unitPrice", "formatted") }} {{ $translate("Frontend::Template.categoryItemFootnote") }}
+                                    {{ item.prices.default.unitPrice.formatted | specialOffer(item.prices, "unitPrice", "formatted") }} {{ $translate("Ceres::Template.categoryItemFootnote") }}
                                 </template>
                             </div>
                         </div>
@@ -117,11 +117,11 @@
                     </add-to-basket>
 
                     <div class="vat small text-muted">
-                        {{ $translate("Frontend::Template.categoryItemFootnote") }} <span v-if="showNetPrices">{{ $translate("Frontend::Template.itemExclVAT") }}</span>
-                        <span v-else>{{ $translate("Frontend::Template.itemInclVAT") }}</span>
-                        {{ $translate("Frontend::Template.itemExclusive") }}
-                        <a v-if="$ceres.config.global.shippingCostsCategoryId > 0" data-toggle="modal" href="#shippingscosts" class="text-appearance" :title="$translate('Ceres::Template.itemShippingCosts')">{{ $translate("Frontend::Template.itemShippingCosts") }}</a>
-                        <a v-else :title="$translate('Ceres::Template.itemShippingCosts')">{{ $translate("Frontend::Template.itemShippingCosts") }}</a>
+                        {{ $translate("Ceres::Template.categoryItemFootnote") }} <span v-if="showNetPrices">{{ $translate("Ceres::Template.itemExclVAT") }}</span>
+                        <span v-else>{{ $translate("Ceres::Template.itemInclVAT") }}</span>
+                        {{ $translate("Ceres::Template.itemExclusive") }}
+                        <a v-if="$ceres.config.global.shippingCostsCategoryId > 0" data-toggle="modal" href="#shippingscosts" class="text-appearance" :title="$translate('Ceres::Template.itemShippingCosts')">{{ $translate("Ceres::Template.itemShippingCosts") }}</a>
+                        <a v-else :title="$translate('Ceres::Template.itemShippingCosts')">{{ $translate("Ceres::Template.itemShippingCosts") }}</a>
                     </div>
                 </div>
             </slot>

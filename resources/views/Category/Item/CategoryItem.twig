@@ -2,7 +2,7 @@
 {% import "Frontend::PageDesign.Macros.LayoutContainer" as LayoutContainer %}
 {% import "Frontend::Category.Macros.CategoryTree" as Tree %}
 
-{% set overrideSearchFilters = LayoutContainer.show("Frontend::Search.Filter", facets ) %}
+{% set overrideSearchFilters = LayoutContainer.show("Ceres::Search.Filter", facets ) %}
 
 {% block PageBody %}
     {% set listType = isSearch ? "itemsearch" : "categoryitem" %}
@@ -21,7 +21,7 @@
     {% else %}
 
         {% if category is defined and ceresConfig.item.showCategoryImage %}
-            {% include "Frontend::Category.Item.Partials.CategoryParallaxImage" with { 'category': category } %}
+            {% include "Ceres::Category.Item.Partials.CategoryParallaxImage" with { 'category': category } %}
         {% endif %}
 
         <div class="categoriegrid page-content container-max">
@@ -59,9 +59,9 @@
                     <div class="row">
                         <div class="col-12">
                             <div class="list-wrapper">
-                                {% include "Frontend::Category.Item.Partials.ItemSorting" with { 'sortingData': searchOptions.sorting, 'selectedSorting': itemSorting } %}
+                                {% include "Ceres::Category.Item.Partials.ItemSorting" with { 'sortingData': searchOptions.sorting, 'selectedSorting': itemSorting } %}
 
-                                {% include "Frontend::Category.Item.Partials.ItemsPerPage" with { 'itemsPerPage': searchOptions.itemsPerPage, 'selectedValue': itemsPerPage } %}
+                                {% include "Ceres::Category.Item.Partials.ItemsPerPage" with { 'itemsPerPage': searchOptions.itemsPerPage, 'selectedValue': itemsPerPage } %}
 
                                 {% if overrideSearchFilters | trim is empty %}
                                     <item-filter-list :facet-data="{{ facets | json_encode }}">
@@ -89,7 +89,7 @@
                 <div class="list-controls mb-5 row">
                     <div class="col-12">
                         <div class="float-right">
-                            {% include "Frontend::Category.Item.Partials.Pagination" %}
+                            {% include "Ceres::Category.Item.Partials.Pagination" %}
                         </div>
                     </div>
                 </div>
@@ -101,10 +101,10 @@
                     <div class="col-3 d-none d-lg-block">
                         <div class="sidebar-categories">
                             <div class="category-title">{{ trans("Frontend::Template.itemCategories") }}</div>
-                            {{ include('Frontend::PageDesign.Partials.Header.SideNavigation.twig') }}
+                            {{ include('Ceres::PageDesign.Partials.Header.SideNavigation.twig') }}
                         </div>
 
-                        {{ LayoutContainer.show("Frontend::CategoryItem.SideNavBarBottom") }}
+                        {{ LayoutContainer.show("Ceres::CategoryItem.SideNavBarBottom") }}
                     </div>
 
                 {% endif %}
@@ -116,8 +116,8 @@
                                 {% cacheblock %}
                                     <li class="col-12 col-sm-6 col-md-4 col-lg-{% if category is defined and ceresConfig.header.showNavBars in ["side", "both"] %}4{% else %}3{% endif %}">
                                         <category-item :decimal-count="{{ ceresConfig.item.storeSpecial }}">
-                                            <template #before-prices>{{ LayoutContainer.show("Frontend::CategoryItem.BeforePrices", item.data) }}</template>
-                                            <template #after-prices>{{ LayoutContainer.show("Frontend::CategoryItem.AfterPrices", item.data) }}</template>
+                                            <template #before-prices>{{ LayoutContainer.show("Ceres::CategoryItem.BeforePrices", item.data) }}</template>
+                                            <template #after-prices>{{ LayoutContainer.show("Ceres::CategoryItem.AfterPrices", item.data) }}</template>
                                             <template #item-data>{{ item.data | json_encode | e }}</template>
 
                                             <a href="{{ item.data | itemURL }}" class="small">
@@ -141,7 +141,7 @@
                 <div class="list-controls mb-5 row">
                     <div class="col-12">
                         <div class="float-right">
-                            {% include "Frontend::Category.Item.Partials.Pagination" %}
+                            {% include "Ceres::Category.Item.Partials.Pagination" %}
                         </div>
                     </div>
                 </div>
@@ -162,7 +162,7 @@
 
 {% endblock %}
 
-{% block PartialNext %}
+{% block PartialHead %}
     {% set canonicalUrl = services.url.getCanonicalURL(null, true) %}
 
     {% if currentPage == 2 %}
@@ -174,9 +174,7 @@
     {% if currentPage + 1 <= pageMax %}
         <link rel="next" href="{{ canonicalUrl ~ queryString({'page': currentPage + 1}) }}" />
     {% endif %}
-{% endblock %}
 
-{% block PartialHead %}
     {% if category is null %}
         {% if '&' in queryString() %}
             {% set robotsValue = 'NOINDEX' %}
