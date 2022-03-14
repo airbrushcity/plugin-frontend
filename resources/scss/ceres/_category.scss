@@ -45,7 +45,7 @@
 
 // Templates
 @import "views/Templates/BasketItemList/basket-list-item";
-@import "views/Templates/BasketPreview/basket-preview";
+// @import "views/Templates/BasketPreview/basket-preview";
 @import "views/Templates/BasketTotalSum/basket-total-sum";
 @import "views/Templates/CategoryListItem/category-list-item";
 @import "views/Templates/Common/component-loading";
@@ -61,4 +61,4 @@
 // Widgets
 @import "widgets/widgets";
 
-.container-max {max-width: 1400px}
+@import "addon/design";
